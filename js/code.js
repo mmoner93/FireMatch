@@ -17,6 +17,9 @@ this.chatUsing=0;
 this.personajeAsignado="";
 this.list_Disonances=[];
 this.faseActual=0;
+this.Apuesta=-1;//0 bien , 1 neutro , 2 mal
+this.pistaTrue="";
+this.pistaFalse="";
 }
 
 
@@ -167,7 +170,8 @@ ronda_prueba.list_caracters.push(personaje_prueba2);
 ronda_prueba.list_Disonances.push(disonance1);
 ronda_prueba.list_Disonances.push(disonance2);
 ronda_prueba.list_Disonances.push(disonance3);
-
+ronda_prueba.pistaTrue="los rubios son fieles";
+ronda_prueba.pistaFalse="los rubios son infieles";
 
 /*RONDA 2*/
 
@@ -256,7 +260,8 @@ ronda_prueba2.list_Disonances.push(disonance1);
 ronda_prueba2.list_Disonances.push(disonance2);
 ronda_prueba2.list_Disonances.push(disonance3);
 
-
+ronda_prueba2.pistaTrue="los morenos son fieles";
+ronda_prueba2.pistaFalse="los morenos son infieles";
 
 jugador.list_rondas.push(ronda_prueba);
 jugador.list_rondas.push(ronda_prueba2);
@@ -269,27 +274,130 @@ jugador.list_rondas.push(ronda_prueba2);
 
 
 function queFaseEstoy(){
-
+console.log("QUE FASE ESTOY " + jugador.list_rondas[jugador.ronda_actual].faseActual);
 switch(jugador.list_rondas[jugador.ronda_actual].faseActual){
 case "apuesta":
+var capaIconos=document.querySelector(".iconos");
+capaIconos.style.visibility="hidden";
+formarApuestasDiablo();
+break;
+case "parejas":
+var capaIconos=document.querySelector(".iconos");
+
+capaIconos.style.visibility="visible";
+break;
+case "finalParejas":
 
 break;
-case "apuesta":
 
-break;
-case "apuesta":
+case "finalApuesta":
 
 break;
 }
 
 }
 
+function deactivateall(){
+desactivatePantallaEscritorio("Pantalla_1");
+desactivatePantallaEscritorio("Pantalla_2");
+cleanPantalla("Pantalla_1");
+cleanPantalla("Pantalla_2");
+var capaIconos=document.querySelector(".iconos");
+
+capaIconos.style.visibility="hidden";
+
+}
 
 
 
 /***********PARA control de rondas END**************/
 
 
+/***********PARA apuestas diablo**************/
+
+
+function formarApuestasDiablo(){
+  var pantalla1=document.querySelector(".Pantalla_1");
+  pantalla1.style.visibility="visible";
+  var imagenDiablo=document.createElement("img");
+  imagenDiablo.id="imgDiablo";
+  imagenDiablo.src="https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
+
+  var pregunta =document.createElement("p");
+  pregunta.innerText="Que crees que pasara en la siguiente ronda?";
+
+  var pista=document.createElement("p");
+  var random=Math.random();
+  if(random <0.5){
+    pista.innerText=jugador.list_rondas[jugador.ronda_actual].pistaTrue;
+  }else{
+    pista.innerText=jugador.list_rondas[jugador.ronda_actual].pistaFalse;
+  }
+
+  var bienIcono=document.createElement("img");
+  bienIcono.id="bienIcono";
+  bienIcono.src="https://image.freepik.com/iconos-gratis/pulgares-arriba-bien_318-10538.jpg";
+  bienIcono.addEventListener("click",elegirApuesta);
+
+  var neutroIcono=document.createElement("img");
+  neutroIcono.id="neutroIcono";
+  neutroIcono.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLvSegDeIJ83CBtCG-nmaQofRnYp5gmoiSCA&usqp=CAU";
+  neutroIcono.addEventListener("click",elegirApuesta);
+
+  var malIcono=document.createElement("img");
+  malIcono.id="malIcono";
+  malIcono.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKAMSVxz6-YikIDAFJSIIFYYruUhkd1vWCmg&usqp=CAU";
+  malIcono.addEventListener("click",elegirApuesta);
+
+  pantalla1.appendChild(imagenDiablo);
+  pantalla1.appendChild(pregunta);
+  pantalla1.appendChild(bienIcono);
+  pantalla1.appendChild(neutroIcono);
+  pantalla1.appendChild(malIcono);
+  pantalla1.appendChild(pista);
+
+}
+
+
+
+
+function elegirApuesta(e){
+console.log("ESTA EN "+ e.srcElement.id);
+switch(e.srcElement.id){
+  case "bienIcono":
+  if(confirm("Quieres elegir apuesta bien ?")){
+      jugador.list_rondas[jugador.ronda_actual].Apuesta=0;
+      jugador.list_rondas[jugador.ronda_actual].faseActual="parejas";
+      deactivateall();
+      queFaseEstoy();
+  }
+
+  break;
+  case "neutroIcono":
+  if(confirm("Quieres elegir apuesta neutro ?")){
+    jugador.list_rondas[jugador.ronda_actual].Apuesta=1;
+    jugador.list_rondas[jugador.ronda_actual].faseActual="parejas";
+    deactivateall();
+    queFaseEstoy();
+  }
+
+  break;
+  case "malIcono":
+  if(confirm("Quieres elegir mal ?")){
+      jugador.list_rondas[jugador.ronda_actual].Apuesta=2;
+      jugador.list_rondas[jugador.ronda_actual].faseActual="parejas";
+      deactivateall();
+      queFaseEstoy();
+
+  }
+
+  break;
+}
+
+
+}
+
+/***********PARA apuestas diablo END**************/
 
 /***********PARA DISONANCIAS**************/
 
@@ -1052,6 +1160,10 @@ function asignarPareja(){
       cleanPantalla("Pantalla_2");
       desactivatePantallaEscritorio("tarjetas_icono");
       desactivatePantallaEscritorio("tarjeta_principal_icono");
+      deactivateall();
+      jugador.list_rondas[jugador.ronda_actual].faseActual="apuesta";
+      queFaseEstoy();
+
     }
 
 
@@ -1059,3 +1171,7 @@ function asignarPareja(){
 
 
 /*********Para el escritorio END**************/
+
+/*EJECUTAR*/
+jugador.list_rondas[jugador.ronda_actual].faseActual="apuesta";
+queFaseEstoy();
