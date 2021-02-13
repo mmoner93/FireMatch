@@ -4,6 +4,9 @@
 function jugador(){
 this.list_rondas=[];
 this.ronda_actual=0;
+this.isLookingDisonace=false;
+this.contadorClickDisonance=0;
+this.disonanceTemp=null;
 }
 
 function ronda(){
@@ -12,6 +15,8 @@ this.list_caracters=[];
 this.fichaUsing=0;
 this.chatUsing=0;
 this.personajeAsignado="";
+this.list_Disonances=[];
+this.faseActual=0;
 }
 
 
@@ -39,6 +44,16 @@ this.srcBlocked="https://st2.depositphotos.com/3921439/7464/v/600/depositphotos_
 
 }
 
+function disonance(que1,quien1,isMain1,que2,quien2,isMain2,typeDisonance){
+  this.que1=que1;
+  this.quien1=quien1;
+  this.isMain1=isMain1;
+  this.que2=que2;
+  this.quien2=quien2;
+  this.isMain2=isMain2;
+  this.typeDisonance=typeDisonance; //1 es bueno , 2 malo
+  this.reached=false;
+}
 
 function main_escritorio(){
   this.usingPantalla1=false;
@@ -50,6 +65,7 @@ function main_escritorio(){
 function chat(question,answer){
   this.question=question;
   this.answer=answer;
+  this.answerDisonance=false;
   this.used=false;
 }
 
@@ -63,16 +79,17 @@ function pantalla(){
 /***********INICIALIZAR**************/
 
 var escritorio=new main_escritorio();
+var jugador=new jugador();
+
+
+
+/*RONDA 1*/
 var ronda_prueba=new ronda();
-
-
-
-
 var personaje_prueba=new caracter(true,"Pepe pruebas");
-console.log(personaje_prueba);
 
-var atributo_1=new atribute("Soy ciego",false,false);
-var atributo_2=new atribute("Me gusta las cabras",false,false);
+
+var atributo_1=new atribute("Soy ciego",true,false);
+var atributo_2=new atribute("Me gusta las cabras",true,false);
 var atributo_3=new atribute("Soy de campo",false,false);
 personaje_prueba.list_atributes.push(atributo_1);
 personaje_prueba.list_atributes.push(atributo_2);
@@ -88,7 +105,6 @@ personaje_prueba.list_photos.push(foto3);
 
 
 var personaje_prueba1=new caracter(true,"SARA pruebas");
-console.log(personaje_prueba);
 
 var atributo_1=new atribute("Soy ciega",false,true);
 var atributo_2=new atribute("Me gustas tu",false,false);
@@ -114,10 +130,10 @@ personaje_prueba1.list_chat.push(chat2);
 
 
 var personaje_prueba2=new caracter(true,"Juan pruebas");
-console.log(personaje_prueba);
 
-var atributo_1=new atribute("Arriba la fiesta",false,false);
-var atributo_2=new atribute("No soy fiel",false,true);
+
+var atributo_1=new atribute("Arriba la fiesta",true,false);
+var atributo_2=new atribute("No soy fiel",true,true);
 var atributo_3=new atribute("Robo todo",false,true);
 personaje_prueba2.list_atributes.push(atributo_1);
 personaje_prueba2.list_atributes.push(atributo_2);
@@ -138,23 +154,323 @@ var chat2=new chat("Vives solo ?","Mis waifus dicen que no");
 personaje_prueba2.list_chat.push(chat1);
 personaje_prueba2.list_chat.push(chat2);
 
+
+var disonance1=new disonance("atributo_1","Pepe pruebas",true,"atributo_1","Juan pruebas",false,2);
+var disonance2=new disonance("atributo_2","Pepe pruebas",true,"atributo_2","Juan pruebas",false,1);
+var disonance3=new disonance("img_caracter_0","Juan pruebas",false,"atributo_2","Juan pruebas",false,1);
+
+
 ronda_prueba.main_caracter=personaje_prueba;
 ronda_prueba.list_caracters.push(personaje_prueba1);
 ronda_prueba.list_caracters.push(personaje_prueba2);
 
+ronda_prueba.list_Disonances.push(disonance1);
+ronda_prueba.list_Disonances.push(disonance2);
+ronda_prueba.list_Disonances.push(disonance3);
+
+
+/*RONDA 2*/
+
+
+var ronda_prueba2=new ronda();
+var personaje_prueba=new caracter(true,"ALBARI pruebas");
+
+
+var atributo_1=new atribute("Soy ciego y tonto",true,false);
+var atributo_2=new atribute("Me gusta las cabras y caballos",true,false);
+var atributo_3=new atribute("Soy de camposs",false,false);
+personaje_prueba.list_atributes.push(atributo_1);
+personaje_prueba.list_atributes.push(atributo_2);
+personaje_prueba.list_atributes.push(atributo_3);
+
+var foto1=new photo_caracter("https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg",false,false);
+var foto2=new photo_caracter("https://image.shutterstock.com/image-vector/vector-pixel-art-girl-anime-600w-1102810826.jpg",false,false);
+var foto3=new photo_caracter("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF2BGxHSQK46Kgw49miYuO3142BjlvC9j_lA&usqp=CAU",false,false);
+personaje_prueba.list_photos.push(foto1);
+personaje_prueba.list_photos.push(foto2);
+personaje_prueba.list_photos.push(foto3);
+
+
+
+var personaje_prueba1=new caracter(true,"SARADONGA pruebas");
+
+var atributo_1=new atribute("Soy ciegaNGA",false,true);
+var atributo_2=new atribute("Me gustas tuNGA",false,false);
+var atributo_3=new atribute("Soy poliamorosaNGA",false,false);
+personaje_prueba1.list_atributes.push(atributo_1);
+personaje_prueba1.list_atributes.push(atributo_2);
+personaje_prueba1.list_atributes.push(atributo_3);
+
+var foto1=new photo_caracter("https://www.lorealprofessionnel.es/-/media/master/es/webedia-hair-trend-news-2/es_es/3144/7192-peinados-para-cara-redonda-orig-2.ashx",false,false);
+var foto2=new photo_caracter("https://i.pinimg.com/originals/db/50/89/db508974ed8fbd967c62df21ce5a1eb3.jpg",false,false);
+var foto3=new photo_caracter("https://img4.codigonuevo.com/ef/de/06/caras-futuro-mileniales-codigo-nuevo-930x600.jpg",false,true);
+personaje_prueba1.list_photos.push(foto1);
+personaje_prueba1.list_photos.push(foto2);
+personaje_prueba1.list_photos.push(foto3);
+
+
+var chat1=new chat("Hobbie ?","Pues ser nini");
+var chat2=new chat("Vives solo ?","Si las pelusas de mi ombligo no cuentan...");
+
+
+personaje_prueba1.list_chat.push(chat1);
+personaje_prueba1.list_chat.push(chat2);
+
+
+var personaje_prueba2=new caracter(true,"Juanss pruebas");
+
+
+var atributo_1=new atribute("Arriba la fiestass",true,false);
+var atributo_2=new atribute("No soy fielss",true,true);
+var atributo_3=new atribute("Robo todoss",false,true);
+personaje_prueba2.list_atributes.push(atributo_1);
+personaje_prueba2.list_atributes.push(atributo_2);
+personaje_prueba2.list_atributes.push(atributo_3);
+
+var foto1=new photo_caracter("https://static2.abc.es/media/ciencia/2017/02/28/cara-k1WG--620x349@abc.jpg",false,true);
+var foto2=new photo_caracter("https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/article/55365cde3787b2187a1f0fbc/impresion-cara.jpg",false,false);
+var foto3=new photo_caracter("https://pavlov.psyciencia.com/2016/12/caras-de-la-ira-e1480938528244.jpg",false,false);
+
+personaje_prueba2.list_photos.push(foto1);
+personaje_prueba2.list_photos.push(foto2);
+personaje_prueba2.list_photos.push(foto3);
+
+
+var chat1=new chat("Hobbie ?","Soy un elfo nivel 100");
+var chat2=new chat("Vives solo ?","Mis waifus dicen que no");
+
+personaje_prueba2.list_chat.push(chat1);
+personaje_prueba2.list_chat.push(chat2);
+
+
+var disonance1=new disonance("atributo_1","Pepe pruebas",true,"atributo_1","Juan pruebas",false,2);
+var disonance2=new disonance("atributo_2","Pepe pruebas",true,"atributo_2","Juan pruebas",false,1);
+var disonance3=new disonance("img_caracter_0","Juan pruebas",false,"atributo_2","Juan pruebas",false,1);
+
+
+ronda_prueba2.main_caracter=personaje_prueba;
+ronda_prueba2.list_caracters.push(personaje_prueba1);
+ronda_prueba2.list_caracters.push(personaje_prueba2);
+
+ronda_prueba2.list_Disonances.push(disonance1);
+ronda_prueba2.list_Disonances.push(disonance2);
+ronda_prueba2.list_Disonances.push(disonance3);
+
+
+
+jugador.list_rondas.push(ronda_prueba);
+jugador.list_rondas.push(ronda_prueba2);
 
 
 /***********INICIALIZAR END**************/
 
 
+/***********PARA control de Rondas**************/
+
+
+function queFaseEstoy(){
+
+switch(jugador.list_rondas[jugador.ronda_actual].faseActual){
+case "apuesta":
+
+break;
+case "apuesta":
+
+break;
+case "apuesta":
+
+break;
+}
+
+}
+
+
+
+
+/***********PARA control de rondas END**************/
+
+
+
+/***********PARA DISONANCIAS**************/
+
+function recogerClick(e){
+  var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
+
+if(jugador.isLookingDisonace && e.srcElement.src != "https://st2.depositphotos.com/3921439/7464/v/600/depositphotos_74644007-stock-illustration-the-lock-icon-lock-symbol.jpg"){
+  if(jugador.contadorClickDisonance==0){
+    console.log("Miro disonanica 1");
+
+      var id_parent=e.srcElement.parentNode.classList[0];
+      var quien="";
+      var main="";
+      var id=e.srcElement.id;
+      console.log( id_parent);
+       if(id_parent=="Pantalla_1"){
+
+          if(escritorio.cualPantalla1=="tarjetas_icono"){
+            if(id=="img_caracter"){
+              id=id+"_"+ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing;
+            }
+            quien=ronda_prueba.list_caracters[ronda_prueba.fichaUsing].name;
+            main=false;
+          }else{
+            if(id=="img_caracter"){
+              id=id+"_"+ronda_prueba.main_caracter.name.foto_showing;
+            }
+            quien=ronda_prueba.main_caracter.name;
+            main=true;
+          }
+
+
+       }else if(id_parent=="Pantalla_2"){
+
+         if(escritorio.cualPantalla2=="tarjetas_icono"){
+           if(id=="img_caracter"){
+             id=id+"_"+ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing;
+           }
+           quien=ronda_prueba.list_caracters[ronda_prueba.fichaUsing].name;
+             main=false;
+         }else{
+           if(id=="img_caracter"){
+             id=id+"_"+ronda_prueba.main_caracter.name.foto_showing;
+           }
+           quien=ronda_prueba.main_caracter.name;
+           main=true;
+         }
+
+       }
+
+       jugador.disonanceTemp=new disonance(id,quien,main,"","",false,0);
+       jugador.contadorClickDisonance=jugador.contadorClickDisonance+1;
+
+  }else if(jugador.contadorClickDisonance==1){
+    console.log("Miro disonanica 2");
+    var id_parent=e.srcElement.parentNode.classList[0];
+    var main="";
+    var quien="";
+    var id=e.srcElement.id;
+     if(id_parent=="Pantalla_1"){
+
+        if(escritorio.cualPantalla1=="tarjetas_icono"){
+          if(id=="img_caracter"){
+            id=id+"_"+ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing;
+          }
+          quien=ronda_prueba.list_caracters[ronda_prueba.fichaUsing].name;
+          main=false;
+        }else{
+          if(id=="img_caracter"){
+            id=id+"_"+ronda_prueba.main_caracter.name.foto_showing;
+          }
+          quien=ronda_prueba.main_caracter.name;
+          main=true;
+        }
+
+
+     }else if(id_parent=="Pantalla_2"){
+       if(escritorio.cualPantalla2=="tarjetas_icono"){
+         if(id=="img_caracter"){
+           id=id+"_"+ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing;
+         }
+         quien=ronda_prueba.list_caracters[ronda_prueba.fichaUsing].name;
+           main=false;
+       }else{
+         if(id=="img_caracter"){
+           id=id+"_"+ronda_prueba.main_caracter.name.foto_showing;
+         }
+         quien=ronda_prueba.main_caracter.name;
+         main=true;
+       }
+
+     }
+
+     jugador.disonanceTemp.que2=id;
+     jugador.disonanceTemp.quien2=quien;
+     jugador.disonanceTemp.isMain2=main;
+     jugador.contadorClickDisonance=jugador.contadorClickDisonance+1;
+  }
+
+  if(jugador.contadorClickDisonance==2){
+    console.log("Miro disonanica 3");
+    mirarDisonancia();
+    jugador.contadorClickDisonance=0;
+  }
+
+}
+
+
+
+}
+
+
+function mirarDisonancia(){
+    var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
+console.log(jugador.disonanceTemp);
+if((jugador.disonanceTemp.que1 != jugador.disonanceTemp.que2) || (jugador.disonanceTemp.quien1 != jugador.disonanceTemp.quien2) ){
+
+var que1=jugador.disonanceTemp.que1;
+var quien1=jugador.disonanceTemp.quien1;
+var main1=jugador.disonanceTemp.isMain1;
+var que2=jugador.disonanceTemp.que2;
+var quien2=jugador.disonanceTemp.quien2;
+var main2=jugador.disonanceTemp.isMain2;
+
+
+
+  for(var i=0;i<ronda_prueba.list_Disonances.length;i++){
+
+    var contador=0;
+    if((ronda_prueba.list_Disonances[i].isMain1==main1 &&
+      ronda_prueba.list_Disonances[i].que1==que1 &&
+      ronda_prueba.list_Disonances[i].quien1==quien1) ||
+      (ronda_prueba.list_Disonances[i].isMain1==main2 &&
+        ronda_prueba.list_Disonances[i].que1==que2 &&
+        ronda_prueba.list_Disonances[i].quien1==quien2)
+      ){
+        contador=contador+1;
+
+      }
+      if((ronda_prueba.list_Disonances[i].isMain2==main1 &&
+        ronda_prueba.list_Disonances[i].que2==que1 &&
+        ronda_prueba.list_Disonances[i].quien2==quien1) ||
+        (ronda_prueba.list_Disonances[i].isMain2==main2 &&
+          ronda_prueba.list_Disonances[i].que2==que2 &&
+          ronda_prueba.list_Disonances[i].quien2==quien2)
+        ){
+          contador=contador+1;
+
+        }
+        console.log("Contador es " + contador);
+        if(contador==2){
+          ronda_prueba.list_Disonances[i].reached=true;
+          console.log("has detectado disonancia tipo :" + ronda_prueba.list_Disonances[i].typeDisonance);
+          return true;
+        }
+  }
+
+  console.log("No es disonante");
+  return false;
+}else{
+  console.log("No es disonante");
+  return false;
+}
+
+
+
+
+
+
+}
+
+
+/***********PARA DISONANCIAS END**************/
+
 
 /***********PARA TARJETAS**************/
 
-/*var flecha_next= document.querySelector("img#flecha");
-flecha_next.addEventListener("click", nextImage);*/
+
 
 function nextImage(e){
-
+  var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
 if(this.id === "flecha"){
   var pantalla=document.querySelector("."+whereIsPantalla("tarjetas_icono"));
   var imagen_usuario=pantalla.querySelector("img#img_caracter");
@@ -188,6 +504,7 @@ if(this.id === "flecha"){
 
 
 function nextFicha(e){
+    var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
   ronda_prueba.fichaUsing=ronda_prueba.fichaUsing+1;
   if(ronda_prueba.fichaUsing>1){
     ronda_prueba.fichaUsing=0;
@@ -207,17 +524,23 @@ function nextFicha(e){
 
 
 function imageBlocked(e){
+    var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
 var name=whereIsPantalla("tarjetas_icono");
 var pantalla_volcar=document.querySelector("."+name);
 var imagen_caracter=pantalla_volcar.querySelector("#img_caracter");
   if(ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].isBlock){
-    ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].isBlock=false;
+    if (confirm("Quieres desbloquear imagen?")){
+      ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].isBlock=false;
+      imagen_caracter.src=ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].src;
+    }
+
   }
-imagen_caracter.src=ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].src;
+
 }
 
 
 function formarPantallaTarjetas(type,nuevo){
+    var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
 if(nuevo){
 var pantalla_volcar=document.querySelector("." + whereIsPantalla(type));
 pantalla_volcar.style.visibility="visible";
@@ -229,12 +552,14 @@ var pantalla_volcar=document.querySelector("." + pantalla_libre(type));
 
 var ima_carac=document.createElement("img");
 ima_carac.id="img_caracter";
-ima_carac.addEventListener("click", imageBlocked);
+
+
+ima_carac.addEventListener("click",recogerClick);
 
 var ima_flecha=document.createElement("img");
 ima_flecha.src="https://e7.pngegg.com/pngimages/593/775/png-clipart-arrow-computer-icons-encapsulated-postscript-right-arrow-angle-text.png";
 if(type=="tarjetas_icono"){
-
+  ima_carac.addEventListener("click", imageBlocked);
   ima_flecha.id="flecha";
 }else if(type=="tarjeta_principal_icono"){
 
@@ -255,6 +580,7 @@ if(type=="tarjetas_icono"){
   }else{
     var atributo_1=document.createElement("p");
     atributo_1.id="atributo_1";
+    atributo_1.addEventListener("click",recogerClick);
   }
 
   if(ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_atributes[1].isBlock){
@@ -266,6 +592,7 @@ if(type=="tarjetas_icono"){
   }else{
     var atributo_2=document.createElement("p");
     atributo_2.id="atributo_2";
+    atributo_2.addEventListener("click",recogerClick);
   }
 
   if(ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_atributes[2].isBlock){
@@ -277,15 +604,19 @@ if(type=="tarjetas_icono"){
   }else{
     var atributo_3=document.createElement("p");
     atributo_3.id="atributo_3";
+    atributo_3.addEventListener("click",recogerClick);
   }
 
 }else{
   var atributo_1=document.createElement("p");
   atributo_1.id="atributo_1";
+  atributo_1.addEventListener("click",recogerClick);
   var atributo_2=document.createElement("p");
   atributo_2.id="atributo_2";
+  atributo_2.addEventListener("click",recogerClick);
   var atributo_3=document.createElement("p");
   atributo_3.id="atributo_3";
+  atributo_3.addEventListener("click",recogerClick);
 }
 
 
@@ -337,12 +668,16 @@ return pantalla_volcar;
 }
 
 function unlockAtribute(e){
+    var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
 var pantalla=document.querySelector("."+whereIsPantalla("tarjetas_icono"));
 var atributoBlock=e.srcElement.cual;
-ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_atributes[atributoBlock].isBlock=false;
-cleanPantalla(whereIsPantalla("tarjetas_icono"));
-var pantalla_volcar=formarPantallaTarjetas("tarjetas_icono",true);
-llenarInfoTarjetaIcono(pantalla_volcar);
+if(confirm("Quieres desbloquear atributo ?")){
+  ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_atributes[atributoBlock].isBlock=false;
+  cleanPantalla(whereIsPantalla("tarjetas_icono"));
+  var pantalla_volcar=formarPantallaTarjetas("tarjetas_icono",true);
+  llenarInfoTarjetaIcono(pantalla_volcar);
+}
+
 if(momentoAsignacion()){
 
 activarAsignar();
@@ -358,6 +693,7 @@ activarAsignar();
 /***********PARA CHAT **************/
 
 function formarChat(which){
+    var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
 
 var pantalla_volcar=document.querySelector("." + pantalla_libre(which.id));
 
@@ -406,7 +742,7 @@ ponerPreguntasNohechas();
 
 
 function llenarChatEscrito(){
-
+  var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
   var divMessages=document.querySelector("#ChatMessages");
   for (var i=0; i<ronda_prueba.list_caracters[ronda_prueba.chatUsing].list_chat.length;i++){
       if (ronda_prueba.list_caracters[ronda_prueba.chatUsing].list_chat[i].used){
@@ -426,7 +762,7 @@ function llenarChatEscrito(){
 }
 
 function ponerPreguntasNohechas(){
-
+  var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
   var divQuestions=document.querySelector("#ChatQuestions");
   for (var i=0;i<ronda_prueba.list_caracters[ronda_prueba.chatUsing].list_chat.length;i++){
     if (!ronda_prueba.list_caracters[ronda_prueba.chatUsing].list_chat[i].used){
@@ -445,7 +781,7 @@ function ponerPreguntasNohechas(){
 
 
 function askQuestion(e){
-
+  var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
   var idquestion=e.srcElement.questionId;
 
   var question=ronda_prueba.list_caracters[ronda_prueba.chatUsing].list_chat[idquestion].question;
@@ -466,7 +802,7 @@ function askQuestion(e){
 }
 
 function cleanQuestion(){
-
+  var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
   var divQuestions=document.querySelector("#ChatQuestions");
   while (divQuestions.firstChild) {
       divQuestions.removeChild(divQuestions.firstChild);
@@ -474,7 +810,7 @@ function cleanQuestion(){
 }
 
 function clearMessages(){
-
+  var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
   var divQuestions=document.querySelector("#ChatMessages");
   while (divQuestions.firstChild) {
       divQuestions.removeChild(divQuestions.firstChild);
@@ -490,7 +826,7 @@ function clearMessages(){
 
 
 function exitPantalla(e){
-
+  var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
 var namePantalla=e.srcElement.cualPantalla;
 
 var cual=whereIsPantalla(namePantalla);
@@ -507,7 +843,7 @@ if(result!="NO_EXIST" && namePantalla=="tarjeta_principal_icono"){
 
 
 function cleanPantalla(namePantalla){
-
+  var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
 var pantalla = document.querySelector("."+namePantalla);
 
 while (pantalla.firstChild) {
@@ -519,9 +855,7 @@ pantalla.style.visibility="hidden";
 
 
 function whereIsPantalla(namePantalla){
-console.log("nombre pantalla" + namePantalla);
-console.log("nombre pantalla" + escritorio.cualPantalla1);
-console.log(escritorio);
+  var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
   if( escritorio.cualPantalla1==namePantalla){
     return "Pantalla_1";
 
@@ -538,7 +872,7 @@ console.log(escritorio);
 }
 
 function desactivatePantallaEscritorio(namePantalla){
-
+  var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
   if( escritorio.cualPantalla1==namePantalla){
     escritorio.cualPantalla1="";
     escritorio.usingPantalla1=false;
@@ -555,6 +889,7 @@ function desactivatePantallaEscritorio(namePantalla){
 
 
 function pantalla_libre(pantallaNueva){
+    var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
   if (escritorio.usingPantalla1 ==false){
 
     escritorio.usingPantalla1=true;
@@ -574,13 +909,14 @@ function pantalla_libre(pantallaNueva){
 var icono_tarjetas = document.querySelector("img#tarjetas_icono");
 var icono_chat= document.querySelector("img#chat_icono");
 var icono_main= document.querySelector("img#tarjeta_principal_icono");
-
+var icono_lupa= document.querySelector("img#lupa_icono");
 icono_tarjetas.addEventListener("click", onClickIcon);
 icono_chat.addEventListener("click", onClickIcon);
 icono_main.addEventListener("click", onClickIcon);
-
+icono_lupa.addEventListener("click", onClickIcon);
 
 function llenarInfoTarjetaIcono(pantalla_volcar){
+    var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
   var imagen_caracter=pantalla_volcar.querySelector("#img_caracter");
   var name=pantalla_volcar.querySelector("#name_caracter");
   var atr1=pantalla_volcar.querySelector("#atributo_1");
@@ -608,9 +944,11 @@ function llenarInfoTarjetaIcono(pantalla_volcar){
 
 
 function onClickIcon(e) {
+    var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
+  jugador.isLookingDisonace=false;
 
 result=whereIsPantalla(this.id);
-console.log(result);
+
 if(result=="NO_EXIST"){
 
 switch (this.id) {
@@ -646,6 +984,13 @@ switch (this.id) {
   atr2.innerText=ronda_prueba.main_caracter.list_atributes[1].description;
   atr3.innerText=ronda_prueba.main_caracter.list_atributes[2].description;
     break;
+
+  case "lupa_icono":
+
+  jugador.isLookingDisonace=true;
+
+  break;
+
   default:
     //Declaraciones ejecutadas cuando ninguno de los valores coincide con el valor de la expresión
     break;
@@ -662,6 +1007,7 @@ activarAsignar();
 }
 
 function activarAsignar(){
+    var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
 
 var resp1=whereIsPantalla("tarjetas_icono");
 var pantalla=document.querySelector("."+resp1);
@@ -672,6 +1018,7 @@ iconoVerificar.style.visibility="visible";
 
 
 function momentoAsignacion(){
+    var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
 var control=0;
 
 var resp1=whereIsPantalla("tarjetas_icono");
@@ -695,9 +1042,19 @@ if(control>=2){
 }
 
 function asignarPareja(){
-  ronda_prueba.personajeAsignado=ronda_prueba.list_caracters[ronda_prueba.fichaUsing];
-console.log("Se ha asignado :");
-console.log(ronda_prueba.personajeAsignado.name);
+    var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
+    if(confirm("Quieres asignar estas dos personas?")){
+      ronda_prueba.personajeAsignado=ronda_prueba.list_caracters[ronda_prueba.fichaUsing];
+      console.log("Se ha asignado :");
+      console.log(ronda_prueba.personajeAsignado.name);
+      jugador.ronda_actual=jugador.ronda_actual+1;
+      cleanPantalla("Pantalla_1");
+      cleanPantalla("Pantalla_2");
+      desactivatePantallaEscritorio("tarjetas_icono");
+      desactivatePantallaEscritorio("tarjeta_principal_icono");
+    }
+
+
 }
 
 
