@@ -7,6 +7,8 @@ this.ronda_actual=0;
 this.isLookingDisonace=false;
 this.contadorClickDisonance=0;
 this.disonanceTemp=null;
+this.maxImagenDesbloqueada=1;
+this.maxAtributoDesbloqueado=1;
 }
 
 function ronda(){
@@ -21,6 +23,8 @@ this.faseActual=0;
 this.Apuesta=-1;//0 bien , 1 neutro , 2 mal
 this.pistaTrue="";
 this.pistaFalse="";
+this.countImagenDesbloqueada=0;
+this.countAtributoDesbloqueado=0;
 }
 
 
@@ -725,10 +729,16 @@ var name=whereIsPantalla("tarjetas_icono");
 var pantalla_volcar=document.querySelector("."+name);
 var imagen_caracter=pantalla_volcar.querySelector("#img_caracter");
   if(ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].isBlock){
-    if (confirm("Quieres desbloquear imagen?")){
-      ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].isBlock=false;
-      imagen_caracter.src=ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].src;
+    if(ronda_prueba.countImagenDesbloqueada<jugador.maxImagenDesbloqueada){
+      if (confirm("Quieres desbloquear imagen?")){
+        ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].isBlock=false;
+        imagen_caracter.src=ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].src;
+        ronda_prueba.countImagenDesbloqueada=ronda_prueba.countImagenDesbloqueada+1;
+      }
+    }else{
+      confirm("No puedes desbloquear más por ronda");
     }
+
 
   }
 
@@ -871,12 +881,20 @@ function unlockAtribute(e){
     var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
 var pantalla=document.querySelector("."+whereIsPantalla("tarjetas_icono"));
 var atributoBlock=e.srcElement.cual;
-if(confirm("Quieres desbloquear atributo ?")){
-  ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_atributes[atributoBlock].isBlock=false;
-  cleanPantalla(whereIsPantalla("tarjetas_icono"));
-  var pantalla_volcar=formarPantallaTarjetas("tarjetas_icono",true);
-  llenarInfoTarjetaIcono(pantalla_volcar);
+
+if(ronda_prueba.countAtributoDesbloqueado<jugador.maxAtributoDesbloqueado){
+  if(confirm("Quieres desbloquear atributo ?")){
+    ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_atributes[atributoBlock].isBlock=false;
+    cleanPantalla(whereIsPantalla("tarjetas_icono"));
+    var pantalla_volcar=formarPantallaTarjetas("tarjetas_icono",true);
+    llenarInfoTarjetaIcono(pantalla_volcar);
+    ronda_prueba.countAtributoDesbloqueado=ronda_prueba.countAtributoDesbloqueado+1;
+  }
+}else{
+  confirm("No puedes desbloquear más atributos por ronda");
 }
+
+
 
 if(momentoAsignacion()){
 
