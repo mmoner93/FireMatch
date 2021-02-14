@@ -15,6 +15,7 @@ this.list_caracters=[];
 this.fichaUsing=0;
 this.chatUsing=0;
 this.personajeAsignado="";
+this.nota_pareja_Asignado=-1;
 this.list_Disonances=[];
 this.faseActual=0;
 this.Apuesta=-1;//0 bien , 1 neutro , 2 mal
@@ -30,7 +31,7 @@ this.list_atributes=[];
 this.list_photos=[];
 this.foto_showing=0;
 this.list_chat=[];
-
+this.nota_pareja=0;//0bien , 1 neutro , 2 mal
 }
 
 function atribute(description,isDisonance,isBlock){
@@ -90,7 +91,6 @@ var jugador=new jugador();
 var ronda_prueba=new ronda();
 var personaje_prueba=new caracter(true,"Pepe pruebas");
 
-
 var atributo_1=new atribute("Soy ciego",true,false);
 var atributo_2=new atribute("Me gusta las cabras",true,false);
 var atributo_3=new atribute("Soy de campo",false,false);
@@ -107,8 +107,8 @@ personaje_prueba.list_photos.push(foto3);
 
 
 
-var personaje_prueba1=new caracter(true,"SARA pruebas");
-
+var personaje_prueba1=new caracter(false,"SARA pruebas");
+personaje_prueba1.nota_pareja=0;
 var atributo_1=new atribute("Soy ciega",false,true);
 var atributo_2=new atribute("Me gustas tu",false,false);
 var atributo_3=new atribute("Soy poliamorosa",false,false);
@@ -132,8 +132,8 @@ personaje_prueba1.list_chat.push(chat1);
 personaje_prueba1.list_chat.push(chat2);
 
 
-var personaje_prueba2=new caracter(true,"Juan pruebas");
-
+var personaje_prueba2=new caracter(false,"Juan pruebas");
+personaje_prueba2.nota_pareja=1;
 
 var atributo_1=new atribute("Arriba la fiesta",true,false);
 var atributo_2=new atribute("No soy fiel",true,true);
@@ -196,8 +196,8 @@ personaje_prueba.list_photos.push(foto3);
 
 
 
-var personaje_prueba1=new caracter(true,"SARADONGA pruebas");
-
+var personaje_prueba1=new caracter(false,"SARADONGA pruebas");
+personaje_prueba1.nota_pareja=2;
 var atributo_1=new atribute("Soy ciegaNGA",false,true);
 var atributo_2=new atribute("Me gustas tuNGA",false,false);
 var atributo_3=new atribute("Soy poliamorosaNGA",false,false);
@@ -221,8 +221,8 @@ personaje_prueba1.list_chat.push(chat1);
 personaje_prueba1.list_chat.push(chat2);
 
 
-var personaje_prueba2=new caracter(true,"Juanss pruebas");
-
+var personaje_prueba2=new caracter(false,"Juanss pruebas");
+personaje_prueba2.nota_pareja=2;
 
 var atributo_1=new atribute("Arriba la fiestass",true,false);
 var atributo_2=new atribute("No soy fielss",true,true);
@@ -277,6 +277,7 @@ function queFaseEstoy(){
 console.log("QUE FASE ESTOY " + jugador.list_rondas[jugador.ronda_actual].faseActual);
 switch(jugador.list_rondas[jugador.ronda_actual].faseActual){
 case "apuesta":
+deactivateall();
 var capaIconos=document.querySelector(".iconos");
 capaIconos.style.visibility="hidden";
 formarApuestasDiablo();
@@ -287,11 +288,14 @@ var capaIconos=document.querySelector(".iconos");
 capaIconos.style.visibility="visible";
 break;
 case "finalParejas":
+deactivateall();
+formarResultadoRonda();
 
 break;
 
 case "finalApuesta":
-
+deactivateall();
+formarApuestaDiabloResult();
 break;
 }
 
@@ -308,12 +312,96 @@ capaIconos.style.visibility="hidden";
 
 }
 
+function formarResultadoRonda(){
+
+var pantalla1=document.querySelector(".Pantalla_1");
+pantalla1.style.visibility="visible";
+
+var result=document.createElement("p");
+result.id="result";
+
+var imagenResult=document.createElement("img");
+imagenResult.id="imgResult";
+var ronda_prueba=jugador.list_rondas[jugador.ronda_actual]
+
+if(ronda_prueba.nota_pareja_Asignado ==0){
+  result.innerText="Buena pareja";
+imagenResult.src="https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
+}
+if(ronda_prueba.nota_pareja_Asignado ==1){
+imagenResult.src="https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
+  result.innerText=" pareja neutra";
+}
+if(ronda_prueba.nota_pareja_Asignado ==2){
+imagenResult.src="https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
+result.innerText="Mala pareja";
+}
+
+var next=document.createElement("img");
+next.id="imgNext";
+next.src="https://image.flaticon.com/icons/png/512/28/28275.png";
+next.addEventListener("click",nextFase);
+pantalla1.appendChild(imagenResult);
+pantalla1.appendChild(result);
+pantalla1.appendChild(next);
+
+
+
+}
+
+function nextFase(e){
+switch(e.srcElement.id){
+case "imgNext":
+var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
+jugador.list_rondas[jugador.ronda_actual].faseActual="finalApuesta";
+queFaseEstoy();
+break;
+
+case "imgNext2":
+var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
+jugador.ronda_actual=jugador.ronda_actual+1;
+jugador.list_rondas[jugador.ronda_actual].faseActual="apuesta";
+
+queFaseEstoy();
+break;
+}
+
+
+}
 
 
 /***********PARA control de rondas END**************/
 
 
 /***********PARA apuestas diablo**************/
+
+function formarApuestaDiabloResult(){
+  var pantalla1=document.querySelector(".Pantalla_1");
+  pantalla1.style.visibility="visible";
+
+  var result=document.createElement("p");
+  result.id="result";
+
+  var imagenResult=document.createElement("img");
+  imagenResult.id="imgResult";
+  var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
+  if(ronda_prueba.nota_pareja_Asignado == ronda_prueba.Apuesta ){
+    result.innerText="Has acertado";
+  imagenResult.src="https://pontesano.com/wp-content/uploads/2018/06/Acierto..jpg";
+}else{
+  result.innerText="No has acertado";
+  imagenResult.src="https://pontesano.com/wp-content/uploads/2018/06/ERROR.jpg";
+
+}
+
+  var next=document.createElement("img");
+  next.id="imgNext2";
+  next.src="https://image.flaticon.com/icons/png/512/28/28275.png";
+  next.addEventListener("click",nextFase);
+  pantalla1.appendChild(imagenResult);
+  pantalla1.appendChild(result);
+  pantalla1.appendChild(next);
+}
 
 
 function formarApuestasDiablo(){
@@ -653,7 +741,11 @@ if(nuevo){
 var pantalla_volcar=document.querySelector("." + whereIsPantalla(type));
 pantalla_volcar.style.visibility="visible";
 }else{
-var pantalla_volcar=document.querySelector("." + pantalla_libre(type));
+  var res=pantalla_libre(type);
+  if(res == "NO"){
+    return false;
+  }
+var pantalla_volcar=document.querySelector("." + res);
 
 }
 
@@ -795,6 +887,9 @@ activarAsignar();
 
 
 
+
+
+
 /***********PARA TARJETAS END**************/
 
 
@@ -802,8 +897,12 @@ activarAsignar();
 
 function formarChat(which){
     var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
+var res=pantalla_libre(which.id);
+if(res =="NO"){
+  return false;
+}
 
-var pantalla_volcar=document.querySelector("." + pantalla_libre(which.id));
+var pantalla_volcar=document.querySelector("." + res);
 
 var divMessages=document.createElement("div");
 divMessages.id="ChatMessages";
@@ -1004,11 +1103,13 @@ function pantalla_libre(pantallaNueva){
     escritorio.cualPantalla1=pantallaNueva;
     return "Pantalla_1";
 
-  }else{
+  }else if(escritorio.usingPantalla2 ==false){
 
     escritorio.usingPantalla2=true;
     escritorio.cualPantalla2=pantallaNueva;
     return "Pantalla_2";
+  }else{
+    return "NO";
   }
 
 }
@@ -1064,16 +1165,22 @@ switch (this.id) {
     //Declaraciones ejecutadas cuando el resultado de expresión coincide con el valor1
     //pantalla_volcar.style.backgroundColor = "black";
     var pantalla_volcar=formarPantallaTarjetas(this.id);
-    pantalla_volcar.style.visibility="visible";
-    llenarInfoTarjetaIcono(pantalla_volcar);
+    if(!pantalla_volcar==false){
+      pantalla_volcar.style.visibility="visible";
+      llenarInfoTarjetaIcono(pantalla_volcar);
+    }
+
 
     break;
   case "chat_icono":
     //Declaraciones ejecutadas cuando el resultado de expresión coincide con el valor2
     var pantalla_volcar=formarChat(this);
-    pantalla_volcar.style.visibility="visible";
-    llenarChatEscrito();
-    ponerPreguntasNohechas();
+    if(!pantalla_volcar==false){
+      pantalla_volcar.style.visibility="visible";
+      llenarChatEscrito();
+      ponerPreguntasNohechas();
+
+    }
 
 
     break;
@@ -1153,15 +1260,16 @@ function asignarPareja(){
     var ronda_prueba=jugador.list_rondas[jugador.ronda_actual];
     if(confirm("Quieres asignar estas dos personas?")){
       ronda_prueba.personajeAsignado=ronda_prueba.list_caracters[ronda_prueba.fichaUsing];
+      ronda_prueba.nota_pareja_Asignado=ronda_prueba.list_caracters[ronda_prueba.fichaUsing].nota_pareja;
       console.log("Se ha asignado :");
       console.log(ronda_prueba.personajeAsignado.name);
-      jugador.ronda_actual=jugador.ronda_actual+1;
+
       cleanPantalla("Pantalla_1");
       cleanPantalla("Pantalla_2");
       desactivatePantallaEscritorio("tarjetas_icono");
       desactivatePantallaEscritorio("tarjeta_principal_icono");
       deactivateall();
-      jugador.list_rondas[jugador.ronda_actual].faseActual="apuesta";
+      jugador.list_rondas[jugador.ronda_actual].faseActual="finalParejas";
       queFaseEstoy();
 
     }
