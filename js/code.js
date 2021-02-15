@@ -10,6 +10,7 @@ function jugador() {
   this.maxImagenDesbloqueada = 1;
   this.maxAtributoDesbloqueado = 1;
   this.alma=false;
+  this.coins=0;
 }
 
 function ronda() {
