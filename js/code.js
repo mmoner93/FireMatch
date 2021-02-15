@@ -1051,8 +1051,17 @@ function clearMessages() {
 /*********Para la tienda**************/
 
 
-function formarTienda(){
-
+function formarTienda(which,nuevo){
+  if (!nuevo) {
+    var pantalla_volcar = document.querySelector("." + whereIsPantalla(which));
+    pantalla_volcar.style.visibility = "visible";
+  } else {
+    var res = pantalla_libre(which);
+    if (res == "NO") {
+      return false;
+    }
+    var pantalla_volcar = document.querySelector("." + res);
+}
 var masImagen=document.createElement("p");
 masImagen.innerText="Tienes "+ jugador.maxImagenDesbloqueada + " desbloqueo imagenes por ronda";
 
@@ -1062,22 +1071,36 @@ imgMasImg.src="https://image.flaticon.com/icons/png/512/37/37770.png";
 imgMasImg.addEventListener("click",comprarAlgo);
 
 var masAtributo=document.createElement("p");
-masImagen.innerText="Tienes "+ jugador.maxAtributoDesbloqueado + "desbloqueo atributos por ronda";
+masAtributo.innerText="Tienes "+ jugador.maxAtributoDesbloqueado + "desbloqueo atributos por ronda";
 
-var imgMasImg=document.createElement("img");
-imgMasImg.id="masAtributo";
-imgMasImg.src="https://image.flaticon.com/icons/png/512/37/37770.png";
-imgMasImg.addEventListener("click",comprarAlgo);
+var imgMasAtr=document.createElement("img");
+imgMasAtr.id="masAtributo";
+imgMasAtr.src="https://image.flaticon.com/icons/png/512/37/37770.png";
+imgMasAtr.addEventListener("click",comprarAlgo);
 
-var masImagen=document.createElement("p");
-masImagen.innerText="Tu alma";
+var masAlma=document.createElement("p");
+masAlma.innerText="Tu alma";
 
-var imgMasImg=document.createElement("img");
-imgMasImg.id="masAlma";
-imgMasImg.src="https://image.flaticon.com/icons/png/512/37/37770.png";
-imgMasImg.addEventListener("click",comprarAlgo);
+var imgMasAlma=document.createElement("img");
+imgMasAlma.id="masAlma";
+imgMasAlma.src="https://image.flaticon.com/icons/png/512/37/37770.png";
+imgMasAlma.addEventListener("click",comprarAlgo);
 
+var exit_icon = document.createElement("img");
+exit_icon.src = "https://dbdzm869oupei.cloudfront.net/img/sticker/preview/7950.png";
+exit_icon.id = "exitIcon";
+exit_icon.cualPantalla =which;
+exit_icon.addEventListener("click", exitPantalla);
 
+pantalla_volcar.appendChild(masImagen);
+pantalla_volcar.appendChild(imgMasImg);
+pantalla_volcar.appendChild(masAtributo);
+pantalla_volcar.appendChild(imgMasAtr);
+pantalla_volcar.appendChild(masAlma);
+pantalla_volcar.appendChild(imgMasAlma);
+pantalla_volcar.appendChild(exit_icon);
+
+return pantalla_volcar;
 
 }
 
@@ -1088,12 +1111,42 @@ function comprarAlgo(e){
 
   switch(id){
   case "masImagen":
+  if(confirm("Quieres comprar una imagen extra por ronda?")){
+    if(jugador.maxImagenDesbloqueada < 2){
+      jugador.maxImagenDesbloqueada=2;
+      var pantalla=whereIsPantalla("tienda_icono");
+      cleanPantalla(pantalla);
+      var cual=formarTienda("tienda_icono",false);
+      cual.style.visibility="visible";
+    }else{
+      confirm("No puedes comprar más mejora imagen");
+    }
+  }
 
   break;
   case "masAtributo":
+  if(confirm("Quieres comprar un atributo extra por ronda?")){
+    if(jugador.maxAtributoDesbloqueado < 2){
+      jugador.maxAtributoDesbloqueado=2;
+      var pantalla=whereIsPantalla("tienda_icono");
+      cleanPantalla(pantalla);
+      var cual=formarTienda("tienda_icono",false);
+      cual.style.visibility="visible";
+    }else{
+      confirm("No puedes comprar más mejora atributo");
+    }
+  }
 
   break;
   case "masAlma":
+  if(confirm("Quieres tu alma?")){
+    if(!jugador.alma){
+      jugador.alma=true;
+      //deberia enviar al final segun tus acciones.
+    }else{
+      confirm("Ya has comprado alma");
+    }
+  }
 
   break;
   }
@@ -1197,10 +1250,13 @@ var icono_tarjetas = document.querySelector("img#tarjetas_icono");
 var icono_chat = document.querySelector("img#chat_icono");
 var icono_main = document.querySelector("img#tarjeta_principal_icono");
 var icono_lupa = document.querySelector("img#lupa_icono");
+var icono_tienda = document.querySelector("img#tienda_icono");
+
 icono_tarjetas.addEventListener("click", onClickIcon);
 icono_chat.addEventListener("click", onClickIcon);
 icono_main.addEventListener("click", onClickIcon);
 icono_lupa.addEventListener("click", onClickIcon);
+icono_tienda.addEventListener("click", onClickIcon);
 
 function llenarInfoTarjetaIcono(pantalla_volcar) {
   var ronda_prueba = jugador.list_rondas[jugador.ronda_actual];
@@ -1284,7 +1340,11 @@ function onClickIcon(e) {
 
         break;
       case "tienda_icono":
+      var pantalla_volcar = formarTienda(this.id,true);
+      if (!pantalla_volcar == false) {
+        pantalla_volcar.style.visibility = "visible";
 
+      }
 
 
           break;
