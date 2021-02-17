@@ -1,0 +1,41 @@
+Para iniciar el prototipo ejecute index.html.
+
+
+Fases de ronda:
+
+1)El diablo te pidea que apuestes para el resultado de la pareja que formaras en la ronda que toca.
+
+Puedes pulsar bien, neutral o mal.
+
+Abajo de los botones hay una frase que es una "pista" real o ficticia de la siguiente ronda.
+
+
+2) Estas en el escritorio y puedes pulsar los iconos de la derecha para activar las pantallas del icono correspondiente.
+
+	1)Ficha otros personajes: aparece una ficha que tiene fotos ,icono para pasar foto,  nombre, atributos ,flecha para pasar de ficha a otro usuario disponible,
+	  si tienes activo la pantalla de ficha del caracter principal de la ronda un icono que te permite asociar pareja y un icono para cerrar ventana.
+	  Algunas imagenes y atributos estan bloqueados , si pulsas se desbloquean. Tienen un limite de 1 por ronda a no ser que compres la mejora.
+	2)Chat: Te aparece una ventana con preguntas que si pulsas en ella se genera el chat con la respuesta. Si ya has preguntado antes se queda guardado. 
+          Mas abajo tenemos un icono para salir de la pantalla y aun más abajo de ese icono los nombres de los personajes para poder hablar con cada uno.
+	3)Ficha del caracter principal ronda: Como la de ficha de otros personajes pero sin poder pasar de ficha ni desbloquear cosas.
+	4)Buscar divergencia. Cuando pulsas ese icono luego puedes pulsar un atributo y una imagen y de momento por consola del explorador usado te indica si hay alguna disonancia y su tipo.
+	  1bueno , 2 malo.
+	5)Tienda: Permite comprar mejora de imagen o atributo o tu alma. De momento no tiene coste pero esta limitado a que puedas comprar una mejora de cada o una sola vez tu alma.
+	
+
+Cuando asocias pareja al main se acaba la ronda automaticamente.
+
+3) Sale un diablo , pero pondremos una foto descriptiva de que tal la pareja. Te dice que tipo es la asociación.
+
+Pulsas en ok.
+
+4)Te sale el resultado de tu apuesta.
+
+Pulsas ok.
+
+Y comienza la siguiente ronda.
+
+Hay 2 rondas hechas de prueba , luego peta.
+
+
+
