@@ -8,21 +8,21 @@
 	<link rel="canonical" href="firechat.com/index.html" />
 	<meta name="robots" content="index, follow" />
     <link rel="shortcut icon" type="image/png" href="favicon.png">
-    
+
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css?5528">
 	<link rel="stylesheet" type="text/css" href="style.css?7854">
 	<link rel="stylesheet" type="text/css" href="./css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/ionicons.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/all.min.css">
-	
+
     <title>Home</title>
 
 
-    
+
 <!-- Analytics -->
- 
+
 <!-- Analytics END -->
-    
+
 </head>
 <body>
 
@@ -33,14 +33,14 @@
 
 <!-- Main container -->
 <div class="page-container container horizontal">
-    
+
 <!-- bloc-0 -->
 <div class="bloc l-bloc" id="bloc-0">
 	<div class="container bloc-sm-lg">
 		<div class="row">
 			<div class="offset-md-4 col-3 col-md-1 bgc-dim-gray leftnavbar">
 				<div class="text-center">
-					<a href="https://blocsapp.com/"><span class="icon-md fa fa-search icon-blue-ryb lg-shadow" id="lupa-icono"></span></a>
+					<a href="https://blocsapp.com/"><span class="icon-md fa fa-search icon-blue-ryb lg-shadow" id="lupa_icono"></span></a>
 				</div>
 			</div>
 			<div class="col-3 col-md-1 bgc-dim-gray">
@@ -69,8 +69,11 @@
 <div class="bloc l-bloc container80" id="bloc-2">
 	<div class="container container100 bloc-lg bloc-no-padding-lg">
 		<div class="row fill">      <!--rellenar aqui-->
-			
-			
+      <div class="Pantalla_1">
+      </div>
+      <div class="Pantalla_2">
+      </div>
+
 		</div>
 	</div>
 </div>
@@ -81,16 +84,16 @@
 	<div class="container bloc-lg bloc-no-padding-lg">
 		<div class="row bgc-cyan-process horizontal">
 			<div class="align-self-center col-md-3">
-				<a href="index.html" class="btn btn-sq btn-block btn-blue-ncs"><span class="icon-spacer fa fa-user icon-md" id="tarjeta-principal-icono"></span>Pricipal</a>
+				<a class="btn btn-sq btn-block btn-blue-ncs" id="tarjeta_principal_icono"><span class="icon-spacer fa fa-user icon-md" ></span>Pricipal</a>
 			</div>
 			<div class="align-self-center col-md-3">
-				<a href="index.html" class="btn btn-block btn-blue-ncs"><span class="icon-spacer fa fa-users icon-md" id="tarjetas-icono"></span>Aspirante</a>
+				<a  class="btn btn-block btn-blue-ncs" id="tarjetas_icono"><span class="icon-spacer fa fa-users icon-md" ></span>Aspirante</a>
 			</div>
 			<div class="align-self-center col-md-3">
-				<a href="index.html" class="btn btn-block btn-cyan-process"><span class="icon-spacer icon-md ion ion-chatboxes" id="chat-icono"></span>Chat</a>
+				<a  class="btn btn-block btn-cyan-process" id="chat_icono"><span class="icon-spacer icon-md ion ion-chatboxes" ></span>Chat</a>
 			</div>
 			<div class="align-self-center col-md-3">
-				<a href="index.html" class="btn btn-block btn-cyan-process"><span class="icon-spacer icon-md fa fa-shopping-cart"></span>Tienda</a>
+				<a  class="btn btn-block btn-cyan-process" id="tienda_icono" ><span class="icon-spacer icon-md fa fa-shopping-cart" ></span>Tienda</a>
 			</div>
 		</div>
 	</div>
@@ -104,7 +107,7 @@
 
 </div>
 <!-- Main container END -->
-    
+
 
 
 <!-- Additional JS -->
@@ -112,7 +115,7 @@
 <script src="./js/bootstrap.bundle.min.js?9881"></script>
 <script src="./js/blocs.min.js?6781"></script>
 <script src="./js/lazysizes.min.js" defer></script><!-- Additional JS END -->
-
+<script type="text/javascript" src="js/code.js"></script>
 <div class="template">
 	<div class="col-md-6 pantalla-2 hiden" id="tienda"> <!-- hiden aqui-->
 		<span class="float-lg-right ion ion-close-round icon-ferrari-red icon-md none"></span>
@@ -281,37 +284,38 @@
 
 
 
-	<div class="col-md-6 pantalla-2 hiden" id="principal"> <!--hiden aqui-->
-		<span class="float-lg-right ion ion-close-round icon-ferrari-red icon-md"></span>
+	<div class="pantalla-2 hiden" id="principal_template"> <!--hiden aqui-->
+		<span class="float-lg-right ion ion-close-round icon-ferrari-red icon-md" id="exitIcon"></span>
 		<h2 class="mg-md">
 			Principal
-		</h2><img src="img/lazyload-ph.png" data-src="img/unknown.png" class="img-fluid mx-auto d-block lazyload" alt="unknown" />
+		</h2><img src="img/lazyload-ph.png" id="img_caracter" data-src="img/unknown.png" class="img-fluid mx-auto d-block lazyload" alt="unknown" />
 		<div class="text-center">
-			<span class="icon-md fa fa-arrow-right"></span>
+			<span class="icon-md fa fa-arrow-right" id ="flecha_2"></span>
 			<div class="divider-h">
 				<span class="divider"></span>
 			</div>
 		</div>
 		<div class="card">
 			<div class="card-header">
-				<h3 class="mg-clear">
+				<h3 class="mg-clear" id="name_caracter">
 					Nom
 				</h3>
 			</div>
-			<div class="card-body">
-				<p id="at1">
+			<div class="card-body" id="atributos_list_principal">
+				<!--<p id="atributo_1">
 					Atri 1
 				</p>
-				<p id="at2">
+				<p id="atributo_2">
 					Atri 1
 				</p>
-				<p id="at3">
+				<p id="atributo_3">
 					Atri 1
-				</p>
+				</p>-->
 			</div>
 		</div>
 	</div>
 
 </div>
+
 </body>
 </html>
