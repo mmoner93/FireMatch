@@ -116,9 +116,11 @@
 <script src="./js/blocs.min.js?6781"></script>
 <script src="./js/lazysizes.min.js" defer></script><!-- Additional JS END -->
 <script type="text/javascript" src="js/code.js"></script>
+
+
 <div class="template">
-	<div class="col-md-6 pantalla-2 hiden" id="tienda"> <!-- hiden aqui-->
-		<span class="float-lg-right ion ion-close-round icon-ferrari-red icon-md none"></span>
+	<div class="pantalla-2 hiden" id="tienda_template"> <!-- hiden aqui-->
+		<span class="float-lg-right ion ion-close-round icon-ferrari-red icon-md none" id="exitIcon"></span>
 		<h2 class="mg-md">
 			Tienda
 		</h2>
@@ -131,13 +133,13 @@
 						</div>
 					</div>
 					<div class="col-lg-8">
-						<h4 class="mg-clear">
+						<h4 class="mg-clear" id="texto_imagen">
 							Heading content
 						</h4>
 					</div>
 					<div class="col">
 						<div class="text-center">
-							<span class="icon-md fa fa-cart-plus"></span>
+							<span class="icon-md fa fa-cart-plus" id="masImagen"></span>
 						</div>
 					</div>
 				</div>
@@ -148,13 +150,13 @@
 						</div>
 					</div>
 					<div class="col-lg-8">
-						<h4 class="mg-clear">
+						<h4 class="mg-clear" id="texto_atributo">
 							Heading content
 						</h4>
 					</div>
 					<div class="col">
 						<div class="text-center">
-							<span class="icon-md fa fa-cart-plus"></span>
+							<span class="icon-md fa fa-cart-plus" id="masAtributo"></span>
 						</div>
 					</div>
 				</div>
@@ -165,13 +167,13 @@
 						</div>
 					</div>
 					<div class="col-lg-8">
-						<h4 class="mg-clear">
+						<h4 class="mg-clear" id="texto_alma">
 							Heading content
 						</h4>
 					</div>
 					<div class="col">
 						<div class="text-center">
-							<span class="icon-md fa fa-cart-plus"></span>
+							<span class="icon-md fa fa-cart-plus" id="masAlma"></span>
 						</div>
 					</div>
 				</div>
@@ -193,11 +195,6 @@
 							Heading content
 						</h4>
 					</div>
-					<div class="col">
-						<div class="text-center">
-							<span class="icon-md fa fa-cart-plus"></span>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -205,18 +202,20 @@
 
 
 
-	<div class="col-md-6 pantalla-2 hiden"> <!-- hiden aqui-->
-		<span class="float-lg-right ion ion-close-round icon-ferrari-red icon-md"></span>
+	<div class="pantalla-2 hiden" id="chat_template"> <!-- hiden aqui-->
+		<span class="float-lg-right ion ion-close-round icon-ferrari-red icon-md" id="exitIcon"></span>
 		<h2 class="mg-md">
 			Chat
 		</h2>
 		<div class="row container80">
 			<div class="col-lg-3 customborder" id="chat-list-aspirantes">
 				<div class="text-center text-lg-center">
-					<a href="index.html" class="btn btn-d btn-lg btn-block btn-rd">Button</a><a href="index.html" class="btn btn-d btn-lg btn-rd btn-block">Button</a><a href="index.html" class="btn btn-d btn-lg btn-rd btn-block">Button</a>
+					<a  class="btn btn-d btn-lg btn-block btn-rd" id="button1">Button</a>
+          <a  class="btn btn-d btn-lg btn-rd btn-block" id="button2">Button</a>
+          <a class="btn btn-d btn-lg btn-rd btn-block" id="button3">Button</a>
 				</div>
 			</div>
-			<div class="col customborder2" id="chatmessages">
+			<div class="col customborder2" id="ChatMessages">
 				<div class="blockquote">
 					<p>
 						Lorem ipsum dolor sit amet, adipiscing elit Aenean commodo ligula eget.
@@ -230,15 +229,15 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12 col-lg-12 offset-lg-0 order-lg-0" id="chatquestions">
+			<div class="col-12 col-lg-12 offset-lg-0 order-lg-0" id="ChatQuestions">
 				<div class="form-group text-lg-left">
 					<select class="form-control">
-						<option value="0">
+						<!--<option value="0">
 							Option 1
 						</option>
 						<option value="1">
 							Option 2
-						</option>
+						</option>-->
 					</select>
 				</div>
 			</div>
@@ -247,37 +246,29 @@
 
 
 
-	<div class="col-md-6 pantalla-2 hiden" id="aspirante"> <!--hiden aqui-->
-		<span class="float-lg-right ion ion-close-round icon-ferrari-red icon-md none"></span>
+	<div class="pantalla-2 hiden" id="aspirante_template"> <!--hiden aqui-->
+		<span class="float-lg-right ion ion-close-round icon-ferrari-red icon-md none" id="exitIcon"></span>
 		<h2 class="mg-md">
 			Aspirantes
-		</h2><img src="img/lazyload-ph.png" data-src="img/unknown.png" class="img-fluid mx-auto d-block lazyload" alt="unknown" />
+		</h2><img src="img/lazyload-ph.png" id="img_caracter" data-src="img/unknown.png" class="img-fluid mx-auto d-block lazyload" alt="unknown" />
 		<div class="text-center">
-			<span class="icon-md fa fa-arrow-right"></span>
+			<span class="icon-md fa fa-arrow-right" id ="flecha"></span>
 			<div class="divider-h">
 				<span class="divider"></span>
 			</div>
 		</div>
 		<div class="card">
 			<div class="card-header">
-				<h3 class="mg-clear">
+				<h3 class="mg-clear" id="name_caracter">
 					Nom
 				</h3>
 			</div>
-			<div class="card-body">
-				<p id="aat1">
-					Atri 1
-				</p>
-				<p id="aat2">
-					Atri 1
-				</p>
-				<p id="aat3">
-					Atri 1
-				</p>
+			<div class="card-body" id="atributos_list_principal">
+
 			</div>
 		</div>
 		<div class="text-center">
-			<span class="icon-md ion ion-chevron-right"></span>
+			<span class="icon-md ion ion-chevron-right" id="flecha_ficha"></span>
 		</div>
 	</div>
 

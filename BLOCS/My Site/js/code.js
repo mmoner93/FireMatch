@@ -855,8 +855,13 @@ function imageBlocked(e) {
 
 
 function formarPantallaTarjetas(type, nuevo) {
-
-  var template = document.querySelector("#principal_template");
+var template="";
+    if (type == "tarjetas_icono") {
+      template=document.querySelector("#aspirante_template");
+    }else{
+      template=document.querySelector("#principal_template");
+    }
+  //var template = document.querySelector("#principal_template");
   var newTemplate=template.cloneNode(true);
   newTemplate.classList.remove("hiden");
   var ronda_prueba = jugador.list_rondas[jugador.ronda_actual];
@@ -952,16 +957,19 @@ function formarPantallaTarjetas(type, nuevo) {
 
   if (type == "tarjetas_icono") {
 
-    var ima_flecha_ficha = document.createElement("img");
+    var ima_flecha_ficha = newTemplate.querySelector("#flecha_ficha");
     ima_flecha_ficha.src = "https://e7.pngegg.com/pngimages/593/775/png-clipart-arrow-computer-icons-encapsulated-postscript-right-arrow-angle-text.png";
-    ima_flecha_ficha.id = "flecha_ficha";
+    //ima_flecha_ficha.id = "flecha_ficha";
     ima_flecha_ficha.addEventListener("click", nextFicha);
 
-    var verificarPareja = document.createElement("img");
+
+    //falta controlar que aparezca la barra de arriba .
+
+    /*var verificarPareja = document.createElement("img");
     verificarPareja.src = "https://cdn1.iconfinder.com/data/icons/basic-ui-icon-rounded-colored/512/icon-41-512.png";
     verificarPareja.id = "verfiy_asig";
     verificarPareja.addEventListener("click", asignarPareja);
-    verificarPareja.style.visibility = "hidden";
+    verificarPareja.style.visibility = "hidden";*/
 
 
   }
@@ -982,8 +990,8 @@ function formarPantallaTarjetas(type, nuevo) {
   capa_list_atributos.appendChild(atributo_3);
 
   if (type == "tarjetas_icono") {
-    pantalla_volcar.appendChild(ima_flecha_ficha);
-    pantalla_volcar.appendChild(verificarPareja);
+    //pantalla_volcar.appendChild(ima_flecha_ficha);
+    //pantalla_volcar.appendChild(verificarPareja);
   }
 
   //pantalla_volcar.appendChild(exit_icon);
@@ -1031,6 +1039,9 @@ function unlockAtribute(e) {
 /***********PARA CHAT **************/
 
 function formarChat(which) {
+  var template=document.querySelector("#chat_template").cloneNode(true);
+  template.classList.remove("hiden");
+
   var ronda_prueba = jugador.list_rondas[jugador.ronda_actual];
   var res = pantalla_libre(which.id);
   if (res == "NO") {
@@ -1039,32 +1050,33 @@ function formarChat(which) {
 
   var pantalla_volcar = document.querySelector("." + res);
 
-  var divMessages = document.createElement("div");
-  divMessages.id = "ChatMessages";
+  //var divMessages = document.createElement("div");
+  //divMessages.id = "ChatMessages";
 
-  var divQuestions = document.createElement("div");
-  divQuestions.id = "ChatQuestions";
+  //var divQuestions = document.createElement("div");
+  //divQuestions.id = "ChatQuestions";
 
-  var exit_icon = document.createElement("img");
-  exit_icon.src = "https://dbdzm869oupei.cloudfront.net/img/sticker/preview/7950.png";
-  exit_icon.id = "exitIcon";
+  var exit_icon = template.querySelector("#exitIcon");
+  //exit_icon.src = "https://dbdzm869oupei.cloudfront.net/img/sticker/preview/7950.png";
+  //exit_icon.id = "exitIcon";
   exit_icon.cualPantalla = which.id;
   exit_icon.addEventListener("click", exitPantalla);
 
-  pantalla_volcar.appendChild(divMessages);
-  pantalla_volcar.appendChild(divQuestions);
-  pantalla_volcar.appendChild(exit_icon);
+  //pantalla_volcar.appendChild(divMessages);
+  //pantalla_volcar.appendChild(divQuestions);
+  //pantalla_volcar.appendChild(exit_icon);
+  //var list_chat = template.querySelector("#chat-list-aspirantes");
 
   for (var i = 0; i < ronda_prueba.list_caracters.length; i++) {
-    var p = document.createElement("p");
+    var p =  template.querySelector("#button"+i+1);
     p.caracterChat = i;
-    p.innerText = ronda_prueba.list_caracters[i].name;
+    p.text = ronda_prueba.list_caracters[i].name;
     p.addEventListener("click", changeChat);
-    pantalla_volcar.appendChild(p);
+
   }
 
 
-
+  pantalla_volcar.appendChild(template);
 
   return pantalla_volcar;
 }
@@ -1168,6 +1180,10 @@ function clearMessages() {
 
 
 function formarTienda(which,nuevo){
+
+  var template = document.querySelector("#tienda_template").cloneNode(true);
+  template.classList.remove("hiden");
+
   if (!nuevo) {
     var pantalla_volcar = document.querySelector("." + whereIsPantalla(which));
     pantalla_volcar.style.visibility = "visible";
@@ -1178,43 +1194,47 @@ function formarTienda(which,nuevo){
     }
     var pantalla_volcar = document.querySelector("." + res);
 }
-var masImagen=document.createElement("p");
+
+
+var masImagen=template.querySelector("#texto_imagen");
 masImagen.innerText="Tienes "+ jugador.maxImagenDesbloqueada + " desbloqueo imagenes por ronda";
 
-var imgMasImg=document.createElement("img");
-imgMasImg.id="masImagen";
-imgMasImg.src="https://image.flaticon.com/icons/png/512/37/37770.png";
+var imgMasImg=template.querySelector("#masImagen");
+//imgMasImg.id="masImagen";
+//imgMasImg.src="https://image.flaticon.com/icons/png/512/37/37770.png";
 imgMasImg.addEventListener("click",comprarAlgo);
 
-var masAtributo=document.createElement("p");
+var masAtributo=template.querySelector("#texto_atributo");
 masAtributo.innerText="Tienes "+ jugador.maxAtributoDesbloqueado + "desbloqueo atributos por ronda";
 
-var imgMasAtr=document.createElement("img");
-imgMasAtr.id="masAtributo";
-imgMasAtr.src="https://image.flaticon.com/icons/png/512/37/37770.png";
+var imgMasAtr=template.querySelector("#masAtributo");;
+//imgMasAtr.id="masAtributo";
+//imgMasAtr.src="https://image.flaticon.com/icons/png/512/37/37770.png";
 imgMasAtr.addEventListener("click",comprarAlgo);
 
-var masAlma=document.createElement("p");
+var masAlma=template.querySelector("#texto_alma");
 masAlma.innerText="Tu alma";
 
-var imgMasAlma=document.createElement("img");
-imgMasAlma.id="masAlma";
-imgMasAlma.src="https://image.flaticon.com/icons/png/512/37/37770.png";
+var imgMasAlma=template.querySelector("#masAlma");
+//imgMasAlma.id="masAlma";
+//imgMasAlma.src="https://image.flaticon.com/icons/png/512/37/37770.png";
 imgMasAlma.addEventListener("click",comprarAlgo);
 
-var exit_icon = document.createElement("img");
-exit_icon.src = "https://dbdzm869oupei.cloudfront.net/img/sticker/preview/7950.png";
-exit_icon.id = "exitIcon";
+var exit_icon = template.querySelector("#exitIcon");
+//exit_icon.src = "https://dbdzm869oupei.cloudfront.net/img/sticker/preview/7950.png";
+//exit_icon.id = "exitIcon";
 exit_icon.cualPantalla =which;
 exit_icon.addEventListener("click", exitPantalla);
 
-pantalla_volcar.appendChild(masImagen);
+/*pantalla_volcar.appendChild(masImagen);
 pantalla_volcar.appendChild(imgMasImg);
 pantalla_volcar.appendChild(masAtributo);
 pantalla_volcar.appendChild(imgMasAtr);
 pantalla_volcar.appendChild(masAlma);
 pantalla_volcar.appendChild(imgMasAlma);
-pantalla_volcar.appendChild(exit_icon);
+pantalla_volcar.appendChild(exit_icon);*/
+
+pantalla_volcar.appendChild(template);
 
 return pantalla_volcar;
 
