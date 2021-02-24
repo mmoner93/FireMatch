@@ -93,13 +93,13 @@ var jugador = new jugador();
 
 
 
-/*RONDA 1*/
+/*RONDA 1-----*/
 var ronda_prueba = new ronda();
-var personaje_prueba = new caracter(true, "Pepe pruebas");
+var personaje_prueba = new caracter(true, "Kevin");
 
-var atributo_1 = new atribute("Soy ciego", true, false);
-var atributo_2 = new atribute("Me gusta las cabras", true, false);
-var atributo_3 = new atribute("Soy de campo", false, false);
+var atributo_1 = new atribute("Me gusta el deporte", false, false);
+var atributo_2 = new atribute("Salir de fiesta es mi pasión", false, false);
+var atributo_3 = new atribute("Las chicas operadas son más bonitas", false, false);
 personaje_prueba.list_atributes.push(atributo_1);
 personaje_prueba.list_atributes.push(atributo_2);
 personaje_prueba.list_atributes.push(atributo_3);
@@ -113,11 +113,11 @@ personaje_prueba.list_photos.push(foto3);
 
 
 
-var personaje_prueba1 = new caracter(false, "SARA pruebas");
+var personaje_prueba1 = new caracter(false, "Karen");
 personaje_prueba1.nota_pareja = 0;
-var atributo_1 = new atribute("Soy ciega", false, true);
-var atributo_2 = new atribute("Me gustas tu", false, false);
-var atributo_3 = new atribute("Soy poliamorosa", false, false);
+var atributo_1 = new atribute("Me gusta el jazz", false, false);
+var atributo_2 = new atribute("Soy psicóloga", false, false);
+var atributo_3 = new atribute("Creo que todo el mundo puede cambia", false, false);
 personaje_prueba1.list_atributes.push(atributo_1);
 personaje_prueba1.list_atributes.push(atributo_2);
 personaje_prueba1.list_atributes.push(atributo_3);
@@ -130,20 +130,20 @@ personaje_prueba1.list_photos.push(foto2);
 personaje_prueba1.list_photos.push(foto3);
 
 
-var chat1 = new chat("Hobbie ?", "Pues ser nini");
-var chat2 = new chat("Vives solo ?", "Si las pelusas de mi ombligo no cuentan...");
+//var chat1 = new chat("Hobbie ?", "Pues ser nini");
+//var chat2 = new chat("Vives solo ?", "Si las pelusas de mi ombligo no cuentan...");
 
 
-personaje_prueba1.list_chat.push(chat1);
-personaje_prueba1.list_chat.push(chat2);
+//personaje_prueba1.list_chat.push(chat1);
+//personaje_prueba1.list_chat.push(chat2);
 
 
-var personaje_prueba2 = new caracter(false, "Juan pruebas");
-personaje_prueba2.nota_pareja = 1;
+var personaje_prueba2 = new caracter(false, "Yénifer");
+personaje_prueba2.nota_pareja = 2;
 
-var atributo_1 = new atribute("Arriba la fiesta", true, false);
-var atributo_2 = new atribute("No soy fiel", true, true);
-var atributo_3 = new atribute("Robo todo", false, true);
+var atributo_1 = new atribute("El gimnasio es un plus de puntos", false, false);
+var atributo_2 = new atribute("Me gustan los chicos divertidos", false, true);
+var atributo_3 = new atribute("Si tienes abdominales te doy mi teléfono.", false, false);
 personaje_prueba2.list_atributes.push(atributo_1);
 personaje_prueba2.list_atributes.push(atributo_2);
 personaje_prueba2.list_atributes.push(atributo_3);
@@ -157,38 +157,38 @@ personaje_prueba2.list_photos.push(foto2);
 personaje_prueba2.list_photos.push(foto3);
 
 
-var chat1 = new chat("Hobbie ?", "Soy un elfo nivel 100");
-var chat2 = new chat("Vives solo ?", "Mis waifus dicen que no");
+//var chat1 = new chat("Hobbie ?", "Soy un elfo nivel 100");
+//var chat2 = new chat("Vives solo ?", "Mis waifus dicen que no");
 
-personaje_prueba2.list_chat.push(chat1);
-personaje_prueba2.list_chat.push(chat2);
+//personaje_prueba2.list_chat.push(chat1);
+//personaje_prueba2.list_chat.push(chat2);
 
 
-var disonance1 = new disonance("atributo_1", "Pepe pruebas", true, "atributo_1", "Juan pruebas", false, 2);
-var disonance2 = new disonance("atributo_2", "Pepe pruebas", true, "atributo_2", "Juan pruebas", false, 1);
-var disonance3 = new disonance("img_caracter_0", "Juan pruebas", false, "atributo_2", "Juan pruebas", false, 1);
+//var disonance1 = new disonance("atributo_1", "Pepe pruebas", true, "atributo_1", "Juan pruebas", false, 2);
+//var disonance2 = new disonance("atributo_2", "Pepe pruebas", true, "atributo_2", "Juan pruebas", false, 1);
+//var disonance3 = new disonance("img_caracter_0", "Juan pruebas", false, "atributo_2", "Juan pruebas", false, 1);
 
 
 ronda_prueba.main_caracter = personaje_prueba;
 ronda_prueba.list_caracters.push(personaje_prueba1);
 ronda_prueba.list_caracters.push(personaje_prueba2);
 
-ronda_prueba.list_Disonances.push(disonance1);
-ronda_prueba.list_Disonances.push(disonance2);
-ronda_prueba.list_Disonances.push(disonance3);
-ronda_prueba.pistaTrue = "los rubios son fieles";
-ronda_prueba.pistaFalse = "los rubios son infieles";
+//ronda_prueba.list_Disonances.push(disonance1);
+//ronda_prueba.list_Disonances.push(disonance2);
+//ronda_prueba.list_Disonances.push(disonance3);
+ronda_prueba.pistaTrue = "Los rubios se atraen";
+ronda_prueba.pistaFalse = "Los rubios se atraen";
 
-/*RONDA 2*/
+/*RONDA 2----*/
 
 
 var ronda_prueba2 = new ronda();
-var personaje_prueba = new caracter(true, "ALBARI pruebas");
+var personaje_prueba = new caracter(true, "Leo Nahuel");
 
 
-var atributo_1 = new atribute("Soy ciego y tonto", true, false);
-var atributo_2 = new atribute("Me gusta las cabras y caballos", true, false);
-var atributo_3 = new atribute("Soy de camposs", false, false);
+var atributo_1 = new atribute("Me encantan los animales", false, false);
+var atributo_2 = new atribute("Mis días no cuentan si no he comido hummus.", false, false);
+var atributo_3 = new atribute("realfooding 4 life", false, false);
 personaje_prueba.list_atributes.push(atributo_1);
 personaje_prueba.list_atributes.push(atributo_2);
 personaje_prueba.list_atributes.push(atributo_3);
@@ -202,11 +202,11 @@ personaje_prueba.list_photos.push(foto3);
 
 
 
-var personaje_prueba1 = new caracter(false, "SARADONGA pruebas");
-personaje_prueba1.nota_pareja = 2;
-var atributo_1 = new atribute("Soy ciegaNGA", false, true);
-var atributo_2 = new atribute("Me gustas tuNGA", false, false);
-var atributo_3 = new atribute("Soy poliamorosaNGA", false, false);
+var personaje_prueba1 = new caracter(false, "Anabel");
+personaje_prueba1.nota_pareja = 0;
+var atributo_1 = new atribute("Me encantan las hamburguesas", false, false);
+var atributo_2 = new atribute("Soy más de perros", false, false);
+var atributo_3 = new atribute("El mejor relax es un paseo por la montaña", false, false);
 personaje_prueba1.list_atributes.push(atributo_1);
 personaje_prueba1.list_atributes.push(atributo_2);
 personaje_prueba1.list_atributes.push(atributo_3);
@@ -219,59 +219,160 @@ personaje_prueba1.list_photos.push(foto2);
 personaje_prueba1.list_photos.push(foto3);
 
 
-var chat1 = new chat("Hobbie ?", "Pues ser nini");
-var chat2 = new chat("Vives solo ?", "Si las pelusas de mi ombligo no cuentan...");
+//var chat1 = new chat("Hobbie ?", "Pues ser nini");
+//var chat2 = new chat("Vives solo ?", "Si las pelusas de mi ombligo no cuentan...");
 
 
-personaje_prueba1.list_chat.push(chat1);
-personaje_prueba1.list_chat.push(chat2);
+//personaje_prueba1.list_chat.push(chat1);
+//personaje_prueba1.list_chat.push(chat2);
 
 
-var personaje_prueba2 = new caracter(false, "Juanss pruebas");
+var personaje_prueba2 = new caracter(false, "Erica");
 personaje_prueba2.nota_pareja = 2;
 
-var atributo_1 = new atribute("Arriba la fiestass", true, false);
-var atributo_2 = new atribute("No soy fielss", true, true);
-var atributo_3 = new atribute("Robo todoss", false, true);
+var atributo_1 = new atribute("Piensa en verde, tanto comida como lo otro… jiji", false, false);
+var atributo_2 = new atribute("Mi sueño es tener una protectora de animales", false, false);
+var atributo_3 = new atribute("Te vienes a vivir conmigo a un pueblo?", false, true);
 personaje_prueba2.list_atributes.push(atributo_1);
 personaje_prueba2.list_atributes.push(atributo_2);
 personaje_prueba2.list_atributes.push(atributo_3);
 
-var foto1 = new photo_caracter("https://static2.abc.es/media/ciencia/2017/02/28/cara-k1WG--620x349@abc.jpg", false, true);
+var foto1 = new photo_caracter("https://static2.abc.es/media/ciencia/2017/02/28/cara-k1WG--620x349@abc.jpg", false, false);
 var foto2 = new photo_caracter("https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/article/55365cde3787b2187a1f0fbc/impresion-cara.jpg", false, false);
-var foto3 = new photo_caracter("https://pavlov.psyciencia.com/2016/12/caras-de-la-ira-e1480938528244.jpg", false, false);
+var foto3 = new photo_caracter("https://pavlov.psyciencia.com/2016/12/caras-de-la-ira-e1480938528244.jpg", false, true);
 
 personaje_prueba2.list_photos.push(foto1);
 personaje_prueba2.list_photos.push(foto2);
 personaje_prueba2.list_photos.push(foto3);
 
 
-var chat1 = new chat("Hobbie ?", "Soy un elfo nivel 100");
-var chat2 = new chat("Vives solo ?", "Mis waifus dicen que no");
+//var chat1 = new chat("Hobbie ?", "Soy un elfo nivel 100");
+//var chat2 = new chat("Vives solo ?", "Mis waifus dicen que no");
 
-personaje_prueba2.list_chat.push(chat1);
-personaje_prueba2.list_chat.push(chat2);
+//personaje_prueba2.list_chat.push(chat1);
+//personaje_prueba2.list_chat.push(chat2);
 
 
-var disonance1 = new disonance("atributo_1", "Pepe pruebas", true, "atributo_1", "Juan pruebas", false, 2);
-var disonance2 = new disonance("atributo_2", "Pepe pruebas", true, "atributo_2", "Juan pruebas", false, 1);
-var disonance3 = new disonance("img_caracter_0", "Juan pruebas", false, "atributo_2", "Juan pruebas", false, 1);
+//var disonance1 = new disonance("atributo_1", "Pepe pruebas", true, "atributo_1", "Juan pruebas", false, 2);
+//var disonance2 = new disonance("atributo_2", "Pepe pruebas", true, "atributo_2", "Juan pruebas", false, 1);
+//var disonance3 = new disonance("img_caracter_0", "Juan pruebas", false, "atributo_2", "Juan pruebas", false, 1);
 
 
 ronda_prueba2.main_caracter = personaje_prueba;
 ronda_prueba2.list_caracters.push(personaje_prueba1);
 ronda_prueba2.list_caracters.push(personaje_prueba2);
 
-ronda_prueba2.list_Disonances.push(disonance1);
-ronda_prueba2.list_Disonances.push(disonance2);
-ronda_prueba2.list_Disonances.push(disonance3);
+//ronda_prueba2.list_Disonances.push(disonance1);
+//ronda_prueba2.list_Disonances.push(disonance2);
+//ronda_prueba2.list_Disonances.push(disonance3);
 
-ronda_prueba2.pistaTrue = "los morenos son fieles";
-ronda_prueba2.pistaFalse = "los morenos son infieles";
+
+/*RONDA 3---*/
+
+
+var ronda_prueba3 = new ronda();
+var personaje_prueba = new caracter(true, "Amelia");
+
+
+var atributo_1 = new atribute("Tengo tanto sentido de la justicia que me he sacado las oposiciones.", false, false);
+var atributo_2 = new atribute("Mis amigas dicen que a veces se me va la olla.", false, false);
+var atributo_3 = new atribute("Solo quiero que me quieran.", false, false);
+personaje_prueba.list_atributes.push(atributo_1);
+personaje_prueba.list_atributes.push(atributo_2);
+personaje_prueba.list_atributes.push(atributo_3);
+
+var foto1 = new photo_caracter("https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg", false, false);
+var foto2 = new photo_caracter("https://image.shutterstock.com/image-vector/vector-pixel-art-girl-anime-600w-1102810826.jpg", false, false);
+var foto3 = new photo_caracter("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF2BGxHSQK46Kgw49miYuO3142BjlvC9j_lA&usqp=CAU", false, true);
+personaje_prueba.list_photos.push(foto1);
+personaje_prueba.list_photos.push(foto2);
+personaje_prueba.list_photos.push(foto3);
+
+
+
+var personaje_prueba1 = new caracter(false, "Iker");
+personaje_prueba1.nota_pareja = 0;
+var atributo_1 = new atribute("Soy médico", false, false);
+var atributo_2 = new atribute("Me encanta ayudar a la gente", false, false);
+var atributo_3 = new atribute("Los uniformes son sexys", false, true);
+personaje_prueba1.list_atributes.push(atributo_1);
+personaje_prueba1.list_atributes.push(atributo_2);
+personaje_prueba1.list_atributes.push(atributo_3);
+
+var foto1 = new photo_caracter("https://www.lorealprofessionnel.es/-/media/master/es/webedia-hair-trend-news-2/es_es/3144/7192-peinados-para-cara-redonda-orig-2.ashx", false, false);
+var foto2 = new photo_caracter("https://i.pinimg.com/originals/db/50/89/db508974ed8fbd967c62df21ce5a1eb3.jpg", false, false);
+var foto3 = new photo_caracter("https://img4.codigonuevo.com/ef/de/06/caras-futuro-mileniales-codigo-nuevo-930x600.jpg", false, true);
+personaje_prueba1.list_photos.push(foto1);
+personaje_prueba1.list_photos.push(foto2);
+personaje_prueba1.list_photos.push(foto3);
+
+
+//var chat1 = new chat("Hobbie ?", "Pues ser nini");
+//var chat2 = new chat("Vives solo ?", "Si las pelusas de mi ombligo no cuentan...");
+
+
+//personaje_prueba1.list_chat.push(chat1);
+//personaje_prueba1.list_chat.push(chat2);
+
+
+var personaje_prueba2 = new caracter(false, "Rafael");
+personaje_prueba2.nota_pareja = 2;
+
+var atributo_1 = new atribute("Abogado es mi profesion", false, false);
+var atributo_2 = new atribute("La justicia es relativa", false, false);
+var atributo_3 = new atribute("Todo el mundo tiene un precio", false, true);
+personaje_prueba2.list_atributes.push(atributo_1);
+personaje_prueba2.list_atributes.push(atributo_2);
+personaje_prueba2.list_atributes.push(atributo_3);
+
+var foto1 = new photo_caracter("https://static2.abc.es/media/ciencia/2017/02/28/cara-k1WG--620x349@abc.jpg", false, false);
+var foto2 = new photo_caracter("https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/article/55365cde3787b2187a1f0fbc/impresion-cara.jpg", false, false);
+var foto3 = new photo_caracter("https://pavlov.psyciencia.com/2016/12/caras-de-la-ira-e1480938528244.jpg", false, true);
+
+personaje_prueba2.list_photos.push(foto1);
+personaje_prueba2.list_photos.push(foto2);
+personaje_prueba2.list_photos.push(foto3);
+
+
+//var chat1 = new chat("Hobbie ?", "Soy un elfo nivel 100");
+//var chat2 = new chat("Vives solo ?", "Mis waifus dicen que no");
+
+//personaje_prueba2.list_chat.push(chat1);
+//personaje_prueba2.list_chat.push(chat2);
+
+
+//var disonance1 = new disonance("atributo_1", "Pepe pruebas", true, "atributo_1", "Juan pruebas", false, 2);
+//var disonance2 = new disonance("atributo_2", "Pepe pruebas", true, "atributo_2", "Juan pruebas", false, 1);
+//var disonance3 = new disonance("img_caracter_0", "Juan pruebas", false, "atributo_2", "Juan pruebas", false, 1);
+
+
+ronda_prueba3.main_caracter = personaje_prueba;
+ronda_prueba3.list_caracters.push(personaje_prueba1);
+ronda_prueba3.list_caracters.push(personaje_prueba2);
+
+//ronda_prueba2.list_Disonances.push(disonance1);
+//ronda_prueba2.list_Disonances.push(disonance2);
+//ronda_prueba2.list_Disonances.push(disonance3);
+
+
+
+
+ronda_prueba3.pistaTrue = "El mejor ataque es una buena defensa.";
+ronda_prueba3.pistaFalse = "Todos necesitamos que nos defiendan alguna vez.";
+
+
+
+
+
+
+
+
+
+//uno todas las rondas
 
 jugador.list_rondas.push(ronda_prueba);
 jugador.list_rondas.push(ronda_prueba2);
-
+jugador.list_rondas.push(ronda_prueba3);
 
 /***********INICIALIZAR END**************/
 
