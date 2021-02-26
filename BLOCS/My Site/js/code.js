@@ -164,18 +164,18 @@ personaje_prueba2.list_photos.push(foto3);
 //personaje_prueba2.list_chat.push(chat2);
 
 
-//var disonance1 = new disonance("atributo_1", "Pepe pruebas", true, "atributo_1", "Juan pruebas", false, 2);
+var disonance1 = new disonance("atributo_1", "Karen", false, "atributo_1", "Kevin", true, 2);
 //var disonance2 = new disonance("atributo_2", "Pepe pruebas", true, "atributo_2", "Juan pruebas", false, 1);
-//var disonance3 = new disonance("img_caracter_0", "Juan pruebas", false, "atributo_2", "Juan pruebas", false, 1);
+var disonance3 = new disonance("img_caracter_0", "Karen", false, "atributo_2", "Karen", false, 1);
 
 
 ronda_prueba.main_caracter = personaje_prueba;
 ronda_prueba.list_caracters.push(personaje_prueba1);
 ronda_prueba.list_caracters.push(personaje_prueba2);
 
-//ronda_prueba.list_Disonances.push(disonance1);
+ronda_prueba.list_Disonances.push(disonance1);
 //ronda_prueba.list_Disonances.push(disonance2);
-//ronda_prueba.list_Disonances.push(disonance3);
+ronda_prueba.list_Disonances.push(disonance3);
 ronda_prueba.pistaTrue = "Los rubios se atraen";
 ronda_prueba.pistaFalse = "Los rubios se atraen";
 
@@ -608,8 +608,19 @@ function recogerClick(e) {
   if (jugador.isLookingDisonace && e.srcElement.src != "https://st2.depositphotos.com/3921439/7464/v/600/depositphotos_74644007-stock-illustration-the-lock-icon-lock-symbol.jpg") {
     if (jugador.contadorClickDisonance == 0) {
       console.log("Miro disonanica 1");
+      console.log( );
 
-      var id_parent = e.srcElement.parentNode.classList[0];
+      var id_parent;
+
+      if(e.srcElement.nodeName.toLowerCase()=="p"){
+
+        id_parent = e.srcElement.parentNode.parentNode.parentNode.parentNode.classList[0];
+      }else if(e.srcElement.nodeName.toLowerCase()=="img"){
+
+        id_parent = e.srcElement.parentNode.parentNode.classList[0];
+      }
+
+
       var quien = "";
       var main = "";
       var id = e.srcElement.id;
@@ -624,7 +635,7 @@ function recogerClick(e) {
           main = false;
         } else {
           if (id == "img_caracter") {
-            id = id + "_" + ronda_prueba.main_caracter.name.foto_showing;
+            id = id + "_" + ronda_prueba.main_caracter.foto_showing;
           }
           quien = ronda_prueba.main_caracter.name;
           main = true;
@@ -641,7 +652,7 @@ function recogerClick(e) {
           main = false;
         } else {
           if (id == "img_caracter") {
-            id = id + "_" + ronda_prueba.main_caracter.name.foto_showing;
+            id = id + "_" + ronda_prueba.main_caracter.foto_showing;
           }
           quien = ronda_prueba.main_caracter.name;
           main = true;
@@ -654,7 +665,15 @@ function recogerClick(e) {
 
     } else if (jugador.contadorClickDisonance == 1) {
       console.log("Miro disonanica 2");
-      var id_parent = e.srcElement.parentNode.classList[0];
+      var id_parent;
+
+      if(e.srcElement.nodeName.toLowerCase()=="p"){
+
+        id_parent = e.srcElement.parentNode.parentNode.parentNode.parentNode.classList[0];
+      }else if(e.srcElement.nodeName.toLowerCase()=="img"){
+
+        id_parent = e.srcElement.parentNode.parentNode.classList[0];
+      }
       var main = "";
       var quien = "";
       var id = e.srcElement.id;
@@ -668,7 +687,7 @@ function recogerClick(e) {
           main = false;
         } else {
           if (id == "img_caracter") {
-            id = id + "_" + ronda_prueba.main_caracter.name.foto_showing;
+            id = id + "_" + ronda_prueba.main_caracter.foto_showing;
           }
           quien = ronda_prueba.main_caracter.name;
           main = true;
@@ -684,7 +703,7 @@ function recogerClick(e) {
           main = false;
         } else {
           if (id == "img_caracter") {
-            id = id + "_" + ronda_prueba.main_caracter.name.foto_showing;
+            id = id + "_" + ronda_prueba.main_caracter.foto_showing;
           }
           quien = ronda_prueba.main_caracter.name;
           main = true;
@@ -828,6 +847,10 @@ function nextFicha(e) {
   if (momentoAsignacion()) {
 
     activarAsignar();
+  }else{
+
+    var barra=document.querySelector("#barra_superior");
+    barra.style.visibility="hidden";
   }
 }
 
@@ -1024,6 +1047,10 @@ function unlockAtribute(e) {
   if (momentoAsignacion()) {
 
     activarAsignar();
+  }else{
+
+    var barra=document.querySelector("#barra_superior");
+    barra.style.visibility="hidden";
   }
 }
 
@@ -1068,7 +1095,10 @@ function formarChat(which) {
   //var list_chat = template.querySelector("#chat-list-aspirantes");
 
   for (var i = 0; i < ronda_prueba.list_caracters.length; i++) {
-    var p =  template.querySelector("#button"+i+1);
+    //console.log("#button"+i+1);
+    var numeroTemp=i+1;
+    var p =  template.querySelector("#button"+numeroTemp);
+    p.style.visibility="visible";
     p.caracterChat = i;
     p.text = ronda_prueba.list_caracters[i].name;
     p.addEventListener("click", changeChat);
@@ -1103,9 +1133,11 @@ function llenarChatEscrito() {
       var question = ronda_prueba.list_caracters[ronda_prueba.chatUsing].list_chat[i].question;
       var p_q = document.createElement("p");
       p_q.innerText = question;
+
       var answer = ronda_prueba.list_caracters[ronda_prueba.chatUsing].list_chat[i].answer;
       var p_a = document.createElement("p");
       p_a.innerText = answer;
+      p_a.classList.add("text-right");
       divMessages.appendChild(p_q);
       divMessages.appendChild(p_a);
     }
@@ -1147,6 +1179,7 @@ function askQuestion(e) {
   p_q.innerText = question;
   var p_a = document.createElement("p");
   p_a.innerText = answer;
+  p_a.classList.add("text-right");
   divMessages.appendChild(p_q);
   divMessages.appendChild(p_a);
   ronda_prueba.list_caracters[ronda_prueba.chatUsing].list_chat[idquestion].used = true;
@@ -1309,9 +1342,12 @@ function exitPantalla(e) {
   desactivatePantallaEscritorio(namePantalla);
   var result = whereIsPantalla("tarjetas_icono");
   if (result != "NO_EXIST" && namePantalla == "tarjeta_principal_icono") {
-    var icono = document.querySelector("#verfiy_asig");
-    icono.style.visibility = "hidden";
+    var barra=document.querySelector("#barra_superior");
+    barra.style.visibility="hidden";
   }
+
+
+
 
 }
 
@@ -1385,7 +1421,7 @@ function pantalla_libre(pantallaNueva) {
 var icono_tarjetas = document.querySelector("a#tarjetas_icono");
 var icono_chat = document.querySelector("a#chat_icono");
 var icono_main = document.querySelector("a#tarjeta_principal_icono");
-var icono_lupa = document.querySelector("span#lupa_icono");
+var icono_lupa = document.querySelector("a#lupa_icono");
 var icono_tienda = document.querySelector("a#tienda_icono");
 
 icono_tarjetas.addEventListener("click", onClickIcon);
@@ -1504,7 +1540,12 @@ function onClickIcon(e) {
     if (momentoAsignacion()) {
 
       activarAsignar();
+    }else{
+
+      var barra=document.querySelector("#barra_superior");
+      barra.style.visibility="hidden";
     }
+
 
   }
 
@@ -1512,12 +1553,16 @@ function onClickIcon(e) {
 }
 
 function activarAsignar() {
-  var ronda_prueba = jugador.list_rondas[jugador.ronda_actual];
+  /*var ronda_prueba = jugador.list_rondas[jugador.ronda_actual];
 
   var resp1 = whereIsPantalla("tarjetas_icono");
   var pantalla = document.querySelector("." + resp1);
   var iconoVerificar = document.querySelector("#verfiy_asig");
-  iconoVerificar.style.visibility = "visible";
+  iconoVerificar.style.visibility = "visible";*/
+
+
+var barra=document.querySelector("#barra_superior");
+barra.style.visibility="visible";
 
 }
 
