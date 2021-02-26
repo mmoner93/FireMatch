@@ -993,8 +993,8 @@ var template="";
     verificarPareja.id = "verfiy_asig";
     verificarPareja.addEventListener("click", asignarPareja);
     verificarPareja.style.visibility = "hidden";*/
-
-
+var verificarPareja = document.querySelector("#verfiy_asig");
+verificarPareja.addEventListener("click", asignarPareja);
   }
 
 
