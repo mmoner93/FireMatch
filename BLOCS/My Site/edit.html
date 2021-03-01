@@ -33,72 +33,107 @@
 
 <!-- Main container -->
 <div class="page-container container horizontal">
+  <div class="bloc l-bloc hiden" id="apuesta_template">  <!--hiden aqui-->
+		<div class="container bloc-lg">
+			<div class="row">
+				<div class="col">
+					<img id="imgDiablo" src="img/lazyload-ph.png" data-src="img/unknown3.png" class="img-fluid mx-auto d-block img-style lazyload" alt="unknown3" />
+					<div class="divider-h">
+						<span class="divider"></span>
+					</div>
+					<h5 class="mg-md text-lg-center" id="preguntaDiablo">
+						Heading content<br>kjbkhbjh<br>mnvnjbh&nbsp;
+					</h5>
+					<div class="row">
+						<div class="col">
+							<div class="text-center" id="bienIcono">
+								<span class="icon-xl feather-icon icon-cross icon-ferrari-red"></span>
+							</div>
+						</div>
+						<div class="col">
+							<div class="text-center" id="neutroIcono">
+								<span class="icon-xl feather-icon icon-minus icon-princeton-orange"></span>
+							</div>
+						</div>
+						<div class="col">
+							<div class="text-center" id="malIcono">
+								<span class="icon-xl feather-icon icon-check icon-electric-green"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
+  <div id="escritorio">
+    <div class="bloc l-bloc" id="bloc-0">
+    	<div class="container bloc-sm-lg">
+    		<div class="row" style="visibility:hidden;" id="barra_superior">
+    			<div class="offset-md-4 col-3 col-md-1 bgc-dim-gray leftnavbar">
+    				<div class="text-center">
+    					<a id="lupa_icono"><span class="icon-md fa fa-search icon-blue-ryb lg-shadow" ></span></a>
+    				</div>
+    			</div>
+    			<div class="col-3 col-md-1 bgc-dim-gray">
+    				<div class="text-center">
+    					<a id="verfiy_asig"><span class="icon-md fa fa-heart icon-ferrari-red lg-shadow centernavbar"></span></a>
+    				</div>
+    			</div>
+    			<div class="col-3 col-md-1 bgc-dim-gray rightnavbar">
+    				<div class="text-center">
+    					<a ><span class="icon-md fa fa-exclamation-triangle icon-aureolin lg-shadow"></span></a>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <!-- bloc-0 END -->
+
+
+
+    <!-- bloc-2 -->
+    <div class="bloc l-bloc container80" id="bloc-2">
+    	<div class="container container100 bloc-lg bloc-no-padding-lg">
+    		<div class="row fill">      <!--rellenar aqui-->
+          <div class="Pantalla_1">
+          </div>
+          <div class="Pantalla_2">
+          </div>
+
+    		</div>
+    	</div>
+    </div>
+    <!-- bloc-2 END -->
+
+    <!-- bloc-2 -->
+    <div class="bloc l-bloc  navbar navbar-default navbar-fixed-bottom bottom" id="bloc-2">
+    	<div class="container bloc-lg bloc-no-padding-lg">
+    		<div class="row bgc-cyan-process horizontal">
+    			<div class="align-self-center col-md-3">
+    				<a class="btn btn-sq btn-block btn-blue-ncs" id="tarjeta_principal_icono"><span class="icon-spacer fa fa-user icon-md" ></span>Pricipal</a>
+    			</div>
+    			<div class="align-self-center col-md-3">
+    				<a  class="btn btn-block btn-blue-ncs" id="tarjetas_icono"><span class="icon-spacer fa fa-users icon-md" ></span>Aspirante</a>
+    			</div>
+    			<div class="align-self-center col-md-3">
+    				<a  class="btn btn-block btn-cyan-process" id="chat_icono"><span class="icon-spacer icon-md ion ion-chatboxes" ></span>Chat</a>
+    			</div>
+    			<div class="align-self-center col-md-3">
+    				<a  class="btn btn-block btn-cyan-process" id="tienda_icono" ><span class="icon-spacer icon-md fa fa-shopping-cart" ></span>Tienda</a>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <!-- bloc-2 END -->
+
+    <!-- ScrollToTop Button -->
+    <a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1',this)"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32"><path class="scroll-to-top-btn-icon" d="M30,22.656l-14-13-14,13"/></svg></a>
+    <!-- ScrollToTop Button END-->
+
+
+  </div>
 <!-- bloc-0 -->
-<div class="bloc l-bloc" id="bloc-0">
-	<div class="container bloc-sm-lg">
-		<div class="row" style="visibility:hidden;" id="barra_superior">
-			<div class="offset-md-4 col-3 col-md-1 bgc-dim-gray leftnavbar">
-				<div class="text-center">
-					<a id="lupa_icono"><span class="icon-md fa fa-search icon-blue-ryb lg-shadow" ></span></a>
-				</div>
-			</div>
-			<div class="col-3 col-md-1 bgc-dim-gray">
-				<div class="text-center">
-					<a id="verfiy_asig"><span class="icon-md fa fa-heart icon-ferrari-red lg-shadow centernavbar"></span></a>
-				</div>
-			</div>
-			<div class="col-3 col-md-1 bgc-dim-gray rightnavbar">
-				<div class="text-center">
-					<a ><span class="icon-md fa fa-exclamation-triangle icon-aureolin lg-shadow"></span></a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- bloc-0 END -->
-
-
-
-<!-- bloc-2 -->
-<div class="bloc l-bloc container80" id="bloc-2">
-	<div class="container container100 bloc-lg bloc-no-padding-lg">
-		<div class="row fill">      <!--rellenar aqui-->
-      <div class="Pantalla_1">
-      </div>
-      <div class="Pantalla_2">
-      </div>
-
-		</div>
-	</div>
-</div>
-<!-- bloc-2 END -->
-
-<!-- bloc-2 -->
-<div class="bloc l-bloc  navbar navbar-default navbar-fixed-bottom bottom" id="bloc-2">
-	<div class="container bloc-lg bloc-no-padding-lg">
-		<div class="row bgc-cyan-process horizontal">
-			<div class="align-self-center col-md-3">
-				<a class="btn btn-sq btn-block btn-blue-ncs" id="tarjeta_principal_icono"><span class="icon-spacer fa fa-user icon-md" ></span>Pricipal</a>
-			</div>
-			<div class="align-self-center col-md-3">
-				<a  class="btn btn-block btn-blue-ncs" id="tarjetas_icono"><span class="icon-spacer fa fa-users icon-md" ></span>Aspirante</a>
-			</div>
-			<div class="align-self-center col-md-3">
-				<a  class="btn btn-block btn-cyan-process" id="chat_icono"><span class="icon-spacer icon-md ion ion-chatboxes" ></span>Chat</a>
-			</div>
-			<div class="align-self-center col-md-3">
-				<a  class="btn btn-block btn-cyan-process" id="tienda_icono" ><span class="icon-spacer icon-md fa fa-shopping-cart" ></span>Tienda</a>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- bloc-2 END -->
-
-<!-- ScrollToTop Button -->
-<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1',this)"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32"><path class="scroll-to-top-btn-icon" d="M30,22.656l-14-13-14,13"/></svg></a>
-<!-- ScrollToTop Button END-->
-
 
 </div>
 <!-- Main container END -->
@@ -284,9 +319,9 @@
 
 
 
-		
+
 	<!-- bloc-5 -->
-	<div class="bloc l-bloc hiden" id="apuesta_template">  <!--hiden aqui-->
+	<div class="bloc l-bloc hiden" id="apuesta_templates">  <!--hiden aqui-->
 		<div class="container bloc-lg">
 			<div class="row">
 				<div class="col">
@@ -321,7 +356,7 @@
 	<!-- bloc-5 END -->
 
 	<!-- bloc-6 -->
-	<div class="bloc l-bloc hiden" id="intro_template">   <!--hiden aqui-->
+	<div class="bloc l-bloc hiden" id="final_pareja_template">   <!--hiden aqui-->
 		<div class="container bloc-lg">
 			<div class="row">
 				<div class="col">
@@ -344,7 +379,7 @@
 	<!-- bloc-6 END -->
 
 	<!-- bloc-7 -->
-	<div class="bloc l-bloc hiden" id="final_pareja_template">    <!--hiden aqui-->
+	<div class="bloc l-bloc hiden" id="introduccion_template">    <!--hiden aqui-->
 		<div class="container bloc-lg">
 			<div class="row">
 				<div class="col-md-6">

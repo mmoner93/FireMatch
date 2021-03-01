@@ -28,6 +28,7 @@ function ronda() {
   this.pistaFalse = "";
   this.countImagenDesbloqueada = 0;
   this.countAtributoDesbloqueado = 0;
+  this.preguntaDiablo="";
 }
 
 
@@ -179,7 +180,7 @@ ronda_prueba.list_Disonances.push(disonance1);
 ronda_prueba.list_Disonances.push(disonance3);
 ronda_prueba.pistaTrue = "Los rubios se atraen";
 ronda_prueba.pistaFalse = "Los rubios se atraen";
-
+ronda_prueba.preguntaDiablo="Para dar más emoción a tu trabajo… Vamos a hacer unas apuestas. ¿Qué resultado crees que tendrá tu siguiente pareja ? Si ganas.. te daré unas monedas extras. Si pierdes tranquilo, es solo para divertirme!";
 /*RONDA 2----*/
 
 
@@ -380,7 +381,7 @@ jugador.list_rondas.push(ronda_prueba3);
 
 /***********PARA control de Rondas**************/
 
-function int calcularFinal(){
+function calcularFinal(){
 
 var contadorBueno=0;
 var contadorMalo=0;
@@ -573,44 +574,51 @@ function formarApuestaDiabloResult() {
 
 
 function formarApuestasDiablo() {
-  var pantalla1 = document.querySelector(".Pantalla_1");
-  pantalla1.style.visibility = "visible";
-  var imagenDiablo = document.createElement("img");
-  imagenDiablo.id = "imgDiablo";
+  var pantallaEntera=document.querySelector("#escritorio");
+  pantallaEntera.style.visibility="hidden";
+  var template = document.querySelector("#apuesta_template");
+  template.style.visibility = "visible";
+  template.classList.remove("hiden");
+  var imagenDiablo = template.querySelector("#imgDiablo");
+  //imagenDiablo.id = "imgDiablo";
   imagenDiablo.src = "https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
 
-  var pregunta = document.createElement("p");
-  pregunta.innerText = "Que crees que pasara en la siguiente ronda?";
+  var pregunta =  template.querySelector("#preguntaDiablo");
 
-  var pista = document.createElement("p");
+  var textoDiablo="";
+
+  textoDiablo= jugador.list_rondas[jugador.ronda_actual].preguntaDiablo;
+
+  var pista =  template.querySelector("#preguntaDiablo");
   var random = Math.random();
   if (random < 0.5) {
-    pista.innerText = jugador.list_rondas[jugador.ronda_actual].pistaTrue;
+    textoDiablo =textoDiablo+" Pista:"+ jugador.list_rondas[jugador.ronda_actual].pistaTrue;
   } else {
-    pista.innerText = jugador.list_rondas[jugador.ronda_actual].pistaFalse;
+  textoDiablo =textoDiablo+" Pista:"+ jugador.list_rondas[jugador.ronda_actual].pistaFalse;
   }
+  pregunta.innerText =  textoDiablo;
 
-  var bienIcono = document.createElement("img");
-  bienIcono.id = "bienIcono";
-  bienIcono.src = "https://image.freepik.com/iconos-gratis/pulgares-arriba-bien_318-10538.jpg";
+  var bienIcono = template.querySelector("#bienIcono");
+  //bienIcono.id = "bienIcono";
+  //bienIcono.src = "https://image.freepik.com/iconos-gratis/pulgares-arriba-bien_318-10538.jpg";
   bienIcono.addEventListener("click", elegirApuesta);
 
-  var neutroIcono = document.createElement("img");
-  neutroIcono.id = "neutroIcono";
-  neutroIcono.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLvSegDeIJ83CBtCG-nmaQofRnYp5gmoiSCA&usqp=CAU";
+  var neutroIcono =template.querySelector("#neutroIcono");
+  //neutroIcono.id = "neutroIcono";
+  //neutroIcono.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLvSegDeIJ83CBtCG-nmaQofRnYp5gmoiSCA&usqp=CAU";
   neutroIcono.addEventListener("click", elegirApuesta);
 
-  var malIcono = document.createElement("img");
-  malIcono.id = "malIcono";
-  malIcono.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKAMSVxz6-YikIDAFJSIIFYYruUhkd1vWCmg&usqp=CAU";
+  var malIcono = template.querySelector("#malIcono");
+  //malIcono.id = "malIcono";
+  //malIcono.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKAMSVxz6-YikIDAFJSIIFYYruUhkd1vWCmg&usqp=CAU";
   malIcono.addEventListener("click", elegirApuesta);
 
-  pantalla1.appendChild(imagenDiablo);
-  pantalla1.appendChild(pregunta);
-  pantalla1.appendChild(bienIcono);
-  pantalla1.appendChild(neutroIcono);
-  pantalla1.appendChild(malIcono);
-  pantalla1.appendChild(pista);
+  //pantalla1.appendChild(imagenDiablo);
+  //pantalla1.appendChild(pregunta);
+  //pantalla1.appendChild(bienIcono);
+  //pantalla1.appendChild(neutroIcono);
+  //pantalla1.appendChild(malIcono);
+  //pantalla1.appendChild(pista);
 
 
 
@@ -655,6 +663,12 @@ function elegirApuesta(e) {
 
       break;
   }
+
+  var pantalla=document.querySelector("#escritorio");
+  pantalla.style.visibility="visible";
+
+  var template=document.querySelector("#apuesta_template");
+  template.style.visibility="hidden";
 
 
 }
@@ -1698,5 +1712,6 @@ function asignarPareja() {
 /*********Para el escritorio END**************/
 
 /*EJECUTAR*/
+jugador.FaseJugador="rondas";
 jugador.list_rondas[jugador.ronda_actual].faseActual = "apuesta";
 queFaseEstoy();
