@@ -11,6 +11,7 @@ function jugador() {
   this.maxAtributoDesbloqueado = 1;
   this.alma=false;
   this.coins=0;
+  this.FaseJugador="introduccion";
 }
 
 function ronda() {
@@ -379,32 +380,92 @@ jugador.list_rondas.push(ronda_prueba3);
 
 /***********PARA control de Rondas**************/
 
+function int calcularFinal(){
+
+var contadorBueno=0;
+var contadorMalo=0;
+var contadorNeutral=0;
+var contadorRondas=0;
+
+for(var i=0;jugador.list_rondas.length;i++){
+var resultRonda=jugador.list_rondas[i].nota_pareja_Asignado;
+if(resultRonda!=-1){
+
+switch(resultRonda){
+
+  case 0:
+  contadorBueno=contadorBueno+1;
+  break;
+  case 1:
+  contadorNeutral=contadorNeutral+1;
+  break;
+  case 2:
+  contadorMalo=contadorMalo+1;
+  break;
+}
+contadorRondas=contadorRondas+1;
+}
+
+}
+
+var ponderadoBien=contadorBueno/contadorRondas;
+var ponderadoNeutro=contadorNeutral/contadorRondas;
+var ponderadoMalo=contadorMalo/contadorRondas;
+
+if(ponderadoMalo>0.7){
+  return "muyMalo";
+}else if(ponderadoMalo>0.3){
+  return "malo";
+}else {
+  return "bueno";
+}
+
+
+}
+
 
 function queFaseEstoy() {
   console.log("QUE FASE ESTOY " + jugador.list_rondas[jugador.ronda_actual].faseActual);
-  switch (jugador.list_rondas[jugador.ronda_actual].faseActual) {
-    case "apuesta":
-      deactivateall();
-      //var capaIconos = document.querySelector(".iconos");
-      //capaIconos.style.visibility = "hidden";
-      formarApuestasDiablo();
-      break;
-    case "parejas":
-    //  var capaIconos = document.querySelector(".iconos");
 
-    //  capaIconos.style.visibility = "visible";
-      break;
-    case "finalParejas":
-      deactivateall();
-      formarResultadoRonda();
+if(jugador.alma){
 
-      break;
+  jugador.FaseJugador="Final";
+  var resultFinal=calcularFinal();
+  //aqui enseño final segun resultado
 
-    case "finalApuesta":
-      deactivateall();
-      formarApuestaDiabloResult();
-      break;
-  }
+}
+
+if(jugador.FaseJugador=="introduccion"){
+
+}
+
+
+ if(jugador.FaseJugador="rondas"){
+   switch (jugador.list_rondas[jugador.ronda_actual].faseActual) {
+     case "apuesta":
+       deactivateall();
+       //var capaIconos = document.querySelector(".iconos");
+       //capaIconos.style.visibility = "hidden";
+       formarApuestasDiablo();
+       break;
+     case "parejas":
+     //  var capaIconos = document.querySelector(".iconos");
+
+     //  capaIconos.style.visibility = "visible";
+       break;
+     case "finalParejas":
+       deactivateall();
+       formarResultadoRonda();
+
+       break;
+
+     case "finalApuesta":
+       deactivateall();
+       formarApuestaDiabloResult();
+       break;
+   }
+
+ }
 
 }
 
@@ -1266,6 +1327,9 @@ pantalla_volcar.appendChild(imgMasAtr);
 pantalla_volcar.appendChild(masAlma);
 pantalla_volcar.appendChild(imgMasAlma);
 pantalla_volcar.appendChild(exit_icon);*/
+var textCoins=template.querySelector("#textCoins");
+textCoins.innerText="Monedas "+jugador.coins;
+
 
 pantalla_volcar.appendChild(template);
 
@@ -1281,12 +1345,18 @@ function comprarAlgo(e){
   switch(id){
   case "masImagen":
   if(confirm("Quieres comprar una imagen extra por ronda?")){
-    if(jugador.maxImagenDesbloqueada < 2){
-      jugador.maxImagenDesbloqueada=2;
-      var pantalla=whereIsPantalla("tienda_icono");
-      cleanPantalla(pantalla);
-      var cual=formarTienda("tienda_icono",false);
-      cual.style.visibility="visible";
+    if(jugador.maxImagenDesbloqueada < 2 && jugador.coins>5){
+      if( jugador.coins>5){
+        jugador.maxImagenDesbloqueada=2;
+        jugador.coins=jugador.coins-5;
+        var pantalla=whereIsPantalla("tienda_icono");
+        cleanPantalla(pantalla);
+        var cual=formarTienda("tienda_icono",false);
+        cual.style.visibility="visible";
+      }else{
+        confirm("No tienes suficientes monedas");
+      }
+
     }else{
       confirm("No puedes comprar más mejora imagen");
     }
@@ -1295,12 +1365,18 @@ function comprarAlgo(e){
   break;
   case "masAtributo":
   if(confirm("Quieres comprar un atributo extra por ronda?")){
-    if(jugador.maxAtributoDesbloqueado < 2){
-      jugador.maxAtributoDesbloqueado=2;
-      var pantalla=whereIsPantalla("tienda_icono");
-      cleanPantalla(pantalla);
-      var cual=formarTienda("tienda_icono",false);
-      cual.style.visibility="visible";
+    if(jugador.maxAtributoDesbloqueado < 2 && jugador.coins>5){
+      if( jugador.coins>5){
+        jugador.maxAtributoDesbloqueado=2;
+        jugador.coins=jugador.coins-5;
+        var pantalla=whereIsPantalla("tienda_icono");
+        cleanPantalla(pantalla);
+        var cual=formarTienda("tienda_icono",false);
+        cual.style.visibility="visible";
+      }else{
+        confirm("No tienes suficientes monedas");
+      }
+
     }else{
       confirm("No puedes comprar más mejora atributo");
     }
@@ -1309,9 +1385,15 @@ function comprarAlgo(e){
   break;
   case "masAlma":
   if(confirm("Quieres tu alma?")){
-    if(!jugador.alma){
-      jugador.alma=true;
-      //deberia enviar al final segun tus acciones.
+    if(!jugador.alma ){
+      if( jugador.coins>50){
+        jugador.alma=true;
+        jugador.coins=jugador.coins-50;
+        //deberia enviar al final segun tus acciones.
+      }else{
+        confirm("No tienes suficientes monedas");
+      }
+
     }else{
       confirm("Ya has comprado alma");
     }
