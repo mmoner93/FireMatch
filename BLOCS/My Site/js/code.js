@@ -29,6 +29,12 @@ function ronda() {
   this.countImagenDesbloqueada = 0;
   this.countAtributoDesbloqueado = 0;
   this.preguntaDiablo="";
+  this.textoResultadoBueno="Pareja buena";
+  this.textoResultadoMalo="Pareja mala";
+  this.textoResultadoNeutro="Pareja neutra";
+  this.imgBueno="https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
+  this.imgMalo="https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
+  this.imgNeutro="https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
 }
 
 
@@ -447,21 +453,29 @@ if(jugador.FaseJugador=="introduccion"){
        deactivateall();
        //var capaIconos = document.querySelector(".iconos");
        //capaIconos.style.visibility = "hidden";
+       var pantall=document.querySelector("#escritorio");
+       pantall.style.visibility="hidden";
        formarApuestasDiablo();
        break;
      case "parejas":
+      var pantall=document.querySelector("#escritorio");
+      pantall.style.visibility="visible";
      //  var capaIconos = document.querySelector(".iconos");
 
      //  capaIconos.style.visibility = "visible";
        break;
      case "finalParejas":
        deactivateall();
+       var pantall=document.querySelector("#escritorio");
+       pantall.style.visibility="hidden";
        formarResultadoRonda();
 
        break;
 
      case "finalApuesta":
        deactivateall();
+       var pantall=document.querySelector("#escritorio");
+       pantall.style.visibility="hidden";
        formarApuestaDiabloResult();
        break;
    }
@@ -483,36 +497,38 @@ function deactivateall() {
 
 function formarResultadoRonda() {
 
-  var pantalla1 = document.querySelector(".Pantalla_1");
-  pantalla1.style.visibility = "visible";
-
-  var result = document.createElement("p");
+  var template=document.querySelector("final_pareja_template");
+  template.classList.remove("hiden");
+  template.style.visibility = "visible";
+  var result = template.querySelector("result");
   result.id = "result";
 
-  var imagenResult = document.createElement("img");
+  var imagenResult = template.querySelector("#imgResult");
   imagenResult.id = "imgResult";
   var ronda_prueba = jugador.list_rondas[jugador.ronda_actual]
 
+
+
+
   if (ronda_prueba.nota_pareja_Asignado == 0) {
-    result.innerText = "Buena pareja";
-    imagenResult.src = "https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
+    result.innerText = ronda_prueba.textoResultadoBueno;
+    imagenResult.src = ronda_prueba.imgBueno;
   }
   if (ronda_prueba.nota_pareja_Asignado == 1) {
-    imagenResult.src = "https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
-    result.innerText = " pareja neutra";
+    imagenResult.src = ronda_prueba.imgNeutro;
+    result.innerText = ronda_prueba.textoResultadoNeutro;
   }
   if (ronda_prueba.nota_pareja_Asignado == 2) {
-    imagenResult.src = "https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
-    result.innerText = "Mala pareja";
+    imagenResult.src = ronda_prueba.imgMalo;
+    result.innerText = ronda_prueba.textoResultadoMalo;
   }
 
-  var next = document.createElement("img");
-  next.id = "imgNext";
-  next.src = "https://image.flaticon.com/icons/png/512/28/28275.png";
+  var next =  template.querySelector("#imgNext");
+
   next.addEventListener("click", nextFase);
-  pantalla1.appendChild(imagenResult);
-  pantalla1.appendChild(result);
-  pantalla1.appendChild(next);
+  //pantalla1.appendChild(imagenResult);
+  //pantalla1.appendChild(result);
+  //pantalla1.appendChild(next);
 
 
 
