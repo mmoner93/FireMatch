@@ -564,6 +564,7 @@ function formarApuestaDiabloResult() {
   var pantalla1 = document.querySelector(".Pantalla_1");
   pantalla1.style.visibility = "visible";
 
+
   var result = document.createElement("p");
   result.id = "result";
 
@@ -593,7 +594,8 @@ function formarApuestasDiablo() {
   var pantallaEntera=document.querySelector("#escritorio");
   pantallaEntera.style.visibility="hidden";
   var template = document.querySelector("#apuesta_template");
-  template.style.visibility = "visible";
+  template.style.display="flex";
+  //template.style.visibility = "visible";
   template.classList.remove("hiden");
   var imagenDiablo = template.querySelector("#imgDiablo");
   //imagenDiablo.id = "imgDiablo";
@@ -684,8 +686,8 @@ function elegirApuesta(e) {
   pantalla.style.visibility="visible";
 
   var template=document.querySelector("#apuesta_template");
-  template.style.visibility="hidden";
-
+  //template.style.visibility="hidden";
+  template.style.display="none";
 
 }
 

@@ -450,6 +450,9 @@ if(jugador.FaseJugador=="introduccion"){
  if(jugador.FaseJugador="rondas"){
    switch (jugador.list_rondas[jugador.ronda_actual].faseActual) {
      case "apuesta":
+     var pantall=document.querySelector("#final_pareja_template");
+      pantall.style.visibility="hidden";
+      pantall.style.display="none";
        deactivateall();
        //var capaIconos = document.querySelector(".iconos");
        //capaIconos.style.visibility = "hidden";
@@ -468,6 +471,9 @@ if(jugador.FaseJugador=="introduccion"){
        deactivateall();
        var pantall=document.querySelector("#escritorio");
        pantall.style.visibility="hidden";
+       var pantall=document.querySelector("#final_pareja_template");
+       pantall.style.visibility="visible";
+       pantall.style.display="flex";
        formarResultadoRonda();
 
        break;
@@ -476,6 +482,10 @@ if(jugador.FaseJugador=="introduccion"){
        deactivateall();
        var pantall=document.querySelector("#escritorio");
        pantall.style.visibility="hidden";
+       //var pantall=document.querySelector("#final_pareja_template");
+      // pantall.style.visibility="hidden";
+      // pantall.style.display="none";
+
        formarApuestaDiabloResult();
        break;
    }
@@ -497,18 +507,18 @@ function deactivateall() {
 
 function formarResultadoRonda() {
 
-  var template=document.querySelector("final_pareja_template");
+  var template=document.querySelector("#final_pareja_template");
   template.classList.remove("hiden");
   template.style.visibility = "visible";
-  var result = template.querySelector("result");
-  result.id = "result";
+  var result = template.querySelector("#result");
+  //result.id = "result";
 
   var imagenResult = template.querySelector("#imgResult");
-  imagenResult.id = "imgResult";
-  var ronda_prueba = jugador.list_rondas[jugador.ronda_actual]
+  //imagenResult.id = "imgResult";
+  var ronda_prueba = jugador.list_rondas[jugador.ronda_actual];
 
 
-
+console.log("QUE RESULTADO ES : " +ronda_prueba.nota_pareja_Asignado);
 
   if (ronda_prueba.nota_pareja_Asignado == 0) {
     result.innerText = ronda_prueba.textoResultadoBueno;
@@ -535,8 +545,24 @@ function formarResultadoRonda() {
 }
 
 function nextFase(e) {
-  switch (e.srcElement.id) {
+  var ronda_prueba = jugador.list_rondas[jugador.ronda_actual];
+
+console.log(ronda_prueba.faseActual);
+
+if(jugador.list_rondas[jugador.ronda_actual].faseActual=="finalParejas"){
+  jugador.list_rondas[jugador.ronda_actual].faseActual = "finalApuesta";
+  queFaseEstoy();
+
+}else if(jugador.list_rondas[jugador.ronda_actual].faseActual=="finalApuesta"){
+
+  jugador.ronda_actual = jugador.ronda_actual + 1;
+  jugador.list_rondas[jugador.ronda_actual].faseActual = "apuesta";
+  queFaseEstoy();
+}
+
+  /*switch (e.srcElement.id) {
     case "imgNext":
+      console.log("HAGO CLICK imgNext");
       var ronda_prueba = jugador.list_rondas[jugador.ronda_actual];
       jugador.list_rondas[jugador.ronda_actual].faseActual = "finalApuesta";
       queFaseEstoy();
@@ -549,7 +575,7 @@ function nextFase(e) {
 
       queFaseEstoy();
       break;
-  }
+  }*/
 
 
 }
@@ -564,12 +590,20 @@ function formarApuestaDiabloResult() {
   var pantalla1 = document.querySelector(".Pantalla_1");
   pantalla1.style.visibility = "visible";
 
-  var result = document.createElement("p");
-  result.id = "result";
+  var template=document.querySelector("#final_pareja_template");
+  template.style.visible="visible";
+  template.style.display="flex";
 
-  var imagenResult = document.createElement("img");
-  imagenResult.id = "imgResult";
+
+  var result = template.querySelector("#result");
+
+
+  var imagenResult = template.querySelector("#imgResult");
+
   var ronda_prueba = jugador.list_rondas[jugador.ronda_actual];
+  console.log("ASIGNADO "+ronda_prueba.nota_pareja_Asignado);
+  console.log("Apuesta "+ronda_prueba.Apuesta);
+
   if (ronda_prueba.nota_pareja_Asignado == ronda_prueba.Apuesta) {
     result.innerText = "Has acertado";
     imagenResult.src = "https://pontesano.com/wp-content/uploads/2018/06/Acierto..jpg";
@@ -579,13 +613,13 @@ function formarApuestaDiabloResult() {
 
   }
 
-  var next = document.createElement("img");
-  next.id = "imgNext2";
-  next.src = "https://image.flaticon.com/icons/png/512/28/28275.png";
+  var next = template.querySelector("#imgNext");
+
+  //next.src = "https://image.flaticon.com/icons/png/512/28/28275.png";
   next.addEventListener("click", nextFase);
-  pantalla1.appendChild(imagenResult);
-  pantalla1.appendChild(result);
-  pantalla1.appendChild(next);
+  //pantalla1.appendChild(imagenResult);
+  //pantalla1.appendChild(result);
+  //pantalla1.appendChild(next);
 }
 
 
@@ -595,6 +629,7 @@ function formarApuestasDiablo() {
   var template = document.querySelector("#apuesta_template");
   template.style.visibility = "visible";
   template.classList.remove("hiden");
+  template.style.display="flex";
   var imagenDiablo = template.querySelector("#imgDiablo");
   //imagenDiablo.id = "imgDiablo";
   imagenDiablo.src = "https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
@@ -648,7 +683,8 @@ function formarApuestasDiablo() {
 
 
 function elegirApuesta(e) {
-  console.log("ESTA EN " + e.srcElement.id);
+  console.log("ESTA EN elegir apuesta " + e.srcElement.id);
+  console.log(e);
   switch (e.srcElement.id) {
     case "bienIcono":
       if (confirm("Quieres elegir apuesta bien ?")) {
@@ -685,7 +721,7 @@ function elegirApuesta(e) {
 
   var template=document.querySelector("#apuesta_template");
   template.style.visibility="hidden";
-
+  template.style.display="none";
 
 }
 
@@ -1453,7 +1489,17 @@ function exitPantalla(e) {
   cleanPantalla(cual);
   desactivatePantallaEscritorio(namePantalla);
   var result = whereIsPantalla("tarjetas_icono");
-  if (result != "NO_EXIST" && namePantalla == "tarjeta_principal_icono") {
+  /*if (result != "NO_EXIST" && (namePantalla == "tarjeta_principal_icono" || )) {
+    var barra=document.querySelector("#barra_superior");
+    barra.style.visibility="hidden";
+  }*/
+
+  if(momentoAsignacion()){
+    var barra=document.querySelector("#barra_superior");
+    barra.style.visibility="visible";
+
+  }else{
+
     var barra=document.querySelector("#barra_superior");
     barra.style.visibility="hidden";
   }
