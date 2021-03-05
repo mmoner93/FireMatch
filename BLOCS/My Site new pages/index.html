@@ -34,6 +34,38 @@
 
 <!-- Main container -->
 <div class="page-container container horizontal">
+
+  <div class="bloc l-bloc" id="introduccion_template" style="display:none">     <!--hiden aqui-->
+		<div class="container bloc-lg">
+			<div class="row">
+				<div class="col-md-6">
+					<h5 class="mg-md text-lg-center" id="TextDescription">
+						Heading content
+					</h5>
+					<div class="divider-h">
+						<span class="divider"></span>
+					</div>
+					<h6 class="mg-md">
+						Answers:
+					</h6>
+					<h5 class="mg-md" id="response1" style="visibility:hidden">
+						Heading content
+					</h5>
+					<h5 class="mg-md" id="response2" style="visibility:hidden">
+						Heading content
+					</h5>
+					<h5 class="mg-md " id="response3" style="visibility:hidden">
+						Heading content
+					</h5>
+				</div>
+				<div class="col-md-6 col-lg-6">
+					<img src="img/lazyload-ph.png"  id="imgIntro" data-src="img/unknown.png" class="img-fluid mx-auto d-block lazyload" alt="unknown" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	<div class="bloc l-bloc" id="apuesta_template" style="display:none">  <!--hiden aqui-->
 		  <div class="container bloc-lg">
 			  <div class="row">
@@ -398,11 +430,11 @@
 	<!-- bloc-6 END -->
 
 	<!-- bloc-7 -->
-	<div class="bloc l-bloc hiden" id="introduccion_template">    <!--hiden aqui-->
+	<div class="bloc l-bloc hiden" id="introduccion_templates">    <!--hiden aqui-->
 		<div class="container bloc-lg">
 			<div class="row">
 				<div class="col-md-6">
-					<h5 class="mg-md text-lg-center">
+					<h5 class="mg-md text-lg-center" id="TextDescription">
 						Heading content
 					</h5>
 					<div class="divider-h">
@@ -411,18 +443,18 @@
 					<h6 class="mg-md">
 						Answers:
 					</h6>
-					<h5 class="mg-md">
+					<h5 class="mg-md" id="response1">
 						Heading content
 					</h5>
-					<h5 class="mg-md">
+					<h5 class="mg-md" id="response2">
 						Heading content
 					</h5>
-					<h5 class="mg-md ">
+					<h5 class="mg-md " id="response3">
 						Heading content
 					</h5>
 				</div>
 				<div class="col-md-6 col-lg-6">
-					<img src="img/lazyload-ph.png" data-src="img/unknown.png" class="img-fluid mx-auto d-block lazyload" alt="unknown" />
+					<img src="img/lazyload-ph.png"  id="imgIntro" data-src="img/unknown.png" class="img-fluid mx-auto d-block lazyload" alt="unknown" />
 				</div>
 			</div>
 		</div>
