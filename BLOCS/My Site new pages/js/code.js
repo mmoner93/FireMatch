@@ -73,7 +73,7 @@ function photo_caracter(src, isDisonance, isBlock) {
   this.src = src;
   this.isDisonance = isDisonance;
   this.isBlock = isBlock;
-  this.srcBlocked = "https://st2.depositphotos.com/3921439/7464/v/600/depositphotos_74644007-stock-illustration-the-lock-icon-lock-symbol.jpg";
+  this.srcBlocked = document.querySelector("#locked_img");
 
 }
 
@@ -299,9 +299,9 @@ personaje_prueba.list_atributes.push(atributo_1);
 personaje_prueba.list_atributes.push(atributo_2);
 personaje_prueba.list_atributes.push(atributo_3);
 
-var foto1 = new photo_caracter("https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg", false, false);
-var foto2 = new photo_caracter("https://image.shutterstock.com/image-vector/vector-pixel-art-girl-anime-600w-1102810826.jpg", false, false);
-var foto3 = new photo_caracter("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF2BGxHSQK46Kgw49miYuO3142BjlvC9j_lA&usqp=CAU", false, false);
+var foto1 = new photo_caracter(document.querySelector("#kevin_foto_cara"), false, false);
+var foto2 = new photo_caracter(document.querySelector("#kevin_gym"), false, false);
+var foto3 = new photo_caracter(document.querySelector("#kevin_fiesta_borracho"), false, false);
 personaje_prueba.list_photos.push(foto1);
 personaje_prueba.list_photos.push(foto2);
 personaje_prueba.list_photos.push(foto3);
@@ -317,9 +317,9 @@ personaje_prueba1.list_atributes.push(atributo_1);
 personaje_prueba1.list_atributes.push(atributo_2);
 personaje_prueba1.list_atributes.push(atributo_3);
 
-var foto1 = new photo_caracter("https://www.lorealprofessionnel.es/-/media/master/es/webedia-hair-trend-news-2/es_es/3144/7192-peinados-para-cara-redonda-orig-2.ashx", false, false);
-var foto2 = new photo_caracter("https://i.pinimg.com/originals/db/50/89/db508974ed8fbd967c62df21ce5a1eb3.jpg", false, false);
-var foto3 = new photo_caracter("https://img4.codigonuevo.com/ef/de/06/caras-futuro-mileniales-codigo-nuevo-930x600.jpg", false, true);
+var foto1 = new photo_caracter(document.querySelector("#karen_cara"), false, false);
+var foto2 = new photo_caracter(document.querySelector("#karen_montana"), false, false);
+var foto3 = new photo_caracter(document.querySelector("#karen_uni"), false, true);
 personaje_prueba1.list_photos.push(foto1);
 personaje_prueba1.list_photos.push(foto2);
 personaje_prueba1.list_photos.push(foto3);
@@ -343,9 +343,9 @@ personaje_prueba2.list_atributes.push(atributo_1);
 personaje_prueba2.list_atributes.push(atributo_2);
 personaje_prueba2.list_atributes.push(atributo_3);
 
-var foto1 = new photo_caracter("https://static2.abc.es/media/ciencia/2017/02/28/cara-k1WG--620x349@abc.jpg", false, true);
-var foto2 = new photo_caracter("https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/article/55365cde3787b2187a1f0fbc/impresion-cara.jpg", false, false);
-var foto3 = new photo_caracter("https://pavlov.psyciencia.com/2016/12/caras-de-la-ira-e1480938528244.jpg", false, false);
+var foto1 = new photo_caracter(document.querySelector("#yenifer_perfil"), false, true);
+var foto2 = new photo_caracter(document.querySelector("#yenifer_gym"), false, false);
+var foto3 = new photo_caracter(document.querySelector("#yenifer_fiesta"), false, false);
 
 personaje_prueba2.list_photos.push(foto1);
 personaje_prueba2.list_photos.push(foto2);
@@ -1041,22 +1041,54 @@ function recogerClick(e) {
   if (jugador.isLookingDisonace && e.srcElement.src != "https://st2.depositphotos.com/3921439/7464/v/600/depositphotos_74644007-stock-illustration-the-lock-icon-lock-symbol.jpg") {
     if (jugador.contadorClickDisonance == 0) {
       console.log("Miro disonanica 1");
-      console.log( );
+      console.log( e.srcElement);
 
       var id_parent;
 
       if(e.srcElement.nodeName.toLowerCase()=="p"){
 
         id_parent = e.srcElement.parentNode.parentNode.parentNode.parentNode.classList[0];
-      }else if(e.srcElement.nodeName.toLowerCase()=="img"){
+      }else if(e.srcElement.nodeName.toLowerCase()=="div"){
 
         id_parent = e.srcElement.parentNode.parentNode.classList[0];
+      }else{
+
+          var esImgCar=false;
+          var temp= e.srcElement.parentNode;
+          var controlBucle=true;
+          while(controlBucle){
+            console.log(temp);
+            console.log(temp.getAttribute("name"));
+
+
+            if(temp.getAttribute("name") == "Pantalla_1"){
+              esImgCar=true;
+                    console.log("Paro en Pantalla_1");
+                  controlBucle=false;
+            } else if(temp.getAttribute("name") == "Pantalla_2"){
+              esImgCar=true;
+                    console.log("Paro en Pantalla_2");
+                  controlBucle=false;
+            }else if(temp.nodeName.toLowerCase()=="body"){
+                console.log("Paro en body");
+                controlBucle=false;
+
+            }else{
+              temp=temp.parentNode;
+            }
+
+          }
+            id_parent =temp.getAttribute("name");
       }
 
 
       var quien = "";
       var main = "";
       var id = e.srcElement.id;
+      if(esImgCar){
+          id= "img_caracter";
+
+      }
       console.log(id_parent);
       if (id_parent == "Pantalla_1") {
 
@@ -1103,13 +1135,47 @@ function recogerClick(e) {
       if(e.srcElement.nodeName.toLowerCase()=="p"){
 
         id_parent = e.srcElement.parentNode.parentNode.parentNode.parentNode.classList[0];
-      }else if(e.srcElement.nodeName.toLowerCase()=="img"){
+      }else if(e.srcElement.nodeName.toLowerCase()=="div"){
 
         id_parent = e.srcElement.parentNode.parentNode.classList[0];
+      }else{
+
+          var esImgCar=false;
+          var temp= e.srcElement.parentNode;
+          var controlBucle=true;
+          while(controlBucle){
+            console.log(temp);
+            console.log(temp.getAttribute("name"));
+
+
+            if(temp.getAttribute("name") == "Pantalla_1"){
+              esImgCar=true;
+                    console.log("Paro en Pantalla_1");
+                  controlBucle=false;
+            } else if(temp.getAttribute("name") == "Pantalla_2"){
+              esImgCar=true;
+                    console.log("Paro en Pantalla_2");
+                  controlBucle=false;
+            }else if(temp.nodeName.toLowerCase()=="body"){
+                console.log("Paro en body");
+                controlBucle=false;
+
+            }else{
+              temp=temp.parentNode;
+            }
+
+          }
+            id_parent =temp.getAttribute("name");
       }
-      var main = "";
+
+
       var quien = "";
+      var main = "";
       var id = e.srcElement.id;
+      if(esImgCar){
+          id= "img_caracter";
+
+      }
       if (id_parent == "Pantalla_1") {
 
         if (escritorio.cualPantalla1 == "tarjetas_icono") {
@@ -1234,29 +1300,50 @@ function nextImage(e) {
   var ronda_prueba = jugador.list_rondas[jugador.ronda_actual];
   if (this.id === "flecha") {
     var pantalla = document.querySelector("." + whereIsPantalla("tarjetas_icono"));
-    var imagen_usuario = pantalla.querySelector("img#img_caracter");
+    var imagen_usuario = pantalla.querySelector("#img_caracter");
     ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing = ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing + 1;
     if (ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing > 2) {
       ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing = 0;
 
     }
     if (ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].isBlock) {
-      imagen_usuario.src = ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].srcBlocked;
+      while(imagen_usuario.firstChild)
+      {
+
+          imagen_usuario.removeChild(imagen_usuario.firstChild);
+
+      }
+      ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].srcBlocked.classList.remove("hiden");
+      imagen_usuario.appendChild(ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].srcBlocked);
     } else {
-      imagen_usuario.src = ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].src;
+      while(imagen_usuario.firstChild)
+      {
+
+          imagen_usuario.removeChild(imagen_usuario.firstChild);
+
+      }
+      ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].src.classList.remove("hiden");
+        imagen_usuario.appendChild(ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].src);
     }
 
 
   } else if (this.id === "flecha_2") {
     var pantalla = document.querySelector("." + whereIsPantalla("tarjeta_principal_icono"));
-    var imagen_usuario = pantalla.querySelector("img#img_caracter");
+    var imagen_usuario = pantalla.querySelector("#img_caracter");
     ronda_prueba.main_caracter.foto_showing = ronda_prueba.main_caracter.foto_showing + 1;
     if (ronda_prueba.main_caracter.foto_showing > 2) {
       ronda_prueba.main_caracter.foto_showing = 0;
 
     }
-    imagen_usuario.src = ronda_prueba.main_caracter.list_photos[ronda_prueba.main_caracter.foto_showing].src;
+  //  imagen_usuario.src = ronda_prueba.main_caracter.list_photos[ronda_prueba.main_caracter.foto_showing].src;
+    while(imagen_usuario.firstChild)
+    {
 
+        imagen_usuario.removeChild(imagen_usuario.firstChild);
+
+    }
+    ronda_prueba.main_caracter.list_photos[ronda_prueba.main_caracter.foto_showing].src.classList.remove("hiden");
+   imagen_usuario.appendChild(ronda_prueba.main_caracter.list_photos[ronda_prueba.main_caracter.foto_showing].src);
   }
 
 
@@ -1297,7 +1384,15 @@ function imageBlocked(e) {
     if (ronda_prueba.countImagenDesbloqueada < jugador.maxImagenDesbloqueada) {
       if (confirm("Quieres desbloquear imagen?")) {
         ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].isBlock = false;
-        imagen_caracter.src = ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].src;
+        while(imagen_caracter.firstChild)
+        {
+
+            imagen_caracter.removeChild(imagen_caracter.firstChild);
+
+        }
+        ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].src.classList.remove("hiden");
+        imagen_caracter.appendChild( ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].src);
+
         ronda_prueba.countImagenDesbloqueada = ronda_prueba.countImagenDesbloqueada + 1;
       }
     } else {
@@ -1339,6 +1434,7 @@ var template="";
   //ima_carac.id = "img_caracter";
 
   var ima_carac=newTemplate.querySelector("#img_caracter");
+  //ima_carac.appendChild(ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].src);
   ima_carac.addEventListener("click", recogerClick);
 
 
@@ -1414,7 +1510,7 @@ var template="";
   if (type == "tarjetas_icono") {
 
     var ima_flecha_ficha = newTemplate.querySelector("#flecha_ficha");
-    ima_flecha_ficha.src = "https://e7.pngegg.com/pngimages/593/775/png-clipart-arrow-computer-icons-encapsulated-postscript-right-arrow-angle-text.png";
+    //ima_flecha_ficha.src = "https://e7.pngegg.com/pngimages/593/775/png-clipart-arrow-computer-icons-encapsulated-postscript-right-arrow-angle-text.png";
     //ima_flecha_ficha.id = "flecha_ficha";
     ima_flecha_ficha.addEventListener("click", nextFicha);
 
@@ -1902,9 +1998,25 @@ function llenarInfoTarjetaIcono(pantalla_volcar) {
   var atr2 = pantalla_volcar.querySelector("#atributo_2");
   var atr3 = pantalla_volcar.querySelector("#atributo_3");
   if (ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].isBlock) {
-    imagen_caracter.src = ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].srcBlocked;
+    while(imagen_caracter.firstChild)
+    {
+
+        imagen_caracter.removeChild(imagen_caracter.firstChild);
+
+    }
+    ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].srcBlocked.classList.remove("hiden");
+      imagen_caracter.appendChild(ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].srcBlocked);
+
   } else {
-    imagen_caracter.src = ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].src;
+    while(imagen_caracter.firstChild)
+    {
+
+        imagen_caracter.removeChild(imagen_caracter.firstChild);
+
+    }
+    ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].src.classList.remove("hiden");
+      imagen_caracter.appendChild(ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_photos[ronda_prueba.list_caracters[ronda_prueba.fichaUsing].foto_showing].src);
+
   }
 
   name.innerText = ronda_prueba.list_caracters[ronda_prueba.fichaUsing].name;
@@ -1917,13 +2029,6 @@ function llenarInfoTarjetaIcono(pantalla_volcar) {
   if (!ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_atributes[2].isBlock) {
     atr3.innerText = ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_atributes[2].description;
   }
-
-
-
-
-
-
-
 
 
 
@@ -1974,7 +2079,17 @@ function onClickIcon(e) {
         var atr2 = pantalla_volcar.querySelector("#atributo_2");
         var atr3 = pantalla_volcar.querySelector("#atributo_3");
 
-        imagen_caracter.src = ronda_prueba.main_caracter.list_photos[0].src;
+        //imagen_caracter.src = ronda_prueba.main_caracter.list_photos[0].src;
+        while(imagen_caracter.firstChild)
+        {
+
+            imagen_caracter.removeChild(imagen_caracter.firstChild);
+
+        }
+         ronda_prueba.main_caracter.list_photos[0].src.classList.remove("hiden");
+          imagen_caracter.appendChild( ronda_prueba.main_caracter.list_photos[0].src);
+
+
         name.innerText = ronda_prueba.main_caracter.name;
         atr1.innerText = ronda_prueba.main_caracter.list_atributes[0].description;
         atr2.innerText = ronda_prueba.main_caracter.list_atributes[1].description;
