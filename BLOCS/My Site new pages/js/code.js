@@ -118,29 +118,30 @@ var jugador = new jugador();
 
 /** 1 **/
 var intro1=new introduccionScena();
-intro1.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro1.image=document.querySelector("#intro1");
+
 intro1.text="Hola, soy Juanca Daver y llevo todo mi vida siendo lo que consideran un nini.";
 intro1.list_respuestas.push("Continuar...");
 
 var intro2=new introduccionScena();
-intro2.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro2.image=document.querySelector("#intro1");
 intro2.text="Mi rutina es pasarme el dia en el sofá hasta que es la hora de comer";
 intro2.list_respuestas.push("Continuar...");
 
 var intro3=new introduccionScena();
-intro3.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro3.image=document.querySelector("#intro1");
 intro3.text="Cuando me levanto del sofa… es para buscar algo precocinado en el super.";
 intro3.list_respuestas.push("Continuar...");
 
 
 /** 2 **/
 var intro4=new introduccionScena();
-intro4.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro4.image=document.querySelector("#intro2");
 intro4.text="Y hoy  por fin mi vida ha cambiado de rumbo, he tenido suerte y al fin un camión ha acabado con mi sufrimiento.";
 intro4.list_respuestas.push("Continuar...");
 
 var intro5=new introduccionScena();
-intro5.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro5.image=document.querySelector("#intro2");
 intro5.text="Ya era hora.";
 intro5.list_respuestas.push("Continuar...");
 
@@ -148,30 +149,30 @@ intro5.list_respuestas.push("Continuar...");
 
 
 var intro6=new introduccionScena();
-intro6.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro6.image=document.querySelector("#intro3");
 intro6.text="Todo está muy oscuro, pero creo que puedo caminar hacía delante...";
 intro6.list_respuestas.push("Continuar...");
 
 /** 4**/
 var intro7=new introduccionScena();
-intro7.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro7.image=document.querySelector("#intro4");
 intro7.text="Desconocido-Hola!";
 intro7.list_respuestas.push("Seguir caminando...");
 
 var intro8=new introduccionScena();
-intro8.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro8.image=document.querySelector("#intro4");
 intro8.text="Desconocido-¿Qué haces caminando a oscuras hacía el infierno?";
 intro8.list_respuestas.push("Seguir caminando...");
 
 
 var intro9=new introduccionScena();
-intro9.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro9.image=document.querySelector("#intro4");
 intro9.text="Desconocido-Ven conmigo anda, aquí verás mejor…";
 intro9.list_respuestas.push("Ir hacia la voz...");
 
 
 var intro9=new introduccionScena();
-intro9.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro9.image=document.querySelector("#intro4");
 intro9.text="Desconocido-Ven conmigo anda, aquí verás mejor…";
 intro9.list_respuestas.push("Ir hacia la voz...");
 
@@ -179,57 +180,57 @@ intro9.list_respuestas.push("Ir hacia la voz...");
 
 
 var intro10=new introduccionScena();
-intro10.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro10.image=document.querySelector("#intro5");
 intro10.text="Diablo → Ahora me ves? Perfecto. Pues... hola, soy.. el diablo. Como ves. ¿Ahora entiendes por qué sabía hacía donde ibas verdad?";
 intro10.list_respuestas.push("Si…");
 
 var intro11=new introduccionScena();
-intro11.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro11.image=document.querySelector("#intro5");
 intro11.text="Diablo → Supongo.. que entiendes que te ha pasado... Estás muerto!";
 intro11.list_respuestas.push("Si…");
 
 /** 6**/
 
 var intro12=new introduccionScena();
-intro12.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro12.image=document.querySelector("#intro6");
 intro12.text="Diablo → No te preocupes… Veo que has sido un inútil toda tu vida. Pero te voy a dar una oportunidad para hacer algo con ella antes de desaparecer.";
 intro12.list_respuestas.push("Continuar…");
 
 var intro13=new introduccionScena();
-intro13.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro13.image=document.querySelector("#intro6");
 intro13.text="Diablo → Tengo una misión para ti. ¿Y si trabajas para mí y con lo que ganes, compras tu alma para evitar el infierno?";
 intro13.list_respuestas.push("¿Qué tengo que hacer?");
 
 var intro14=new introduccionScena();
-intro14.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro14.image=document.querySelector("#intro6");
 intro14.text="Diablo → Es fácil, se me han acumulado un montón de tareas referente a humanos. Una de ellas es hacer parejas.";
 intro14.list_respuestas.push("Continuar…");
 
 
 var intro15=new introduccionScena();
-intro15.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro15.image=document.querySelector("#intro6");
 intro15.text="Diablo →Digamos que si tú me quitas ese trabajo de encima yo podría pagarte en monedas demoniacas .";
 intro15.list_respuestas.push("Continuar…");
 
 var intro16=new introduccionScena();
-intro16.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro16.image=document.querySelector("#intro6");
 intro16.text="Diablo →(no preguntes por cambio a euros, suficiente lata me está dando ya el banco).";
 intro16.list_respuestas.push("Continuar…");
 
 var intro17=new introduccionScena();
-intro17.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro17.image=document.querySelector("#intro6");
 intro17.text="Diablo →Y con unas cuantas … Puedes comprarme tu alma. ¿Qué me dices?";
 intro17.list_respuestas.push("Aceptar trabajo.");
 intro17.list_respuestas.push("Seguir tu camino.");
 
 
 var intro18=new introduccionScena();
-intro18.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro18.image=document.querySelector("#intro5");
 intro18.text="Diablo → ¡Perfecto! Voy a enseñarte tu escritorio.";
 intro18.list_respuestas.push("Continuar...");
 
 var intro19=new introduccionScena();
-intro19.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+intro19.image=document.querySelector("#intro6");
 intro19.text="Diablo →¿Tantas ganas tienes de sufrir en mi territorio? ¿Estás seguro de que no quieres salvarte por mirar unos cuantas fichas de gente?";
 intro19.list_respuestas.push("Aceptar trabajo.");
 intro19.list_respuestas.push("Seguir tu camino.");
@@ -582,8 +583,15 @@ var escena=jugador.list_introduccion_scenes[jugador.contadorWichIntro];
 
 
 var imagen=template.querySelector("#imgIntro");
-imagen.src=escena.image;
+//imagen.src=escena.image;
 
+while (imagen.firstChild) {
+  imagen.removeChild(imagen.firstChild);
+}
+
+var capa=escena.image;
+capa.classList.remove("hiden");
+imagen.appendChild(capa);
 
 
 var textoDesc=template.querySelector("#TextDescription");
