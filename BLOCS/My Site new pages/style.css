@@ -80,6 +80,28 @@ body {
 }
 
 
+.block_text {
+	background-color: aliceblue;
+	border-radius: 20px;
+	border-style: dashed;
+}
+
+.chat-buttom {
+	visibility: visible;
+    background-color: darkturquoise;
+    border-radius: 10px;
+    padding-left: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    display: inline-flex;
+    padding-right: 10px;
+    border-block-color: black;
+    border-style: double;
+}
+
+.PreventCursorChange {
+	border-radius: 15px;
+}
 
 /*-----------------------------------------------------------------------------------*/
 
