@@ -47,9 +47,9 @@ function ronda() {
   this.textoResultadoBueno="Pareja buena";
   this.textoResultadoMalo="Pareja mala";
   this.textoResultadoNeutro="Pareja neutra";
-  this.imgBueno="https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
-  this.imgMalo="https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
-  this.imgNeutro="https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
+  this.imgBueno=document.querySelector("#trabajando1");
+  this.imgMalo=document.querySelector("#trabajando1");
+  this.imgNeutro=document.querySelector("#trabajando3");
 }
 
 
@@ -61,6 +61,7 @@ function caracter(isMain, name) {
   this.foto_showing = 0;
   this.list_chat = [];
   this.nota_pareja = 0;//0bien , 1 neutro , 2 mal
+  this.color_corazon="#f8f9fa";
 }
 
 function atribute(description, isDisonance, isBlock) {
@@ -627,10 +628,10 @@ personaje_prueba2.list_photos.push(foto2);
 personaje_prueba2.list_photos.push(foto3);
 
 
-//var chat1 = new chat("Hobbie ?", "Soy un elfo nivel 100");
+var chat1 = new chat("Qué buscas en una pareja?", "Que podamos compartir aventuras.");
 //var chat2 = new chat("Vives solo ?", "Mis waifus dicen que no");
 
-//personaje_prueba2.list_chat.push(chat1);
+personaje_prueba2.list_chat.push(chat1);
 //personaje_prueba2.list_chat.push(chat2);
 
 
@@ -1021,7 +1022,10 @@ intro.style.display="none";
 
   var imagenResult = template.querySelector("#imgResult");
   result.innerText=jugador.finales[cual].text;
-  imagenResult.src=jugador.finales[cual].image;
+  while(imagenResult.firstChild){
+    imagenResult.removeChild(imagenResult.firstChild);
+  }
+  imagenResult.appendChild(jugador.finales[cual].image);
 
 
 
@@ -1163,6 +1167,12 @@ function formarResultadoRonda() {
 
   var imagenResult = template.querySelector("#imgResult");
   //imagenResult.id = "imgResult";
+
+while(imagenResult.firstChild){
+  imagenResult.removeChild(imagenResult.firstChild);
+}
+
+
   var ronda_prueba = jugador.list_rondas[jugador.ronda_actual];
 
 
@@ -1170,14 +1180,23 @@ console.log("QUE RESULTADO ES : " +ronda_prueba.nota_pareja_Asignado);
 
   if (ronda_prueba.nota_pareja_Asignado == 0) {
     result.innerText = ronda_prueba.textoResultadoBueno;
-    imagenResult.src = ronda_prueba.imgBueno;
+    var clone=ronda_prueba.imgBueno.cloneNode(true);
+    clone.classList.remove("hiden");
+    clone.style.width="40%";
+    imagenResult.appendChild(clone);
   }
   if (ronda_prueba.nota_pareja_Asignado == 1) {
-    imagenResult.src = ronda_prueba.imgNeutro;
+    var clone=ronda_prueba.imgNeutro.cloneNode(true);
+    clone.classList.remove("hiden");
+    clone.style.width="40%";
+    imagenResult.appendChild(clone);
     result.innerText = ronda_prueba.textoResultadoNeutro;
   }
   if (ronda_prueba.nota_pareja_Asignado == 2) {
-    imagenResult.src = ronda_prueba.imgMalo;
+    var clone=ronda_prueba.imgMalo.cloneNode(true);
+    clone.classList.remove("hiden");
+    clone.style.width="40%";
+    imagenResult.appendChild(clone);
     result.innerText = ronda_prueba.textoResultadoMalo;
   }
 
@@ -1253,11 +1272,30 @@ function formarApuestaDiabloResult() {
   console.log("Apuesta "+ronda_prueba.Apuesta);
 
   if (ronda_prueba.nota_pareja_Asignado == ronda_prueba.Apuesta) {
-    result.innerText = "Has acertado";
-    imagenResult.src = "https://pontesano.com/wp-content/uploads/2018/06/Acierto..jpg";
+    result.innerText = "Has acertado la apuesta";
+    jugador.coins=jugador.coins+5;
+    while(imagenResult.firstChild)
+    {
+
+        imagenResult.removeChild(imagenResult.firstChild);
+
+    }
+    var clo = document.querySelector("#trabajando4").cloneNode(true);
+    clo.classList.remove("hiden");
+    clo.style.width="40%";
+    imagenResult.appendChild(clo);
   } else {
-    result.innerText = "No has acertado";
-    imagenResult.src = "https://pontesano.com/wp-content/uploads/2018/06/ERROR.jpg";
+    result.innerText = "No has acertado la apuesta";
+    while(imagenResult.firstChild)
+    {
+
+        imagenResult.removeChild(imagenResult.firstChild);
+
+    }
+    var clo = document.querySelector("#trabajando5").cloneNode(true);
+    clo.classList.remove("hiden");
+    clo.style.width="40%";
+    imagenResult.appendChild(clo);
 
   }
 
@@ -1280,7 +1318,15 @@ function formarApuestasDiablo() {
   template.style.display="flex";
   var imagenDiablo = template.querySelector("#imgDiablo");
   //imagenDiablo.id = "imgDiablo";
-  imagenDiablo.src = "https://image.freepik.com/vector-gratis/mascara-demonio-halloween-diseno-plano_23-2147909150.jpg";
+  while(imagenDiablo.firstChild)
+  {
+
+    imagenDiablo.removeChild(imagenDiablo.firstChild);
+  }
+
+ var clone =document.querySelector("#intro5a").cloneNode(true);
+  clone.classList.remove("hiden");
+  imagenDiablo.appendChild(clone);
 
   var pregunta =  template.querySelector("#preguntaDiablo");
 
@@ -1612,7 +1658,15 @@ function mirarDisonancia() {
       console.log("Contador es " + contador);
       if (contador == 2) {
         ronda_prueba.list_Disonances[i].reached = true;
-        confirm("has detectado disonancia tipo :(1bueno ,2malo)" + ronda_prueba.list_Disonances[i].typeDisonance);
+        confirm("has detectado disonancia tipo (1 bueno ,2 malo) --> " + ronda_prueba.list_Disonances[i].typeDisonance);
+        //bueno
+        if(ronda_prueba.list_Disonances[i].typeDisonance ==1){
+           ronda_prueba.list_caracters[ronda_prueba.fichaUsing].color_corazon="#00ff08";
+
+        }else{
+          ronda_prueba.list_caracters[ronda_prueba.fichaUsing].color_corazon="#FF2600";
+        }
+        activarAsignar();
         return true;
       }
     }
@@ -1800,6 +1854,7 @@ var template="";
     if (ronda_prueba.list_caracters[ronda_prueba.fichaUsing].list_atributes[0].isBlock) {
       var atributo_1 = document.createElement("img");
       atributo_1.src = "https://st2.depositphotos.com/3921439/7464/v/600/depositphotos_74644007-stock-illustration-the-lock-icon-lock-symbol.jpg";
+      atributo_1.classList.add("imgBlockedAtr");
       atributo_1.id = "atributo_1_i";
       atributo_1.cual = 0;
       atributo_1.addEventListener("click", unlockAtribute);
@@ -1813,6 +1868,7 @@ var template="";
       var atributo_2 = document.createElement("img");
       atributo_2.src = "https://st2.depositphotos.com/3921439/7464/v/600/depositphotos_74644007-stock-illustration-the-lock-icon-lock-symbol.jpg";
       atributo_2.id = "atributo_2_i";
+      atributo_2.classList.add("imgBlockedAtr");
       atributo_2.cual = 1;
       atributo_2.addEventListener("click", unlockAtribute);
     } else {
@@ -1825,6 +1881,7 @@ var template="";
       var atributo_3 = document.createElement("img");
       atributo_3.src = "https://st2.depositphotos.com/3921439/7464/v/600/depositphotos_74644007-stock-illustration-the-lock-icon-lock-symbol.jpg";
       atributo_3.id = "atributo_3_i";
+      atributo_3.classList.add("imgBlockedAtr");
       atributo_3.cual = 2;
       atributo_3.addEventListener("click", unlockAtribute);
     } else {
@@ -1867,6 +1924,8 @@ var template="";
     verificarPareja.style.visibility = "hidden";*/
 var verificarPareja = document.querySelector("#verfiy_asig");
 verificarPareja.addEventListener("click", asignarPareja);
+
+
   }
 
 
@@ -2482,10 +2541,11 @@ function activarAsignar() {
   var iconoVerificar = document.querySelector("#verfiy_asig");
   iconoVerificar.style.visibility = "visible";*/
 
-
+var ronda_prueba = jugador.list_rondas[jugador.ronda_actual]
 var barra=document.querySelector("#barra_superior");
 barra.style.visibility="visible";
-
+var corazon= barra.querySelector("#heart");
+corazon.style.color= ronda_prueba.list_caracters[ronda_prueba.fichaUsing].color_corazon;
 }
 
 
@@ -2525,8 +2585,12 @@ function asignarPareja() {
     cleanPantalla("Pantalla_2");
     desactivatePantallaEscritorio("tarjetas_icono");
     desactivatePantallaEscritorio("tarjeta_principal_icono");
+
     deactivateall();
+    var barra=document.querySelector("#barra_superior");
+    barra.style.visibility="hidden";
     jugador.list_rondas[jugador.ronda_actual].faseActual = "finalParejas";
+    jugador.coins=jugador.coins+10;
     queFaseEstoy();
 
   }
