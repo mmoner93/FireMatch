@@ -264,19 +264,23 @@ jugador.list_introduccion_scenes.push(intro19);
 
 var final1=new final();
 final1.text=" No habías hecho nada en la vida para merecer ir al infierno.El diablo no ha conseguido convencerte y sigues tu camino hacia la luz... o más bien el cielo.";
-final1.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+final1.image=document.querySelector("#final1");
+
 
 var final2=new final();
 final2.text=" No habías hecho nada en la vida para merecer ir al infierno.El diablo no ha conseguido engañarte y has formado parejas buenas para el mundo.";
-final2.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+final2.image=document.querySelector("#final2");
+
 
 var final3=new final();
 final3.text=" Creo que para estas alturas ya habrás deducido que miento más que hablo. Antes de conocernos ibas al cielo, pero te pare y he conseguido que cometas suficientes pecados como para ir a lo que querías evitar… EL INFIERNO!";
-final3.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+final3.image=document.querySelector("#final3");
+
 
 var final4=new final();
+final4.image=document.querySelector("#final4");
 final4.text=" Mira que … he intentado engañarte para que cometieses algún pecado en tus elecciones… Pero es que ha sido demasiado fácil. Lo has hecho tan mal, si era una prueba, que no tiene ni gracia enviarte al infierno.Ya se! Mejor te rencarno en el mundo tan … Fastidiado que has creado. Así disfrutarás de tus elecciones.";
-final4.image="https://image.shutterstock.com/z/stock-vector-vector-pixel-art-suspicious-man-isolated-cartoon-1591895995.jpg";
+
 
 
 
@@ -462,7 +466,11 @@ ronda_prueba2.main_caracter = personaje_prueba;
 ronda_prueba2.list_caracters.push(personaje_prueba1);
 ronda_prueba2.list_caracters.push(personaje_prueba2);
 ronda_prueba2.preguntaDiablo="MMM… Interesante. Digamos que en la siguiente ronda habrán algunas personas que se sientan ofendidas… jeje.  Crees que acertarás ?";
-//ronda_prueba2.list_Disonances.push(disonance1);
+ronda_prueba.pistaTrue = "Los diferentes se atraen";
+ronda_prueba.pistaFalse = "Los diferentes se atraen";
+
+
+
 //ronda_prueba2.list_Disonances.push(disonance2);
 //ronda_prueba2.list_Disonances.push(disonance3);
 
@@ -550,11 +558,6 @@ ronda_prueba3.main_caracter = personaje_prueba;
 ronda_prueba3.list_caracters.push(personaje_prueba1);
 ronda_prueba3.list_caracters.push(personaje_prueba2);
 ronda_prueba3.preguntaDiablo="Que bonito es tener una pareja económicamente estable … le da otro sentido al término amor :).Por cierto , ¿que apostarías ?";
-//ronda_prueba2.list_Disonances.push(disonance1);
-//ronda_prueba2.list_Disonances.push(disonance2);
-//ronda_prueba2.list_Disonances.push(disonance3);
-
-
 
 
 ronda_prueba3.pistaTrue = "El mejor ataque es una buena defensa.";
@@ -793,9 +796,9 @@ personaje_prueba.list_atributes.push(atributo_1);
 personaje_prueba.list_atributes.push(atributo_2);
 personaje_prueba.list_atributes.push(atributo_3);
 
-var foto1 = new photo_caracter(document.querySelector("#frank_cara"), false, false);
-var foto2 = new photo_caracter(document.querySelector("#frank_fuego"), false, false);
-var foto3 = new photo_caracter(document.querySelector("#frank_animales"), false, false);
+var foto1 = new photo_caracter(document.querySelector("#maria_cara"), false, false);
+var foto2 = new photo_caracter(document.querySelector("#maria_mansion"), false, false);
+var foto3 = new photo_caracter(document.querySelector("#maria_concierto"), false, false);
 personaje_prueba.list_photos.push(foto1);
 personaje_prueba.list_photos.push(foto2);
 personaje_prueba.list_photos.push(foto3);
@@ -811,9 +814,9 @@ personaje_prueba1.list_atributes.push(atributo_1);
 personaje_prueba1.list_atributes.push(atributo_2);
 personaje_prueba1.list_atributes.push(atributo_3);
 
-var foto1 = new photo_caracter(document.querySelector("#cactus_cara"), false, false);
-var foto2 = new photo_caracter(document.querySelector("#cactus_amigos"), false, false);
-var foto3 = new photo_caracter(document.querySelector("#cactus_montana"), false, false);
+var foto1 = new photo_caracter(document.querySelector("#marc_cara"), false, false);
+var foto2 = new photo_caracter(document.querySelector("#marc_pc"), false, false);
+var foto3 = new photo_caracter(document.querySelector("#marc_compras"), false, false);
 personaje_prueba1.list_photos.push(foto1);
 personaje_prueba1.list_photos.push(foto2);
 personaje_prueba1.list_photos.push(foto3);
@@ -837,9 +840,9 @@ personaje_prueba2.list_atributes.push(atributo_1);
 personaje_prueba2.list_atributes.push(atributo_2);
 personaje_prueba2.list_atributes.push(atributo_3);
 
-var foto1 = new photo_caracter(document.querySelector("#ember_cara"), false, false);
-var foto2 = new photo_caracter(document.querySelector("#ember_noche"), false, false);
-var foto3 = new photo_caracter(document.querySelector("#ember_espejo"), true, true);
+var foto1 = new photo_caracter(document.querySelector("#joan_cara"), false, false);
+var foto2 = new photo_caracter(document.querySelector("#joan_amigos"), false, false);
+var foto3 = new photo_caracter(document.querySelector("#joan_niños"), true, true);
 
 personaje_prueba2.list_photos.push(foto1);
 personaje_prueba2.list_photos.push(foto2);
@@ -864,9 +867,9 @@ personaje_prueba3.list_atributes.push(atributo_1);
 personaje_prueba3.list_atributes.push(atributo_2);
 personaje_prueba3.list_atributes.push(atributo_3);
 
-var foto1 = new photo_caracter(document.querySelector("#wetry_cara"), false, false);
-var foto2 = new photo_caracter(document.querySelector("#wetry_cementerio"), false, false);
-var foto3 = new photo_caracter(document.querySelector("#wetry_preocupado"), false, false);
+var foto1 = new photo_caracter(document.querySelector("#laia_hacker"), false, false);
+var foto2 = new photo_caracter(document.querySelector("#laia_park"), false, false);
+var foto3 = new photo_caracter(document.querySelector("#laia_guitarra"), false, false);
 
 personaje_prueba3.list_photos.push(foto1);
 personaje_prueba3.list_photos.push(foto2);
@@ -1026,6 +1029,8 @@ intro.style.display="none";
   while(imagenResult.firstChild){
     imagenResult.removeChild(imagenResult.firstChild);
   }
+  jugador.finales[cual].image.classList.remove("hiden");
+  jugador.finales[cual].image.style.width="40%";
   imagenResult.appendChild(jugador.finales[cual].image);
 
 
@@ -1046,7 +1051,7 @@ var contadorMalo=0;
 var contadorNeutral=0;
 var contadorRondas=0;
 
-for(var i=0;jugador.list_rondas.length;i++){
+for(var i=0;i<jugador.list_rondas.length;i++){
 var resultRonda=jugador.list_rondas[i].nota_pareja_Asignado;
 if(resultRonda!=-1){
 
@@ -1072,11 +1077,11 @@ var ponderadoNeutro=contadorNeutral/contadorRondas;
 var ponderadoMalo=contadorMalo/contadorRondas;
 
 if(ponderadoMalo>0.7){
-  return "muyMalo";
+  return 2;
 }else if(ponderadoMalo>0.3){
-  return "malo";
+  return 1;
 }else {
-  return "bueno";
+  return 0;
 }
 
 
@@ -1084,13 +1089,14 @@ if(ponderadoMalo>0.7){
 
 
 function queFaseEstoy() {
-  console.log("QUE FASE ESTOY " + jugador.list_rondas[jugador.ronda_actual].faseActual);
-
-if(jugador.alma){
+//  console.log("QUE FASE ESTOY " + jugador.list_rondas[jugador.ronda_actual].faseActual);
+//console.log("FASE ACTUAL NUM " +  jugador.ronda_actual + " en lista hay "+ jugador.list_rondas.length);
+if(jugador.alma || jugador.ronda_actual>= jugador.list_rondas.length){
 
   jugador.FaseJugador="Final";
   var resultFinal=calcularFinal();
   //aqui enseño final segun resultado
+  formarFinal(resultFinal);
 
 }
 
@@ -1224,8 +1230,14 @@ if(jugador.list_rondas[jugador.ronda_actual].faseActual=="finalParejas"){
 }else if(jugador.list_rondas[jugador.ronda_actual].faseActual=="finalApuesta"){
 
   jugador.ronda_actual = jugador.ronda_actual + 1;
-  jugador.list_rondas[jugador.ronda_actual].faseActual = "apuesta";
-  queFaseEstoy();
+  if(jugador.ronda_actual >= jugador.list_rondas.length){
+    queFaseEstoy();
+  }else{
+    jugador.list_rondas[jugador.ronda_actual].faseActual = "apuesta";
+    queFaseEstoy();
+  }
+
+
 }
 
   /*switch (e.srcElement.id) {
