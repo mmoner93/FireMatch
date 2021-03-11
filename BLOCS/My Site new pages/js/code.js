@@ -2182,7 +2182,7 @@ function formarTienda(which,nuevo){
 
 
 var masImagen=template.querySelector("#texto_imagen");
-masImagen.innerText="Tienes "+ jugador.maxImagenDesbloqueada + " desbloqueo imagenes por ronda (coste 5 )";
+masImagen.innerText="Tienes "+ jugador.maxImagenDesbloqueada + " desbloqueo imagenes por ronda (5c)";
 
 var imgMasImg=template.querySelector("#masImagen");
 //imgMasImg.id="masImagen";
@@ -2190,7 +2190,7 @@ var imgMasImg=template.querySelector("#masImagen");
 imgMasImg.addEventListener("click",comprarAlgo);
 
 var masAtributo=template.querySelector("#texto_atributo");
-masAtributo.innerText="Tienes "+ jugador.maxAtributoDesbloqueado + "desbloqueo atributos por ronda (coste 5 )";
+masAtributo.innerText="Tienes "+ jugador.maxAtributoDesbloqueado + "desbloqueo atributos por ronda (5c)";
 
 var imgMasAtr=template.querySelector("#masAtributo");;
 //imgMasAtr.id="masAtributo";
@@ -2236,7 +2236,7 @@ function comprarAlgo(e){
   switch(id){
   case "masImagen":
   if(confirm("Quieres comprar una imagen extra por ronda?")){
-    if(jugador.maxImagenDesbloqueada < 2 && jugador.coins>5){
+    if(jugador.maxImagenDesbloqueada < 2 && jugador.coins>=5){
       if( jugador.coins>5){
         jugador.maxImagenDesbloqueada=2;
         jugador.coins=jugador.coins-5;
@@ -2256,7 +2256,7 @@ function comprarAlgo(e){
   break;
   case "masAtributo":
   if(confirm("Quieres comprar un atributo extra por ronda?")){
-    if(jugador.maxAtributoDesbloqueado < 2 && jugador.coins>5){
+    if(jugador.maxAtributoDesbloqueado < 2 && jugador.coins>=5){
       if( jugador.coins>5){
         jugador.maxAtributoDesbloqueado=2;
         jugador.coins=jugador.coins-5;
@@ -2277,10 +2277,11 @@ function comprarAlgo(e){
   case "masAlma":
   if(confirm("Quieres tu alma?")){
     if(!jugador.alma ){
-      if( jugador.coins>50){
+      if( jugador.coins>=50){
         jugador.alma=true;
         jugador.coins=jugador.coins-50;
         //deberia enviar al final segun tus acciones.
+        queFaseEstoy();
       }else{
         confirm("No tienes suficientes monedas");
       }
