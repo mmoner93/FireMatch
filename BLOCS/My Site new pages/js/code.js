@@ -324,7 +324,7 @@ personaje_prueba1.list_atributes.push(atributo_3);
 
 var foto1 = new photo_caracter(document.querySelector("#karen_cara"), false, false);
 var foto2 = new photo_caracter(document.querySelector("#karen_montana"), false, false);
-var foto3 = new photo_caracter(document.querySelector("#karen_uni"), false, true);
+var foto3 = new photo_caracter(document.querySelector("#karen_uni"), false, false);
 personaje_prueba1.list_photos.push(foto1);
 personaje_prueba1.list_photos.push(foto2);
 personaje_prueba1.list_photos.push(foto3);
@@ -342,13 +342,13 @@ var personaje_prueba2 = new caracter(false, "Yénifer");
 personaje_prueba2.nota_pareja = 2;
 
 var atributo_1 = new atribute("El gimnasio es un plus de puntos", false, false);
-var atributo_2 = new atribute("Me gustan los chicos divertidos", false, true);
+var atributo_2 = new atribute("Me gustan los chicos divertidos", false, false);
 var atributo_3 = new atribute("Si tienes abdominales te doy mi teléfono.", false, false);
 personaje_prueba2.list_atributes.push(atributo_1);
 personaje_prueba2.list_atributes.push(atributo_2);
 personaje_prueba2.list_atributes.push(atributo_3);
 
-var foto1 = new photo_caracter(document.querySelector("#yenifer_perfil"), false, true);
+var foto1 = new photo_caracter(document.querySelector("#yenifer_perfil"), false, false);
 var foto2 = new photo_caracter(document.querySelector("#yenifer_gym"), false, false);
 var foto3 = new photo_caracter(document.querySelector("#yenifer_fiesta"), false, false);
 
@@ -364,22 +364,24 @@ personaje_prueba2.list_photos.push(foto3);
 //personaje_prueba2.list_chat.push(chat2);
 
 
-var disonance1 = new disonance("atributo_1", "Karen", false, "atributo_1", "Kevin", true, 2);
+//var disonance1 = new disonance("atributo_1", "Karen", false, "atributo_1", "Kevin", true, 2);
 //var disonance2 = new disonance("atributo_2", "Pepe pruebas", true, "atributo_2", "Juan pruebas", false, 1);
-var disonance3 = new disonance("img_caracter_0", "Karen", false, "atributo_2", "Karen", false, 1);
+//var disonance3 = new disonance("img_caracter_0", "Karen", false, "atributo_2", "Karen", false, 1);
 
 
 ronda_prueba.main_caracter = personaje_prueba;
 ronda_prueba.list_caracters.push(personaje_prueba1);
 ronda_prueba.list_caracters.push(personaje_prueba2);
 
-ronda_prueba.list_Disonances.push(disonance1);
+//ronda_prueba.list_Disonances.push(disonance1);
 //ronda_prueba.list_Disonances.push(disonance2);
-ronda_prueba.list_Disonances.push(disonance3);
+//ronda_prueba.list_Disonances.push(disonance3);
 ronda_prueba.pistaTrue = "Los rubios se atraen";
 ronda_prueba.pistaFalse = "Los rubios se atraen";
 ronda_prueba.preguntaDiablo="Para dar más emoción a tu trabajo… Vamos a hacer unas apuestas. ¿Qué resultado crees que tendrá tu siguiente pareja ? Si ganas.. te daré unas monedas extras. Si pierdes tranquilo, es solo para divertirme!";
-
+ronda_prueba.textoResultadoBueno="Son felices y Kevin decidió ser mejor en la vida.";
+ronda_prueba.textoResultadoMalo="Se forma una pareja tóxica y se meten muchos cuernos";
+ronda_prueba.textoResultadoNeutro="Pareja neutra";
 
 
 /*RONDA 2----*/
@@ -436,7 +438,7 @@ personaje_prueba2.nota_pareja = 2;
 
 var atributo_1 = new atribute("Piensa en verde, tanto comida como lo otro… jiji", false, false);
 var atributo_2 = new atribute("Mi sueño es tener una protectora de animales", false, false);
-var atributo_3 = new atribute("Te vienes a vivir conmigo a un pueblo?", false, true);
+var atributo_3 = new atribute("Te vienes a vivir conmigo a un pueblo?", false, false);
 personaje_prueba2.list_atributes.push(atributo_1);
 personaje_prueba2.list_atributes.push(atributo_2);
 personaje_prueba2.list_atributes.push(atributo_3);
@@ -450,26 +452,18 @@ personaje_prueba2.list_photos.push(foto2);
 personaje_prueba2.list_photos.push(foto3);
 
 
-//var chat1 = new chat("Hobbie ?", "Soy un elfo nivel 100");
-//var chat2 = new chat("Vives solo ?", "Mis waifus dicen que no");
-
-//personaje_prueba2.list_chat.push(chat1);
-//personaje_prueba2.list_chat.push(chat2);
-
-
-//var disonance1 = new disonance("atributo_1", "Pepe pruebas", true, "atributo_1", "Juan pruebas", false, 2);
-//var disonance2 = new disonance("atributo_2", "Pepe pruebas", true, "atributo_2", "Juan pruebas", false, 1);
-//var disonance3 = new disonance("img_caracter_0", "Juan pruebas", false, "atributo_2", "Juan pruebas", false, 1);
 
 
 ronda_prueba2.main_caracter = personaje_prueba;
 ronda_prueba2.list_caracters.push(personaje_prueba1);
 ronda_prueba2.list_caracters.push(personaje_prueba2);
 ronda_prueba2.preguntaDiablo="MMM… Interesante. Digamos que en la siguiente ronda habrán algunas personas que se sientan ofendidas… jeje.  Crees que acertarás ?";
-ronda_prueba.pistaTrue = "Los diferentes se atraen";
-ronda_prueba.pistaFalse = "Los diferentes se atraen";
+ronda_prueba2.pistaTrue = "Los diferentes se atraen";
+ronda_prueba2.pistaFalse = "Los diferentes se atraen";
 
-
+ronda_prueba2.textoResultadoBueno="Se equilibran mutuamente y son mejores personas.";
+ronda_prueba2.textoResultadoMalo="Crean un ataque a diferentes carnicas del mundo y la lían parda";
+ronda_prueba2.textoResultadoNeutro="Pareja neutra";
 
 //ronda_prueba2.list_Disonances.push(disonance2);
 //ronda_prueba2.list_Disonances.push(disonance3);
@@ -562,7 +556,9 @@ ronda_prueba3.preguntaDiablo="Que bonito es tener una pareja económicamente est
 
 ronda_prueba3.pistaTrue = "El mejor ataque es una buena defensa.";
 ronda_prueba3.pistaFalse = "Todos necesitamos que nos defiendan alguna vez.";
-
+ronda_prueba3.textoResultadoBueno="Como médico le hace ver el valor de la vida y piensa distinto como policia.";
+ronda_prueba3.textoResultadoMalo="Como siempre tiene alguien que le defiende se deja llevar por sus impulsos.";
+ronda_prueba3.textoResultadoNeutro="Pareja neutra";
 
 
 /*RONDA 4---*/
@@ -589,7 +585,7 @@ personaje_prueba.list_photos.push(foto3);
 
 
 var personaje_prueba1 = new caracter(false, "Abdellah");
-personaje_prueba1.nota_pareja = 0;
+personaje_prueba1.nota_pareja = 2;
 var atributo_1 = new atribute("Las vivencias de tu día a día son lo que te forman como persona", false, false);
 var atributo_2 = new atribute("Profesor de universidad prestigiosa", false, false);
 var atributo_3 = new atribute("Alah es grande", false, false);
@@ -614,7 +610,7 @@ personaje_prueba1.list_chat.push(chat1);
 
 
 var personaje_prueba2 = new caracter(false, "Esther");
-personaje_prueba2.nota_pareja = 2;
+personaje_prueba2.nota_pareja =0;
 
 var atributo_1 = new atribute("Judía", false, false);
 var atributo_2 = new atribute("Vive cada día como si fuera el último", false, false);
@@ -657,7 +653,9 @@ ronda_prueba4.preguntaDiablo="¿Y ahora vamos a tocar este tema? Creo que alguie
 
 ronda_prueba4.pistaTrue = "El amor no tiene que ver con tu sexo.";
 ronda_prueba4.pistaFalse = "Las diferencias culturales siempre traen demasiados problemas de pareja.";
-
+ronda_prueba4.textoResultadoBueno="Descubre que el amor no se decide y le trata con respeto.";
+ronda_prueba4.textoResultadoMalo="Le acaba obligando a casarse y no puede cumplir sus sueños. Además la poligamia le da problemas.";
+ronda_prueba4.textoResultadoNeutro="Pareja neutra";
 
 
 /*RONDA 5---*/
@@ -781,6 +779,10 @@ ronda_prueba5.list_Disonances.push(disonance4);
 ronda_prueba5.pistaTrue = "Las criaturas con los mismos problemas se apoyan entre ellos.";
 ronda_prueba5.pistaFalse = "La nocturnidad te ayudará en tu solución.";
 ronda_prueba5.preguntaDiablo="Desde cuando los muertos tienen sentimientos ? Ahh, tu lo estas… no iba por ti… ejem … Apuesta?";
+ronda_prueba5.textoResultadoBueno="Son felices y se van a una casita en la montaña a vivir solitos";
+ronda_prueba5.textoResultadoMalo="se enfadan ,le dice que tiene muy poca sangre y se come a todos sus amigos animales";
+ronda_prueba5.textoResultadoNeutro="En su segunda cita, se dieron cuenta que era mejor seguir como amigos. A día de hoy siguen quedando para asustar a turistas.";
+
 
 /*RONDA 6---*/
 
@@ -790,8 +792,8 @@ var personaje_prueba = new caracter(true, "Maria");
 
 
 var atributo_1 = new atribute("Vivo en una mansión con piscina y pista de tenis. 3 Ferraris en el garage", false, false);
-var atributo_2 = new atribute("altruista", false, false);
-var atributo_3 = new atribute("música underground", false, false);
+var atributo_2 = new atribute("altruista", true, false);
+var atributo_3 = new atribute("música underground", true, false);
 personaje_prueba.list_atributes.push(atributo_1);
 personaje_prueba.list_atributes.push(atributo_2);
 personaje_prueba.list_atributes.push(atributo_3);
@@ -808,7 +810,7 @@ personaje_prueba.list_photos.push(foto3);
 var personaje_prueba1 = new caracter(false, "Marc");
 personaje_prueba1.nota_pareja = 2;
 var atributo_1 = new atribute("Me gustan las exposiciones de cuadros", false, false);
-var atributo_2 = new atribute("Ayudar a los demás es un must", false, false);
+var atributo_2 = new atribute("Ayudar a los demás es un must", true, false);
 var atributo_3 = new atribute("Mac es mejor que Windows", false, false);
 personaje_prueba1.list_atributes.push(atributo_1);
 personaje_prueba1.list_atributes.push(atributo_2);
@@ -816,7 +818,7 @@ personaje_prueba1.list_atributes.push(atributo_3);
 
 var foto1 = new photo_caracter(document.querySelector("#marc_cara"), false, false);
 var foto2 = new photo_caracter(document.querySelector("#marc_pc"), false, false);
-var foto3 = new photo_caracter(document.querySelector("#marc_compras"), false, false);
+var foto3 = new photo_caracter(document.querySelector("#marc_compras"), true, true);
 personaje_prueba1.list_photos.push(foto1);
 personaje_prueba1.list_photos.push(foto2);
 personaje_prueba1.list_photos.push(foto3);
@@ -869,7 +871,7 @@ personaje_prueba3.list_atributes.push(atributo_3);
 
 var foto1 = new photo_caracter(document.querySelector("#laia_hacker"), false, false);
 var foto2 = new photo_caracter(document.querySelector("#laia_park"), false, false);
-var foto3 = new photo_caracter(document.querySelector("#laia_guitarra"), false, false);
+var foto3 = new photo_caracter(document.querySelector("#laia_guitarra"), true, false);
 
 personaje_prueba3.list_photos.push(foto1);
 personaje_prueba3.list_photos.push(foto2);
@@ -903,6 +905,10 @@ ronda_prueba6.list_Disonances.push(disonance3);
 ronda_prueba6.pistaTrue = "El dinero no es lo importante.";
 ronda_prueba6.pistaFalse = "El dinero genera más dinero y amor !";
 ronda_prueba6.preguntaDiablo="La siguiente tiene pinta de pija… pero me huele que no acabará en el infierno. ¿Raro verdad? Bueno, tu apuesta...";
+
+ronda_prueba6.textoResultadoBueno="Joan es tan honrado que Maria entiende aún más como ser mejor persona sin basarse en el dinero como base de altruismo.";
+ronda_prueba6.textoResultadoMalo="Marc empieza a llevar por el mal camino a Maria, haciendo que empiece a gastar su dinero en tontería en vez de ayudar.";
+ronda_prueba6.textoResultadoNeutro="Se entienden muy bien, pero sus respectivas vidas altruistas no les deja mucho tiempo de pareja";
 
 
 
@@ -1076,12 +1082,13 @@ var ponderadoBien=contadorBueno/contadorRondas;
 var ponderadoNeutro=contadorNeutral/contadorRondas;
 var ponderadoMalo=contadorMalo/contadorRondas;
 
+console.log("ponderado "+ ponderadoMalo);
 if(ponderadoMalo>0.7){
-  return 2;
+  return 3;
 }else if(ponderadoMalo>0.3){
-  return 1;
+  return 2;
 }else {
-  return 0;
+  return 1;
 }
 
 
@@ -2175,7 +2182,7 @@ function formarTienda(which,nuevo){
 
 
 var masImagen=template.querySelector("#texto_imagen");
-masImagen.innerText="Tienes "+ jugador.maxImagenDesbloqueada + " desbloqueo imagenes por ronda";
+masImagen.innerText="Tienes "+ jugador.maxImagenDesbloqueada + " desbloqueo imagenes por ronda (coste 5 )";
 
 var imgMasImg=template.querySelector("#masImagen");
 //imgMasImg.id="masImagen";
@@ -2183,7 +2190,7 @@ var imgMasImg=template.querySelector("#masImagen");
 imgMasImg.addEventListener("click",comprarAlgo);
 
 var masAtributo=template.querySelector("#texto_atributo");
-masAtributo.innerText="Tienes "+ jugador.maxAtributoDesbloqueado + "desbloqueo atributos por ronda";
+masAtributo.innerText="Tienes "+ jugador.maxAtributoDesbloqueado + "desbloqueo atributos por ronda (coste 5 )";
 
 var imgMasAtr=template.querySelector("#masAtributo");;
 //imgMasAtr.id="masAtributo";
@@ -2191,7 +2198,7 @@ var imgMasAtr=template.querySelector("#masAtributo");;
 imgMasAtr.addEventListener("click",comprarAlgo);
 
 var masAlma=template.querySelector("#texto_alma");
-masAlma.innerText="Tu alma";
+masAlma.innerText="Tu alma (coste 50 )";
 
 var imgMasAlma=template.querySelector("#masAlma");
 //imgMasAlma.id="masAlma";
