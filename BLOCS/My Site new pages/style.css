@@ -31,11 +31,23 @@
     position: absolute;
     bottom: 0 !important;
 }
+.novisible {
+    visibility: hidden;
+}
 
-
-
+.absolute {
+    position: absolute;
+}
 html, body {
-	height: 100%;
+    height: 100% !important !important;
+    width: 100% !important !important !important;
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+#exitIcon{
+	padding: 5px;
 }
 
 .container {
@@ -62,9 +74,9 @@ html, body {
 }
 
 body {
-    background-image: url("img/xp.jpg") !important;
+    /background-image: url("img/xp.jpg") !important;
     background-color: #cccccc;
-    background-position: center; /* Center the image /
+    background-position: center; / Center the image /
     background-repeat: no-repeat; / Do not repeat the image /
     background-size: cover; / Resize the background image to cover the entire container */
 }
@@ -85,7 +97,12 @@ body {
 	border-radius: 20px;
 	border-style: dashed;
 }
-
+.white_bg {
+    background-color: aliceblue;
+    padding: 15px;
+    border-radius: 15px;
+    border-style: dotted;
+}
 .chat-buttom {
 	visibility: visible;
     background-color: darkturquoise;
@@ -102,6 +119,9 @@ body {
 .PreventCursorChange {
 	border-radius: 15px;
 }
+
+
+
 
 /*-----------------------------------------------------------------------------------*/
 
