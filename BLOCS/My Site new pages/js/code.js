@@ -326,12 +326,12 @@ personaje_prueba1.list_photos.push(foto2);
 personaje_prueba1.list_photos.push(foto3);
 
 
-var chat1 = new chat("Hobbie ?", "Pues ser nini");
-var chat2 = new chat("Vives solo ?", "Si las pelusas de mi ombligo no cuentan...");
+////var chat1 = new chat("Hobbie ?", "Pues ser nini");
+//var chat2 = new chat("Vives solo ?", "Si las pelusas de mi ombligo no cuentan...");
 
 
-personaje_prueba1.list_chat.push(chat1);
-personaje_prueba1.list_chat.push(chat2);
+//personaje_prueba1.list_chat.push(chat1);
+//personaje_prueba1.list_chat.push(chat2);
 
 
 var personaje_prueba2 = new caracter(false, "Yénifer");
@@ -353,11 +353,11 @@ personaje_prueba2.list_photos.push(foto2);
 personaje_prueba2.list_photos.push(foto3);
 
 
-var chat1 = new chat("Hobbie ?", "Soy un elfo nivel 100");
-var chat2 = new chat("Vives solo ?", "Mis waifus dicen que no");
+//var chat1 = new chat("Hobbie ?", "Soy un elfo nivel 100");
+//var chat2 = new chat("Vives solo ?", "Mis waifus dicen que no");
 
-personaje_prueba2.list_chat.push(chat1);
-personaje_prueba2.list_chat.push(chat2);
+//personaje_prueba2.list_chat.push(chat1);
+//personaje_prueba2.list_chat.push(chat2);
 
 
 var disonance1 = new disonance("atributo_1", "Karen", false, "atributo_1", "Kevin", true, 2);
@@ -418,10 +418,10 @@ personaje_prueba1.list_photos.push(foto2);
 personaje_prueba1.list_photos.push(foto3);
 
 
-var chat1 = new chat("Hobbie ?", "Pues ser nini");
-var chat2 = new chat("Vives solo ?", "Si las pelusas de mi ombligo no cuentan...");
-personaje_prueba1.list_chat.push(chat1);
-personaje_prueba1.list_chat.push(chat2);
+//var chat1 = new chat("Hobbie ?", "Pues ser nini");
+//var chat2 = new chat("Vives solo ?", "Si las pelusas de mi ombligo no cuentan...");
+//personaje_prueba1.list_chat.push(chat1);
+//personaje_prueba1.list_chat.push(chat2);
 
 //personaje_prueba1.list_chat.push(chat1);
 //personaje_prueba1.list_chat.push(chat2);
