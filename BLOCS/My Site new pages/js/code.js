@@ -1028,8 +1028,9 @@ intro.style.display="none";
   template.style.visibility = "visible";
   template.style.display="flex";
   var result = template.querySelector("#result");
-  //result.id = "result";
-
+  //result.id = "result";todo_next
+  var capaLol=template.querySelector("#todo_next");
+  capaLol.style.visibility="hidden";
   var imagenResult = template.querySelector("#imgResult");
   result.innerText=jugador.finales[cual].text;
   while(imagenResult.firstChild){

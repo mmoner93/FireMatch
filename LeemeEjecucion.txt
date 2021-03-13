@@ -1,41 +1,50 @@
 Para iniciar el prototipo ejecute index.html.
 
+Fase introducción:
+
+Te cuenta la historía mediante texto y una imagen . Puedes continuar a lo largo de la conversación pulsando en las opciones inferiores.
 
 Fases de ronda:
 
-1)El diablo te pidea que apuestes para el resultado de la pareja que formaras en la ronda que toca.
+1)El diablo te pidea que apuestes para el resultado de la pareja que formaras en la ronda que toca y te dice información de la siguiente ronda.
 
 Puedes pulsar bien, neutral o mal.
 
-Abajo de los botones hay una frase que es una "pista" real o ficticia de la siguiente ronda.
+En la frase que  dice el diablo hay una "pista" real o ficticia de la siguiente ronda.
 
 
-2) Estas en el escritorio y puedes pulsar los iconos de la derecha para activar las pantallas del icono correspondiente.
+2) Estas en el escritorio y puedes pulsar los iconos de la barra inferior para activar las pantallas del icono correspondiente.
 
 	1)Ficha otros personajes: aparece una ficha que tiene fotos ,icono para pasar foto,  nombre, atributos ,flecha para pasar de ficha a otro usuario disponible,
-	  si tienes activo la pantalla de ficha del caracter principal de la ronda un icono que te permite asociar pareja y un icono para cerrar ventana.
+	  si tienes activo la pantalla de ficha del caracter principal se activa la barra superior de acciones en ficha y un icono para cerrar ventana.
 	  Algunas imagenes y atributos estan bloqueados , si pulsas se desbloquean. Tienen un limite de 1 por ronda a no ser que compres la mejora.
 	2)Chat: Te aparece una ventana con preguntas que si pulsas en ella se genera el chat con la respuesta. Si ya has preguntado antes se queda guardado. 
           Mas abajo tenemos un icono para salir de la pantalla y aun más abajo de ese icono los nombres de los personajes para poder hablar con cada uno.
 	3)Ficha del caracter principal ronda: Como la de ficha de otros personajes pero sin poder pasar de ficha ni desbloquear cosas.
-	4)Buscar divergencia. Cuando pulsas ese icono luego puedes pulsar un atributo y una imagen y de momento por consola del explorador usado te indica si hay alguna disonancia y su tipo.
+	5) Barra superior. Esta barra solo aparece si tienes la pantalla de ficha principal y la de ficha de aspirantes a la vez activa. Tiene el icono de lupa para divergencias y el corazon para asignar pareja en color inicial blanco.
+	4)Buscar divergencia. Para usar la lupa debes primero pulsar lupa , luego el atributo o imagen que quieres como primera opción a mirar y luego otro click en el segundo atributo o imagen que quieres comparar.
+	  Una vez hecho saltará un mensaje indicandote si hay alguna divergencia y si la hay de que tipo es 1 bueno o 2 malo . Además si hay divergencia cambiará el color del corazon cuando las dos fichas que has investigado esten activas
+	  .Si ha sido 1 bueno , el corazon se pone verde . Si ha sido 2 malo , se pone rojo. Esta elección de colores es tambien una trampa del diablo. Ya que un corazon rojo no se suele atribuir a malo.
 	  1bueno , 2 malo.
-	5)Tienda: Permite comprar mejora de imagen o atributo o tu alma. De momento no tiene coste pero esta limitado a que puedas comprar una mejora de cada o una sola vez tu alma.
+	5)Tienda: Permite comprar mejora de imagen o atributo o tu alma. De momento no tiene coste pero esta limitado a que puedas comprar una mejora de cada o una sola vez tu alma.Si compras tu alma acaba el juego y vas a tu final.
 	
 
 Cuando asocias pareja al main se acaba la ronda automaticamente.
 
-3) Sale un diablo , pero pondremos una foto descriptiva de que tal la pareja. Te dice que tipo es la asociación.
+3) Se te da una explicación del final de tu elección en la decisión de asociación de pareja.
 
-Pulsas en ok.
+Pulsas en next.
 
-4)Te sale el resultado de tu apuesta.
+4)Te sale el resultado de tu apuesta ( si has elegido que seria pareja buena y haces el match considerado como bueno . Has acertado. si has elegido que seria pareja mala y haces el match considerado como bueno . Has fallado. 
+Y así con las demas).
 
-Pulsas ok.
+Pulsas next.
 
 Y comienza la siguiente ronda.
 
-Hay 2 rondas hechas de prueba , luego peta.
+Hay 6 rondas hechas para la demo . Se puede acabar comprando tu alma y te lleva a un final o acabando todas las rondas y te lleva a un final.
+
+Además del final secreto.
 
 
 
