@@ -1,4 +1,36 @@
 
+/***********AUDIO**************/
+var gameAudio = document.getElementById("myAudio"); 
+
+function playAudio() { 
+  gameAudio.play(); 
+} 
+
+function pauseAudio() { 
+  gameAudio.pause(); 
+} 
+
+function volumeUp(){
+	if(gameAudio.volume < 1.00)
+		gameAudio.volume = gameAudio.volume + 0.05;
+	gameAudio.volume = gameAudio.volume.toFixed(3);
+}
+
+function volumeDown(){
+	if(gameAudio.volume > 0.00)
+		gameAudio.volume = gameAudio.volume - 0.05;
+	gameAudio.volume = gameAudio.volume.toFixed(3);
+}
+
+function changeMusic(NewSong){
+	var audio = document.getElementById("track");
+	var loc = window.location.pathname;
+	var dir = loc.substring(0, loc.lastIndexOf('/'));
+	audio.src = dir + '/Music/' + NewSong;
+	gameAudio.load();
+}
+/***********AUDIO END**************/
+
 /***********Declaraciones de estructuras**************/
 
 function jugador() {
@@ -109,7 +141,6 @@ function pantalla() {
 
 /***********Declaraciones de estructuras  END**************/
 
-
 /***********INICIALIZAR**************/
 
 var escritorio = new main_escritorio();
@@ -120,7 +151,6 @@ var jugador = new jugador();
 /** 1 **/
 var intro1=new introduccionScena();
 intro1.image=document.querySelector("#intro1");
-
 intro1.text="Hola, soy Juanca Daver y llevo todo mi vida siendo lo que consideran un nini.";
 intro1.list_respuestas.push("Continuar...");
 
@@ -927,6 +957,7 @@ jugador.list_rondas.push(ronda_prueba6);
 /***********PARA  INTRODUCCION **************/
 
 function formarIntroduccion(){
+ playAudio();
  var template = document.querySelector("#introduccion_template");
  template.style.display="flex";
 
@@ -1019,6 +1050,11 @@ formarFinal(0);
 
 
 function formarFinal(cual){
+	if(cual == 0) changeMusic("heaven.mp3");
+	if(cual == 1) changeMusic("heaven.mp3");
+	if(cual == 2) changeMusic("hell.mp3");
+	if(cual == 3) changeMusic("hell.mp3");
+	
 var escritorio=document.querySelector("#escritorio");
 escritorio.style.display="none";
 var intro=document.querySelector("#introduccion_template");
@@ -1331,6 +1367,12 @@ function formarApuestaDiabloResult() {
 
 
 function formarApuestasDiablo() {
+  if(jugador.ronda_actual == 0) changeMusic("tecno.mp3");
+  if(jugador.ronda_actual == 1) changeMusic("street.mp3");
+  if(jugador.ronda_actual == 2) changeMusic("beat.mp3");
+  if(jugador.ronda_actual == 3) changeMusic("night.mp3");
+  if(jugador.ronda_actual == 4) changeMusic("chill.mp3");
+  if(jugador.ronda_actual == 5) changeMusic("sync.mp3");
   var pantallaEntera=document.querySelector("#escritorio");
   pantallaEntera.style.visibility="hidden";
   var template = document.querySelector("#apuesta_template");
