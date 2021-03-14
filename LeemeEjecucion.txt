@@ -1,5 +1,11 @@
 Para iniciar el prototipo ejecute index.html.
 
+Control de la Musica:
+
+En la zona superior izquierda encontraremos cuatro botones, para pausar y reanudar la música, y tambíen para subir y bajar el volumen.
+Cada ronda de juego tiene su propia canción, que empezará a reproducirse al inicio de la misma. Para jugar sin ninguna música es preferible bajar el 
+volumen al mínimo.
+
 Fase introducción:
 
 Te cuenta la historía mediante texto y una imagen . Puedes continuar a lo largo de la conversación pulsando en las opciones inferiores.
