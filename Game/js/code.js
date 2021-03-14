@@ -955,9 +955,17 @@ jugador.list_rondas.push(ronda_prueba6);
 
 
 /***********PARA  INTRODUCCION **************/
-
 function formarIntroduccion(){
- playAudio();
+
+ if(jugador.contadorWichIntro == 1){
+	 playAudio();
+ } 
+ else{
+	 if(!gameAudio.paused){
+		playAudio();
+	 }
+ } 
+ 
  var template = document.querySelector("#introduccion_template");
  template.style.display="flex";
 
@@ -1367,12 +1375,12 @@ function formarApuestaDiabloResult() {
 
 
 function formarApuestasDiablo() {
-  if(jugador.ronda_actual == 0) changeMusic("tecno.mp3");
-  if(jugador.ronda_actual == 1) changeMusic("street.mp3");
-  if(jugador.ronda_actual == 2) changeMusic("beat.mp3");
+  if(jugador.ronda_actual == 0) changeMusic("chill.mp3");
+  if(jugador.ronda_actual == 1) changeMusic("sync.mp3");
+  if(jugador.ronda_actual == 2) changeMusic("tecno.mp3");
   if(jugador.ronda_actual == 3) changeMusic("night.mp3");
-  if(jugador.ronda_actual == 4) changeMusic("chill.mp3");
-  if(jugador.ronda_actual == 5) changeMusic("sync.mp3");
+  if(jugador.ronda_actual == 4) changeMusic("street.mp3");
+  if(jugador.ronda_actual == 5) changeMusic("beat.mp3");
   var pantallaEntera=document.querySelector("#escritorio");
   pantallaEntera.style.visibility="hidden";
   var template = document.querySelector("#apuesta_template");
