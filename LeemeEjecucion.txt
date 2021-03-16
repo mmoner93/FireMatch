@@ -29,7 +29,7 @@ En la frase que  dice el diablo hay una "pista" real o ficticia de la siguiente 
 	5)Tienda: Permite comprar mejora de imagen o atributo o tu alma. De momento no tiene coste pero esta limitado a que puedas comprar una mejora de cada o una sola vez tu alma.Si compras tu alma acaba el juego y vas a tu final.
 	
 
-Cuando asocias pareja al main se acaba la ronda automaticamente.
+Cuando asocias pareja al main mediante el corazon se acaba la ronda automaticamente.
 
 3) Se te da una explicación del final de tu elección en la decisión de asociación de pareja.
 
